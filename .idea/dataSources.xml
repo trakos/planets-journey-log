@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="61893642">
+    <data-source source="LOCAL" name="Data Source" uuid="8061187d-b8a1-48d7-92c5-9f69f6f76544">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost/starbound_log</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfc3dfc4dfd9dfcfdfcfdf93df93</user-password>
+      <schema-pattern>starbound_log.*</schema-pattern>
+      <default-schemas>starbound_log.*</default-schemas>
+      <libraries>
+        <library>
+          <url>file://$PROJECT_DIR$/../../tools/mysql_connector/mysql-connector-java-5.1.26-bin.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+
