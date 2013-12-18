@@ -19,7 +19,7 @@ class StarboundLog
     {
         $array = array();
         foreach (self::$structureConfig as $moduleName => $controllers) {
-            $array[MODULES_NAMESPACE . '\\' . $moduleName] = MODULES_PATH . $moduleName;
+            $array[T_NAMESPACE_MODULES . '\\' . $moduleName] = T_PATH_MODULES . $moduleName;
         }
         return $array;
     }
@@ -28,7 +28,7 @@ class StarboundLog
     {
         $array = array();
         foreach (self::$structureConfig[$moduleName] as $controllerName) {
-            $array[MODULES_NAMESPACE . '\\' . $moduleName . '\\' . $controllerName] = MODULES_NAMESPACE . '\\' . $moduleName . '\\' . $controllerName;
+            $array[T_NAMESPACE_MODULES . '\\' . $moduleName . '\\' . $controllerName] = T_NAMESPACE_MODULES . '\\' . $moduleName . '\\' . $controllerName;
         }
         return $array;
     }

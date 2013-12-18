@@ -41,7 +41,7 @@ abstract class AbstractModule extends InjectTemplateListener implements ConfigPr
             ),
             'view_manager' => array(
                 'template_path_stack' => array(
-                    APPLICATION_PATH . '/view/' . strtolower($this->_moduleName) . '/',
+                    T_PATH_APPLICATION . '/view/' . strtolower($this->_moduleName) . '/',
                 )
             )
         );
@@ -57,17 +57,24 @@ abstract class AbstractModule extends InjectTemplateListener implements ConfigPr
     public function onBootstrap(EventInterface $e)
     {
         if ($e instanceof MvcEvent) {
-            $e
+            $sharedManager = $e
                 ->getApplication()
                 ->getEventManager()
-                ->getSharedManager()
-                ->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($this, 'injectTemplate'), -91);
+                ->getSharedManager();
+            $sharedManager->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($this, 'injectTemplate'), -91);
+            $sharedManager->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($this, 'chooseLayout'), -101);
         }
         /* if ($e instanceof MvcEvent) {
              $eventManager        = $e->getApplication()->getEventManager();
              $moduleRouteListener = new ModuleRouteListener();
              $moduleRouteListener->attach($eventManager);
          }*/
+    }
+
+    public function chooseLayout(MvcEvent $e)
+    {
+        $controller = $e->getTarget();
+        $controller->layout('_layout/full');
     }
 
     public function injectTemplate(MvcEvent $e)
