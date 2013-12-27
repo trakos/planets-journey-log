@@ -11,24 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a8f20203-91d7-4b53-804b-f4cebdb2942e" name="Default" comment="wyrzucenie developr&#10;">
       <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\autoload_init.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\public\css\error.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\public\css\login.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\public\js\libs\CLEditor\images\toolbar.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\public\js\libs\CLEditor\jquery.cleditor.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\public\js\libs\CLEditor\jquery.cleditor.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\public\js\libs\DataTables\jquery.dataTables.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\view\_error\400.phtml" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\view\_error\401.phtml" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\view\_error\403.phtml" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\view\_error\418.phtml" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\view\_error\500.phtml" afterPath="" />
-      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\view\_error\503.phtml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/public/favicon.ico" afterPath="$PROJECT_DIR$/starbound_log/public/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log.mwb" afterPath="$PROJECT_DIR$/starbound_log.mwb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/view/_error/404.phtml" afterPath="$PROJECT_DIR$/starbound_log/view/_error/404.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/StarboundLog/StarboundLog.php" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/StarboundLog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/view/_layout/full.phtml" afterPath="$PROJECT_DIR$/starbound_log/view/_layout/full.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/public/index.php" afterPath="$PROJECT_DIR$/starbound_log/public/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/starbound_log.iml" afterPath="$PROJECT_DIR$/starbound_log/starbound_log.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -728,7 +711,7 @@
       <workItem from="1387393478162" duration="2257000" />
       <workItem from="1387395844801" duration="7787000" />
       <workItem from="1388160506122" duration="14422000" />
-      <workItem from="1388184711565" duration="686000" />
+      <workItem from="1388184711565" duration="777000" />
     </task>
     <task id="LOCAL-00001" summary="developr">
       <created>1387326523069</created>
@@ -742,11 +725,15 @@
       <created>1388174595793</created>
       <updated>1388174595793</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="teraz naprawdę wyrzucenie developr&#10;">
+      <created>1388185514932</created>
+      <updated>1388185514932</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48528000" />
+    <option name="totallyTimeSpent" value="48619000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -785,6 +772,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289166" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.09208262" sideWeight="0.670304" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -799,7 +787,6 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32969603" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -821,7 +808,8 @@
     <MESSAGE value="developr" />
     <MESSAGE value="refaktoryzacja, dokończenie inicjalizacji" />
     <MESSAGE value="wyrzucenie developr" />
-    <option name="LAST_COMMIT_MESSAGE" value="wyrzucenie developr" />
+    <MESSAGE value="teraz naprawdę wyrzucenie developr&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="teraz naprawdę wyrzucenie developr&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -911,7 +899,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/starbound_log/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="29" selection-start="530" selection-end="530" vertical-scroll-proportion="0.33663365" vertical-offset="0" max-vertical-offset="808" />
+        <state line="16" column="29" selection-start="530" selection-end="530" vertical-scroll-proportion="0.33663365" vertical-offset="0" max-vertical-offset="808">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/starbound_log/config/zend/router.config.php">
@@ -970,7 +960,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/StarboundLog.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="940" selection-end="940" vertical-scroll-proportion="-19.0" vertical-offset="84" max-vertical-offset="918" />
+        <state line="34" column="0" selection-start="940" selection-end="940" vertical-scroll-proportion="-19.0" vertical-offset="84" max-vertical-offset="918">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zend/Doctrine/ORM/Tools/Console/Command/ConvertMappingCommand.php">

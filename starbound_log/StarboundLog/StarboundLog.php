@@ -2,13 +2,13 @@
 
 class StarboundLog
 {
-    static public $structureConfig = array(
+    static protected $structureConfig = array(
         'Main' => array(
             'Index'
         )
     );
 
-    static public $defaultModule = 'Main';
+    static protected $defaultModule = 'Main';
 
     static public function getModuleNamespaces()
     {
@@ -31,5 +31,23 @@ class StarboundLog
             $array[T_NAMESPACE_MODULES . '\\' . $moduleName . '\\' . $controllerName] = T_NAMESPACE_MODULES . '\\' . $moduleName . '\\' . $controllerName;
         }
         return $array;
+    }
+
+    static protected $entityManager;
+
+    /**
+     * @return \Doctrine\ORM\EntityManager
+     */
+    static public function getEntityManager()
+    {
+        return self::$entityManager;
+    }
+
+    /**
+     * @param \Doctrine\ORM\EntityManager $value
+     */
+    static public function setEntityManager(\Doctrine\ORM\EntityManager $value)
+    {
+        self::$entityManager = $value;
     }
 }
