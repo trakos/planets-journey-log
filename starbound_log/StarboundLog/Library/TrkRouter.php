@@ -6,7 +6,7 @@ namespace StarboundLog\Library;
 use Zend\Mvc\Router\Http\Segment;
 use Zend\Stdlib\RequestInterface;
 
-class MyRouter extends Segment
+class TrkRouter extends Segment
 {
     /**
      * @param RequestInterface $request

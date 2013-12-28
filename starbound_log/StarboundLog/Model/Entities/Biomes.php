@@ -8,10 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
  * Biomes
  *
  * @ORM\Table(name="biomes")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="StarboundLog\Model\Repositories\BiomesRepository")
  */
-class Biomes
+class Biomes extends \StarboundLog\Library\AbstractEntity
 {
+    /**
+     * @return \StarboundLog\Model\Repositories\BiomesRepository
+     */
+    static public function getRepo()
+    {
+        return \StarboundLog::getEntityManager()->getRepository('StarboundLog\Model\Entities\Biomes');
+    }
+
     /**
      * @var integer
      *

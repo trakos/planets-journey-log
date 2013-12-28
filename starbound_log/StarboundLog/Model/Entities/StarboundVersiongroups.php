@@ -8,10 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
  * StarboundVersiongroups
  *
  * @ORM\Table(name="starbound_versiongroups")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="StarboundLog\Model\Repositories\StarboundVersiongroupsRepository")
  */
-class StarboundVersiongroups
+class StarboundVersiongroups extends \StarboundLog\Library\AbstractEntity
 {
+    /**
+     * @return \StarboundLog\Model\Repositories\StarboundVersiongroupsRepository
+     */
+    static public function getRepo()
+    {
+        return \StarboundLog::getEntityManager()->getRepository('StarboundLog\Model\Entities\StarboundVersiongroups');
+    }
+
     /**
      * @var integer
      *

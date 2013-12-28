@@ -1,5 +1,6 @@
 <?php
 
+use \StarboundLog\Model\Entities\StarboundVersions;
 
 require(dirname(__DIR__) . '/init.php');
 

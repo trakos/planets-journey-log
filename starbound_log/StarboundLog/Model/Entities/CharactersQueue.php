@@ -8,10 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
  * CharactersQueue
  *
  * @ORM\Table(name="characters_queue")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="StarboundLog\Model\Repositories\CharactersQueueRepository")
  */
-class CharactersQueue
+class CharactersQueue extends \StarboundLog\Library\AbstractEntity
 {
+    /**
+     * @return \StarboundLog\Model\Repositories\CharactersQueueRepository
+     */
+    static public function getRepo()
+    {
+        return \StarboundLog::getEntityManager()->getRepository('StarboundLog\Model\Entities\CharactersQueue');
+    }
+
     /**
      * @var integer
      *

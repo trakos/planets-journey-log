@@ -8,10 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
  * CharactersPlanets
  *
  * @ORM\Table(name="characters_planets")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="StarboundLog\Model\Repositories\CharactersPlanetsRepository")
  */
-class CharactersPlanets
+class CharactersPlanets extends \StarboundLog\Library\AbstractEntity
 {
+    /**
+     * @return \StarboundLog\Model\Repositories\CharactersPlanetsRepository
+     */
+    static public function getRepo()
+    {
+        return \StarboundLog::getEntityManager()->getRepository('StarboundLog\Model\Entities\CharactersPlanets');
+    }
+
     /**
      * @var integer
      *
