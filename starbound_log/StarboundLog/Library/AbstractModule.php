@@ -17,7 +17,7 @@ use Zend\Mvc\MvcEvent;
 use Zend\Mvc\View\Http\InjectTemplateListener;
 use Zend\View\Model\ViewModel;
 
-abstract class AbstractModule extends InjectTemplateListener implements ConfigProviderInterface, BootstrapListenerInterface
+abstract class AbstractModule extends InjectTemplateListener implements ConfigProviderInterface
 {
     protected $_moduleName;
 
@@ -36,77 +36,11 @@ abstract class AbstractModule extends InjectTemplateListener implements ConfigPr
     public function getConfig()
     {
         return array(
-            'controllers'  => array(
-                'invokables' => \StarboundLog::getControllersFor($this->_moduleName)
-            ),
             'view_manager' => array(
                 'template_path_stack' => array(
                     T_PATH_APPLICATION . '/view/' . strtolower($this->_moduleName) . '/',
                 )
             )
         );
-    }
-
-    /**
-     * Listen to the bootstrap event
-     *
-     * @param EventInterface $e
-     *
-     * @return array
-     */
-    public function onBootstrap(EventInterface $e)
-    {
-        if ($e instanceof MvcEvent) {
-            $sharedManager = $e
-                ->getApplication()
-                ->getEventManager()
-                ->getSharedManager();
-            $sharedManager->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($this, 'injectTemplate'), -91);
-            $sharedManager->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($this, 'chooseLayout'), -101);
-        }
-        /* if ($e instanceof MvcEvent) {
-             $eventManager        = $e->getApplication()->getEventManager();
-             $moduleRouteListener = new ModuleRouteListener();
-             $moduleRouteListener->attach($eventManager);
-         }*/
-    }
-
-    public function chooseLayout(MvcEvent $e)
-    {
-        $controller = $e->getTarget();
-        $controller->layout('_layout/full');
-    }
-
-    public function injectTemplate(MvcEvent $e)
-    {
-        $model = $e->getResult();
-        if (!$model instanceof ViewModel) {
-            return;
-        }
-
-        $routeMatch = $e->getRouteMatch();
-        $controller = $e->getTarget();
-        if (is_object($controller)) {
-            $controller = get_class($controller);
-        }
-        if (!$controller) {
-            $controller = $routeMatch->getParam('controller', '');
-        }
-
-        $controller = $this->deriveControllerClass($controller);
-        $module = $this->_moduleName;
-
-        $template   = $this->inflectName($module);
-
-        if (!empty($template)) {
-            $template .= '/';
-        }
-        $template  .= $this->inflectName($controller);
-
-        $action     = $routeMatch->getParam('action');
-        if (null !== $action) {
-            $template .= '/' . $this->inflectName($action);
-        }
-        $model->setTemplate($template);
     }
 }

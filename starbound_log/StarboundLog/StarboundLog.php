@@ -5,10 +5,8 @@ class StarboundLog
     static protected $structureConfig = array(
         'Main' => array(
             'Index'
-        )
+        ),
     );
-
-    static protected $defaultModule = 'Main';
 
     static public function getModuleNamespaces()
     {
@@ -24,11 +22,22 @@ class StarboundLog
         return $array;
     }
 
-    static public function getControllersFor($moduleName)
+    static public function getControllers()
     {
         $array = array();
-        foreach (self::$structureConfig[$moduleName] as $controllerName) {
-            $array[T_NAMESPACE_MODULES . '\\' . $moduleName . '\\' . $controllerName] = T_NAMESPACE_MODULES . '\\' . $moduleName . '\\' . $controllerName;
+        foreach (self::$structureConfig as $moduleName => $controllers) {
+            foreach (self::$structureConfig[$moduleName] as $controllerName) {
+                $array[$moduleName . '-' . $controllerName] = T_NAMESPACE_MODULES . '\\' . $moduleName . '\\' . $controllerName;
+            }
+        }
+        return $array;
+    }
+
+    static public function getModulesViewPaths()
+    {
+        $array = array();
+        foreach (self::$structureConfig as $moduleName => $controllers) {
+            $array[] = T_PATH_APPLICATION . '/view/' . strtolower($moduleName) . '/';
         }
         return $array;
     }

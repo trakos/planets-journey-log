@@ -18,4 +18,9 @@ class Index extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function testAction()
+    {
+        return new ViewModel();
+    }
 }

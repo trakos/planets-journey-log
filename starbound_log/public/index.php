@@ -1,11 +1,17 @@
 <?php
 
+
 require(dirname(__DIR__) . '/init.php');
 
-
-
 Zend\Mvc\Application::init(array(
-
+    'listeners' => array(
+        'StarboundLog\\Library\\Events\\LayoutAndTemplateListener'
+    ),
+    'service_manager' => array(
+        'invokables' => array(
+            'StarboundLog\\Library\\Events\\LayoutAndTemplateListener' => 'StarboundLog\\Library\\Events\\LayoutAndTemplateListener',
+        ),
+    ),
     'modules' => StarboundLog::getModuleNamespaces(),
     'module_listener_options' => array(
         'module_paths' => StarboundLog::getModulePaths(),
@@ -17,5 +23,7 @@ Zend\Mvc\Application::init(array(
             T_PATH_CONFIG . '/zend/*.config.php',
         ),
     ),
-
+    'view_manager' => array(
+        'template_path_stack' => StarboundLog::getModulesViewPaths()
+    )
 ))->run();
