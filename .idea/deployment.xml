@@ -5,9 +5,10 @@
       <paths name="s4">
         <serverdata>
           <mappings>
-            <mapping deploy="/dev/starbound_log_build" local="$PROJECT_DIR$/build" web="/" />
             <mapping deploy="/dev/starbound_log_dev" local="$PROJECT_DIR$/starbound_log" web="/" />
-            <mapping deploy="/phpinclude" local="$PROJECT_DIR$/zend" web="/" />
+            <mapping deploy="/phpinclude" local="$PROJECT_DIR$/zend" web="" />
+            <mapping deploy="/phpinclude" local="$PROJECT_DIR$/trks" web="" />
+            <mapping deploy="/dev/starbound_log_dev/public" local="$PROJECT_DIR$/starbound_log/public" web="/" />
           </mappings>
         </serverdata>
       </paths>

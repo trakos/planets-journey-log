@@ -1,10 +1,10 @@
 <?php
 
-namespace Trks;
+namespace StarboundLog\Library;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\Entity;
 
-abstract class TrksAbstractEntity
+abstract class AbstractEntity
 {
 }

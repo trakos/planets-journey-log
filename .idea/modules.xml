@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MWSadmin/MWSadmin.iml" filepath="$PROJECT_DIR$/MWSadmin/MWSadmin.iml" />
       <module fileurl="file://$PROJECT_DIR$/starbound_log/starbound_log.iml" filepath="$PROJECT_DIR$/starbound_log/starbound_log.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trks/trks.iml" filepath="$PROJECT_DIR$/trks/trks.iml" />
       <module fileurl="file://$PROJECT_DIR$/zend/zend.iml" filepath="$PROJECT_DIR$/zend/zend.iml" />
     </modules>
   </component>
