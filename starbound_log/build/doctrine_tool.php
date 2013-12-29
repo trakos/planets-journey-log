@@ -8,6 +8,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Trks\Build\TrksConvertMappingCommand;
+use Trks\Build\TrksGenerateRepositoriesCommand;
 
 class MyConvertMappingCommand extends \Doctrine\ORM\Tools\Console\Command\ConvertMappingCommand
 {
@@ -59,6 +61,6 @@ class MyAnnotationExporter extends \Doctrine\ORM\Tools\Export\Driver\AnnotationE
     'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper(StarboundLog::getEntityManager()->getConnection()),
     'em' => new \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper(StarboundLog::getEntityManager())
 )), array(
-    new \StarboundLog\Library\Build\TrkConvertMappingCommand(),
-    new \StarboundLog\Library\Build\TrkGenerateRepositoriesCommand(),
+    new TrksConvertMappingCommand(),
+    new TrksGenerateRepositoriesCommand(),
 ));

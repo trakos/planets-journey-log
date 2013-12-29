@@ -9,11 +9,10 @@
 
 namespace StarboundLog\Controller\Main;
 
-use StarboundLog\Library\TrkAbstractController;
-use Zend\Mvc\Controller\AbstractActionController;
+use StarboundLog\Library\MyAbstractController;
 use Zend\View\Model\ViewModel;
 
-class Home extends TrkAbstractController
+class Home extends MyAbstractController
 {
     public function indexAction()
     {

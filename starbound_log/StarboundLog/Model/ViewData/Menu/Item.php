@@ -1,6 +1,6 @@
 <?php
 
-namespace StarboundLog\Library\Menu;
+namespace StarboundLog\Model\ViewData\Menu;
 
 
 class Item
@@ -17,4 +17,4 @@ class Item
     public $href;
     public $icon;
     public $label;
-} 
+}

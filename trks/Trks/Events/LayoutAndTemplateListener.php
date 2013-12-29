@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace StarboundLog\Library\Events;
+namespace Trks\Events;
 
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;

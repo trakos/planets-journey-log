@@ -11,7 +11,7 @@ namespace StarboundLog\Model;
 class ViewData
 {
     /**
-     * @var \StarboundLog\Library\Menu\Item[]
+     * @var \StarboundLog\Model\ViewData\Menu\Item[]
      */
     static public $menuItems;
 } 

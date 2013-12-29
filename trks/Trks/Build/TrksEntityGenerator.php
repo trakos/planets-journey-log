@@ -6,13 +6,13 @@
  * Time: 17:30
  */
 
-namespace StarboundLog\Library\Build;
+namespace Trks\Build;
 
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Tools\EntityGenerator;
 
-class TrkEntityGenerator extends EntityGenerator
+class TrksEntityGenerator extends EntityGenerator
 {
     /**
      * Generate a PHP5 Doctrine 2 entity class from the given ClassMetadataInfo instance

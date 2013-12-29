@@ -6,11 +6,11 @@ require(dirname(__DIR__) . '/init.php');
 
 Zend\Mvc\Application::init(array(
     'listeners' => array(
-        'StarboundLog\\Library\\Events\\LayoutAndTemplateListener'
+        'Trks\\Events\\LayoutAndTemplateListener'
     ),
     'service_manager' => array(
         'invokables' => array(
-            'StarboundLog\\Library\\Events\\LayoutAndTemplateListener' => 'StarboundLog\\Library\\Events\\LayoutAndTemplateListener',
+            'Trks\\Events\\LayoutAndTemplateListener' => 'Trks\\Events\\LayoutAndTemplateListener',
         ),
     ),
     'modules' => StarboundLog::getModuleNamespaces(),

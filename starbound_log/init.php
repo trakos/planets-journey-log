@@ -8,13 +8,15 @@ define('T_PATH_LIB', '/var/www/phpinclude');
 define('T_PATH_ZEND2', T_PATH_LIB . '/Zend');
 define('T_PATH_CONFIG', T_PATH_APPLICATION . '/config');
 
-define('T_PATH_DOCTRINE', T_PATH_LIB . '/Doctrine');
 define('T_PATH_SYMFONY', T_PATH_LIB . '/Symfony');
+define('T_PATH_DOCTRINE', T_PATH_LIB . '/Doctrine');
+define('T_PATH_TRKS', T_PATH_LIB . '/Trks');
 define('T_PATH_APP_SRC', T_PATH_APPLICATION . '/StarboundLog');
 define('T_PATH_MODULES', T_PATH_APPLICATION . '/StarboundLog/Controller/');
 
 define('T_NAMESPACE_DOCTRINE', 'Doctrine');
 define('T_NAMESPACE_SYMFONY', 'Symfony');
+define('T_NAMESPACE_TRKS', 'Trks');
 define('T_NAMESPACE_APP_SRC', 'StarboundLog');
 define('T_NAMESPACE_MODULES', 'StarboundLog\\Controller');
 
@@ -28,9 +30,10 @@ require T_PATH_APPLICATION . '/StarboundLog/StarboundLog.php';
     ->setOptions(array(
         'autoregister_zf' => true
     ))
-    ->registerNamespace(T_NAMESPACE_APP_SRC, T_PATH_APP_SRC)
-    ->registerNamespace(T_NAMESPACE_DOCTRINE, T_PATH_DOCTRINE)
     ->registerNamespace(T_NAMESPACE_SYMFONY, T_PATH_SYMFONY)
+    ->registerNamespace(T_NAMESPACE_DOCTRINE, T_PATH_DOCTRINE)
+    ->registerNamespace(T_NAMESPACE_TRKS, T_PATH_TRKS)
+    ->registerNamespace(T_NAMESPACE_APP_SRC, T_PATH_APP_SRC)
     ->register();
 
 // debug

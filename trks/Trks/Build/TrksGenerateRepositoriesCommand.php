@@ -17,7 +17,7 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace StarboundLog\Library\Build;
+namespace Trks\Build;
 
 use Symfony\Component\Console\Input\InputArgument,
     Symfony\Component\Console\Input\InputOption,
@@ -36,7 +36,7 @@ use Symfony\Component\Console\Input\InputArgument,
  * @author  Jonathan Wage <jonwage@gmail.com>
  * @author  Roman Borschel <roman@code-factory.org>
  */
-class TrkGenerateRepositoriesCommand extends Console\Command\Command
+class TrksGenerateRepositoriesCommand extends Console\Command\Command
 {
     /**
      * @see Console\Command\Command
@@ -66,6 +66,7 @@ EOT
      */
     protected function execute(Console\Input\InputInterface $input, Console\Output\OutputInterface $output)
     {
+        /* @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getHelper('em')->getEntityManager();
 
         $metadatas = $em->getMetadataFactory()->getAllMetadata();
@@ -86,7 +87,7 @@ EOT
 
         if (count($metadatas)) {
             $numRepositories = 0;
-            $generator = new TrkEntityRepositoryGenerator();
+            $generator = new TrksEntityRepositoryGenerator();
 
             foreach ($metadatas as $metadata) {
                 if ($metadata->customRepositoryClassName) {

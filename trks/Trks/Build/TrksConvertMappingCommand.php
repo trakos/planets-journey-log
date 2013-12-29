@@ -17,10 +17,9 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace StarboundLog\Library\Build;
+namespace Trks\Build;
 
 use Doctrine\ORM\Tools\Export\Driver\AnnotationExporter;
-use StarboundLog\Library\Build\TrkEntityGenerator;
 use Symfony\Component\Console\Input\InputArgument,
     Symfony\Component\Console\Input\InputOption,
     Symfony\Component\Console,
@@ -40,7 +39,7 @@ use Symfony\Component\Console\Input\InputArgument,
  * @author  Jonathan Wage <jonwage@gmail.com>
  * @author  Roman Borschel <roman@code-factory.org>
  */
-class TrkConvertMappingCommand extends Console\Command\Command
+class TrksConvertMappingCommand extends Console\Command\Command
 {
     /**
      * @see Console\Command\Command
@@ -139,7 +138,7 @@ EOT
         $exporter = new AnnotationExporter($destPath);
         $exporter->setOverwriteExistingFiles( ($input->getOption('force') !== false) );
         {
-            $entityGenerator = new TrkEntityGenerator();
+            $entityGenerator = new TrksEntityGenerator();
             $exporter->setEntityGenerator($entityGenerator);
 
             $entityGenerator->setNumSpaces($input->getOption('num-spaces'));

@@ -17,7 +17,7 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace StarboundLog\Library\Build;
+namespace Trks\Build;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
 /**
@@ -31,7 +31,7 @@ use Doctrine\ORM\Mapping\ClassMetadataInfo;
  * @author  Jonathan Wage <jonwage@gmail.com>
  * @author  Roman Borschel <roman@code-factory.org>
  */
-class TrkEntityRepositoryGenerator
+class TrksEntityRepositoryGenerator
 {
     protected static $_template =
 '<?php

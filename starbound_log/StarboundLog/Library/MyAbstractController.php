@@ -1,21 +1,25 @@
 <?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: trakos
+ * Date: 29.12.13
+ * Time: 03:02
+ */
 
 namespace StarboundLog\Library;
 
 
-use StarboundLog\Library\Menu\Item;
 use StarboundLog\Model\ViewData;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Mvc\MvcEvent;
+use StarboundLog\Model\ViewData\Menu\Item;
+use Trks\TrksAbstractController;
 use Zend\View\Model\ViewModel;
 
-class TrkAbstractController extends AbstractActionController
+class MyAbstractController extends TrksAbstractController
 {
-    public function onDispatch(MvcEvent $e)
+
+    protected function createViewData(ViewModel $viewData)
     {
-        $result = parent::onDispatch($e);
         ViewData::$menuItems = $this->_getMenu();
-        return $result;
     }
 
     /**
@@ -34,4 +38,4 @@ class TrkAbstractController extends AbstractActionController
             new Item('/', 'off', 'Log off'),
         );
     }
-} 
+}
