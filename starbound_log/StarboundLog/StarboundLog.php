@@ -4,9 +4,14 @@ class StarboundLog
 {
     static protected $structureConfig = array(
         'Main' => array(
-            'Index'
+            'Home'
         ),
     );
+
+    static public function getDefaultModule()
+    {
+        return array_keys(self::$structureConfig)[0];
+    }
 
     static public function getModuleNamespaces()
     {

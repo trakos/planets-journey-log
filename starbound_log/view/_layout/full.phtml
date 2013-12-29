@@ -171,14 +171,14 @@
         <div id="mws-navigation">
             <ul>
                 <!-- Here goes the navigation -->
-                <li class="active"><a href="dashboard.html"><i class="icon-plus"></i>Add planet</a></li>
-                <li class="active"><a href="dashboard.html"><i class="icon-rocket"></i>Record my visit</a></li>
-                <li class="active"><a href="dashboard.html"><i class="icon-globe"></i>My planets</a></li>
-                <li class="active"><a href="dashboard.html"><i class="icon-planet"></i>All planets</a></li>
-                <li class="active"><a href="dashboard.html"><i class="icon-users"></i>My characters</a></li>
-                <li class="active"><a href="dashboard.html"><i class="icon-add-contact"></i>Register</a></li>
-                <li class="active"><a href="dashboard.html"><i class="icon-key-2"></i>Log in</a></li>
-                <li class="active"><a href="dashboard.html"><i class="icon-off"></i>Log off</a></li>
+                <?php foreach (\StarboundLog\Model\ViewData::$menuItems as $item): ?>
+                    <li class="active">
+                        <a href="<?= $this->escapeHtmlAttr($item->href); ?>">
+                           <i class="icon-<?= $this->escapeHtmlAttr($item->icon); ?>"></i>
+                            <?= $this->escapeHtml($item->label); ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>
