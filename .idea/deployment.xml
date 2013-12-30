@@ -6,9 +6,10 @@
         <serverdata>
           <mappings>
             <mapping deploy="/dev/starbound_log_dev" local="$PROJECT_DIR$/starbound_log" web="/" />
-            <mapping deploy="/phpinclude" local="$PROJECT_DIR$/zend" web="" />
-            <mapping deploy="/phpinclude" local="$PROJECT_DIR$/trks" web="" />
+            <mapping deploy="/phpinclude" local="$PROJECT_DIR$/zend" web="/" />
+            <mapping deploy="/phpinclude" local="$PROJECT_DIR$/trks" web="/" />
             <mapping deploy="/dev/starbound_log_dev/public" local="$PROJECT_DIR$/starbound_log/public" web="/" />
+            <mapping deploy="/phpinclude/Trks" local="$PROJECT_DIR$/trks/Trks" web="/" />
           </mappings>
         </serverdata>
       </paths>

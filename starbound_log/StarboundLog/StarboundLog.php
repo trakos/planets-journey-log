@@ -47,21 +47,24 @@ class StarboundLog
         return $array;
     }
 
-    static protected $entityManager;
+    /**
+     * @var \Zend\Mvc\Application
+     */
+    static protected $application;
 
     /**
-     * @return \Doctrine\ORM\EntityManager
+     * @return \Zend\Mvc\Application
      */
-    static public function getEntityManager()
+    public static function getApplication()
     {
-        return self::$entityManager;
+        return self::$application;
     }
 
     /**
-     * @param \Doctrine\ORM\EntityManager $value
+     * @param \Zend\Mvc\Application $application
      */
-    static public function setEntityManager(\Doctrine\ORM\EntityManager $value)
+    public static function setApplication($application)
     {
-        self::$entityManager = $value;
+        self::$application = $application;
     }
 }

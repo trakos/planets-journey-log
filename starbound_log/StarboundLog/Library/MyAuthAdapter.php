@@ -2,7 +2,7 @@
 
 namespace StarboundLog\Library;
 
-use StarboundLog\Model\Entities\Users;
+use StarboundLog\Model\Database\Proxies\Proxy_users;
 use Zend\Authentication\Result;
 
 class MyAuthAdapter implements \Zend\Authentication\Adapter\AdapterInterface
@@ -16,7 +16,7 @@ class MyAuthAdapter implements \Zend\Authentication\Adapter\AdapterInterface
      * @param $username
      * @param $password
      *
-     * @return \MyAuthAdapter
+     * @return \StarboundLog\Library\MyAuthAdapter
      */
     public function __construct($username, $password)
     {
@@ -32,10 +32,10 @@ class MyAuthAdapter implements \Zend\Authentication\Adapter\AdapterInterface
      */
     public function authenticate()
     {
-        $user = Users::getRepo()->auth($this->username, $this->password);
+        $user = Proxy_users::get()->auth($this->username, $this->password);
         if (!$user) {
             return new Result(Result::FAILURE, null, array("Username or password invalid!"));
         }
-        return new Result(Result::SUCCESS, $user->getUserId());
+        return new Result(Result::SUCCESS, $user->user_id);
     }
 }

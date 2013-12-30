@@ -22,6 +22,7 @@ define('T_NAMESPACE_MODULES', 'StarboundLog\\Controller');
 
 define('T_PATH_ENTITIES', T_PATH_APP_SRC . '/Model/Entities');
 
+/** @noinspection PhpIncludeInspection */
 require T_PATH_ZEND2 . '/Loader/StandardAutoloader.php';
 require T_PATH_APPLICATION . '/StarboundLog/StarboundLog.php';
 
@@ -44,16 +45,28 @@ if (T_DEBUG) {
     ini_set('html_errors', false);
 }
 
-// doctrine
-StarboundLog::setEntityManager(
-    Doctrine\ORM\EntityManager::create(
-        require_once(T_PATH_CONFIG . '/doctrine/database.config.php'),
-        Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
-            array(T_PATH_ENTITIES),
-            T_DEBUG,
-            null,
-            null,
-            false
-        )
+// create zend app
+StarboundLog::setApplication(Zend\Mvc\Application::init(array(
+    'listeners' => array(
+        'Trks\\Events\\LayoutAndTemplateListener'
+    ),
+    'service_manager' => array(
+        'invokables' => array(
+            'Trks\\Events\\LayoutAndTemplateListener' => 'Trks\\Events\\LayoutAndTemplateListener',
+        ),
+    ),
+    'modules' => StarboundLog::getModuleNamespaces(),
+    'module_listener_options' => array(
+        'module_paths' => StarboundLog::getModulePaths(),
+
+        // An array of paths from which to glob configuration files after
+        // modules are loaded. These effectively override configuration
+        // provided by modules themselves. Paths may use GLOB_BRACE notation.
+        'config_glob_paths' => array(
+            T_PATH_CONFIG . '/zend/*.config.php',
+        ),
+    ),
+    'view_manager' => array(
+        'template_path_stack' => StarboundLog::getModulesViewPaths()
     )
-);
+)));
