@@ -2,7 +2,7 @@
 
 namespace StarboundLog\Library;
 
-use StarboundLog\Model\Entities\Users;
+use StarboundLog\Model\Database\Proxies\Proxy_users;
 use Zend\Authentication\AuthenticationService;
 
 class Auth
@@ -12,7 +12,7 @@ class Auth
     /**
      * @return AuthenticationService
      */
-    public static function getAuthService()
+    protected static function getAuthService()
     {
         return self::$authService ?: (self::$authService = new AuthenticationService());
     }
@@ -38,11 +38,11 @@ class Auth
     }
 
     /**
-     * @return Users
+     * @return \StarboundLog\Model\Database\Rows\Row_users
      */
     public static function getIdentity()
     {
-        return Users::getRepo()->find(self::getAuthService()->getIdentity());
+        return Proxy_users::get()->getRow(self::getAuthService()->getIdentity());
     }
 
 

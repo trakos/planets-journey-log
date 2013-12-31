@@ -1,0 +1,11 @@
+#mws-navigation > ul > li > a:hover {
+
+}
+
+#mws-navigation > ul > li > a:hover > i {
+    color: #ccc;
+}
+
+#mws-navigation > ul > li > a {
+    line-height: 23px;
+}

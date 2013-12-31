@@ -1,0 +1,13 @@
+
+
+<ul>
+<?php foreach ($this->container as $page): ?>
+    <?php /* @var \Zend\Navigation\Page\AbstractPage $page */ ?>
+    <li class="active">
+        <a href="<?= $this->escapeHtmlAttr($page->getHref()); ?>">
+            <i class="icon-<?= $this->escapeHtmlAttr($page->get('icon')); ?>"></i>
+            <?= $this->escapeHtml($page->getLabel()); ?>
+        </a>
+    </li>
+<?php endforeach; ?>
+</ul>

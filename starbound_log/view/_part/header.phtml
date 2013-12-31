@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en"><!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <?php /** @noinspection PhpUndefinedMethodInspection */
+    echo $this->headTitle('Starbound Log')->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width,initial-scale=1.0') ?>
+
+    <?php
+    /** @noinspection PhpUndefinedMethodInspection */
+    /** @noinspection PhpToStringImplementationInspection */
+    echo $this->headLink(array(
+        'rel'  => 'shortcut icon',
+        'type' => 'image/vnd.microsoft.icon',
+        'href' => $this->basePath() . '/mws_admin/favicon.ico'))
+        ->appendStylesheet($this->basePath() . '/mws_admin/bootstrap/css/bootstrap.min.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/css/fonts/ptsans/stylesheet.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/css/fonts/icomoon/style.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/css/mws-style.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/css/icons/icol16.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/css/icons/icol32.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/jui/css/jquery.ui.all.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/jui/jquery-ui.custom.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/css/mws-theme.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/css/login.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/css/themer.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/css/login.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/css/menu.css', 'screen', null, null)
+    ?>
+
+    <!--[if lt IE 9]>
+    <script src="js/libs/excanvas.min.js"></script>
+    <![endif]-->
+
+    <?php
+    /** @noinspection PhpToStringImplementationInspection */
+    /** @noinspection PhpUndefinedMethodInspection */
+    echo $this->headScript()
+        ->appendFile($this->basePath() . '/mws_admin/js/libs/jquery-1.8.3.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/js/libs/jquery.mousewheel.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/js/libs/jquery.placeholder.min.js')
+
+        ->appendFile($this->basePath() . '/mws_admin/jui/js/jquery-ui-1.9.2.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/jui/js/jquery-ui-effects.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/jui/jquery-ui.custom.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/jui/js/jquery.ui.touch-punch.js"')
+        ->appendFile($this->basePath() . '/mws_admin/plugins/datatables/jquery.dataTables.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/js/libs/excanvas.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/jquery.flot.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.tooltip.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.pie.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.stack.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.resize.min.js')
+
+        ->appendFile($this->basePath() . '/mws_admin/plugins/colorpicker/colorpicker-min.js')
+        ->appendFile($this->basePath() . '/mws_admin/plugins/validate/jquery.validate-min.js')
+        ->appendFile($this->basePath() . '/mws_admin/custom-plugins/wizard/wizard.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/bootstrap/js/bootstrap.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/js/core/mws.js')
+        ->appendFile($this->basePath() . '/mws_admin/js/core/login.js')
+        ->appendFile($this->basePath() . '/js/login.js')
+    ?>
+</head>

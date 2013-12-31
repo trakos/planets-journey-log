@@ -1,87 +1,20 @@
 <?php /* @var \Zend\View\Renderer\PhpRenderer $this ; */ ?>
-<!DOCTYPE html>
 
-<!--[if lt IE 7]>
-<html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>
-<html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>
-<html class="lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en"><!--<![endif]-->
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-    <?php /** @noinspection PhpUndefinedMethodInspection */
-    echo $this->headTitle('Starbound Log')->setSeparator(' - ')->setAutoEscape(false) ?>
-    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width,initial-scale=1.0') ?>
-
-    <?php
-    /** @noinspection PhpUndefinedMethodInspection */
-    /** @noinspection PhpToStringImplementationInspection */
-    echo $this->headLink(array(
-        'rel'  => 'shortcut icon',
-        'type' => 'image/vnd.microsoft.icon',
-        'href' => $this->basePath() . '/mws_admin/favicon.ico'))
-        ->appendStylesheet($this->basePath() . '/mws_admin/bootstrap/css/bootstrap.min.css', 'screen', null, null)
-        ->appendStylesheet($this->basePath() . '/mws_admin/css/fonts/ptsans/stylesheet.css', 'screen', null, null)
-        ->appendStylesheet($this->basePath() . '/mws_admin/css/fonts/icomoon/style.css', 'screen', null, null)
-        ->appendStylesheet($this->basePath() . '/mws_admin/css/mws-style.css', 'screen', null, null)
-        ->appendStylesheet($this->basePath() . '/mws_admin/css/icons/icol16.css', 'screen', null, null)
-        ->appendStylesheet($this->basePath() . '/mws_admin/css/icons/icol32.css', 'screen', null, null)
-        ->appendStylesheet($this->basePath() . '/mws_admin/jui/css/jquery.ui.all.css', 'screen', null, null)
-        ->appendStylesheet($this->basePath() . '/mws_admin/jui/jquery-ui.custom.css', 'screen', null, null)
-        ->appendStylesheet($this->basePath() . '/mws_admin/css/mws-theme.css', 'screen', null, null)
-        ->appendStylesheet($this->basePath() . '/mws_admin/css/themer.css', 'screen', null, null)
-    ?>
-
-    <!--[if lt IE 9]>
-    <script src="js/libs/excanvas.min.js"></script>
-    <![endif]-->
-
-    <?php
-    /** @noinspection PhpToStringImplementationInspection */
-    /** @noinspection PhpUndefinedMethodInspection */
-    echo $this->headScript()
-        ->appendFile($this->basePath() . '/mws_admin/js/libs/jquery-1.8.3.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/js/libs/jquery.mousewheel.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/js/libs/jquery.placeholder.min.js')
-
-        ->appendFile($this->basePath() . '/mws_admin/jui/js/jquery-ui-1.9.2.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/jui/jquery-ui.custom.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/jui/js/jquery.ui.touch-punch.js"')
-        ->appendFile($this->basePath() . '/mws_admin/plugins/datatables/jquery.dataTables.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/js/libs/excanvas.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/jquery.flot.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.tooltip.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.pie.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.stack.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.resize.min.js')
-
-        ->appendFile($this->basePath() . '/mws_admin/plugins/colorpicker/colorpicker-min.js')
-        ->appendFile($this->basePath() . '/mws_admin/plugins/validate/jquery.validate-min.js')
-        ->appendFile($this->basePath() . '/mws_admin/custom-plugins/wizard/wizard.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/bootstrap/js/bootstrap.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/js/core/mws.js')
-    ?>
-
-</head>
+<?= $this->render('_part/header.phtml'); ?>
 <body>
 
 <div id="mws-header" class="clearfix">
-    <!-- Logo Container -->
+    <?php /* Logo Container */ ?>
     <div id="mws-logo-container">
-        <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
+        <?php /* Logo Wrapper, images put within this wrapper will always be vertically centered */ ?>
         <div id="mws-logo-wrap">
             <img src="/images/sb_log.png" alt="starbound log"/>
         </div>
     </div>
 
-    <!-- User Tools (notifications, logout, profile, change password) -->
+    <?php /* User Tools (notifications, logout, profile, change password) */ ?>
     <div id="mws-user-tools" class="clearfix">
-
+        <?php /*
         <!-- Notifications -->
         <div id="mws-user-notif" class="mws-dropdown-menu">
             <a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-planet"></i></a>
@@ -121,20 +54,21 @@
                 </div>
             </div>
         </div>
-
-        <!-- User Information and functions section -->
+        */
+        ?>
+        <?php /* User Information and functions section */ ?>
         <div id="mws-user-info" class="mws-inset">
 
-            <!-- User Photo -->
+            <?php /* User Photo */ ?>
             <div id="mws-user-photo">
-                <img src="example/profile.jpg" alt="User Photo"/>
+                <img src="" alt="user"/>
             </div>
 
-            <!-- Username and Functions -->
+            <?php /* Username and Functions */ ?>
             <div id="mws-user-functions">
                 <div id="mws-username">Hello, John Doe</div>
                 <ul>
-                    <li><a href="#">Profile</a></li>
+                    <li><a class="model-login" href="#">Profile</a></li>
                     <li><a href="#">Change Password</a></li>
                     <li><a href="index.html">Logout</a></li>
                 </ul>
@@ -143,23 +77,21 @@
     </div>
 </div>
 
-<!-- Start Main Wrapper -->
 <div id="mws-wrapper">
-    <!-- Necessary markup, do not remove -->
+    <?php /* Necessary markup, do not remove */ ?>
     <div id="mws-sidebar-stitch"></div>
     <div id="mws-sidebar-bg"></div>
 
-    <!-- Sidebar Wrapper -->
     <div id="mws-sidebar">
 
-        <!-- Hidden Nav Collapse Button -->
         <div id="mws-nav-collapse">
             <span></span>
             <span></span>
             <span></span>
         </div>
 
-        <!-- Searchbox -->
+        <?php /*
+
         <div id="mws-searchbox" class="mws-inset">
             <form action="typography.html">
                 <input type="text" class="mws-search-input" placeholder="Search..."/>
@@ -167,41 +99,26 @@
             </form>
         </div>
 
-        <!-- Main Navigation -->
+        */
+        ?>
+
         <div id="mws-navigation">
-            <ul>
-                <!-- Here goes the navigation -->
-                <?php foreach (\StarboundLog\Model\ViewData::$menuItems as $item): ?>
-                    <li class="active">
-                        <a href="<?= $this->escapeHtmlAttr($item->href); ?>">
-                           <i class="icon-<?= $this->escapeHtmlAttr($item->icon); ?>"></i>
-                            <?= $this->escapeHtml($item->label); ?>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+            <?php echo $this->navigation('navigation')->menu()->setPartial('_part/menu'); ?>
         </div>
     </div>
 
-    <!-- Main Container Start -->
     <div id="mws-container" class="clearfix">
-        <!-- Inner Container Start -->
         <div class="container">
             <?php echo $this->content; ?>
         </div>
-        <!-- Inner Container End -->
-
-        <!-- Footer -->
         <div id="mws-footer">
             <?php echo date('Y'); ?>
         </div>
     </div>
-    <!-- Main Container End -->
 
 </div>
 
-<!-- JavaScript at the bottom for fast page loading -->
 <?php echo $this->inlineScript() ?>
 
 </body>
-</html>
+<?= '</html>' ?>

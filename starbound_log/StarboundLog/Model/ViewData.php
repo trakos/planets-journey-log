@@ -8,10 +8,13 @@
 
 namespace StarboundLog\Model;
 
+
 class ViewData
 {
     /**
      * @var \StarboundLog\Model\ViewData\Menu\Item[]
      */
     static public $menuItems;
+    /** @var \StarboundLog\Model\Database\Rows\Row_users */
+    static public $identity;
 } 

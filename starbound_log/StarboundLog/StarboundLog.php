@@ -4,7 +4,7 @@ class StarboundLog
 {
     static protected $structureConfig = array(
         'Main' => array(
-            'Home'
+            'Home', 'Planets', 'User'
         ),
     );
 
