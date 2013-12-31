@@ -107,7 +107,7 @@ class TrksTableGenerator extends EntityGenerator
     {
         $dbAdapter = \StarboundLog::getApplication()->getServiceManager()->get(\'Zend\Db\\Adapter\\Adapter\');
         $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
-        $resultSetPrototype->setArrayObjectPrototype(new <row_class>());
+        $resultSetPrototype->setArrayObjectPrototype($this->getPrototype());
         $this->tableGateway = new \Zend\Db\TableGateway\TableGateway(\'<row_table>\', $dbAdapter, null, $resultSetPrototype);
     }
 
@@ -119,7 +119,7 @@ class TrksTableGenerator extends EntityGenerator
      */
     public function fetchAll($q, $a)
     {
-        return \Trks\TrksDbAdapter::get()->fetchAllPrototyped($q, $a, new <row_class>());
+        return \Trks\TrksDbAdapter::get()->fetchAllPrototyped($q, $a, $this->getPrototype());
     }
 
     /**
@@ -130,7 +130,7 @@ class TrksTableGenerator extends EntityGenerator
      */
     public function fetchRow($q, $a)
     {
-        return \Trks\TrksDbAdapter::get()->fetchRowPrototyped($q, $a, new <row_class>());
+        return \Trks\TrksDbAdapter::get()->fetchRowPrototyped($q, $a, $this->getPrototype());
     }
 
     /**
@@ -153,7 +153,7 @@ class TrksTableGenerator extends EntityGenerator
     public function getRow($id)
     {
         $id  = (int) $id;
-        $rowSet = $this->tableGateway->select(array(\'id\' => $id));
+        $rowSet = $this->tableGateway->select(array(\'<row_primary_column>\' => $id));
         $row = $rowSet->current();
         if (!$row) {
             throw new \Exception("Could not find row $id");
@@ -194,6 +194,15 @@ class TrksTableGenerator extends EntityGenerator
     public function deleteRow($id)
     {
         $this->tableGateway->delete(array(\'<row_primary_column>\' => $id));
+    }
+
+    /**
+     *
+     * @return <row_class>
+     */
+    protected function getPrototype()
+    {
+        return new <row_class>();
     }
 }
 ';

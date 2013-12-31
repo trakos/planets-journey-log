@@ -9,9 +9,19 @@
 namespace StarboundLog\Model\Database\Proxies;
 
 
+use StarboundLog\Model\Database\Entities\Entity_users;
 use StarboundLog\Model\Database\Rows\Row_users;
 use StarboundLog\Model\Database\Tables\Table_users;
 
+/**
+ * Class Proxy_users
+ *
+ * @package StarboundLog\Model\Database\Proxies
+ * @method \StarboundLog\Model\Database\Entities\Entity_users[] fetchAll($q, $a)
+ * @method \StarboundLog\Model\Database\Entities\Entity_users[] getAllRows()
+ * @method \StarboundLog\Model\Database\Entities\Entity_users fetchRow($q, $a)
+ * @method \StarboundLog\Model\Database\Entities\Entity_users getRow($primaryId)
+ */
 class Proxy_users extends Table_users
 {
     /**
@@ -31,7 +41,7 @@ class Proxy_users extends Table_users
      * @param $username
      * @param $password
      *
-     * @return Row_users
+     * @return Entity_users
      */
     public function auth($username, $password)
     {
@@ -47,7 +57,7 @@ class Proxy_users extends Table_users
      * @param $mail
      * @param $password
      *
-     * @return Row_users
+     * @return Entity_users
      */
     public function register($login, $password, $mail)
     {
@@ -57,5 +67,13 @@ class Proxy_users extends Table_users
         $user->user_mail = $mail;
         $this->saveRow($user);
         return $user;
+    }
+
+    /**
+     * @return Entity_users|Row_users
+     */
+    protected function getPrototype()
+    {
+        return new Entity_users();
     }
 } 

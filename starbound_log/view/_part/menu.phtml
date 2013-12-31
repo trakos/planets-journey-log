@@ -1,8 +1,8 @@
-
-
+<?php /* @var \Zend\View\Renderer\PhpRenderer $this ; */ ?>
 <ul>
 <?php foreach ($this->container as $page): ?>
     <?php /* @var \Zend\Navigation\Page\AbstractPage $page */ ?>
+    <?php if (!$this->navigation('navigation')->menu()->accept($page)) continue; ?>
     <li class="active">
         <a href="<?= $this->escapeHtmlAttr($page->getHref()); ?>">
             <i class="icon-<?= $this->escapeHtmlAttr($page->get('icon')); ?>"></i>

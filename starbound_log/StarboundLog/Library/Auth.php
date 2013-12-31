@@ -38,11 +38,19 @@ class Auth
     }
 
     /**
-     * @return \StarboundLog\Model\Database\Rows\Row_users
+     * @return \StarboundLog\Model\Database\Entities\Entity_users|null
      */
     public static function getIdentity()
     {
         return Proxy_users::get()->getRow(self::getAuthService()->getIdentity());
+    }
+
+    /**
+     * @return string
+     */
+    public static function getRole()
+    {
+        return self::hasIdentity() ? self::getIdentity()->getRole() : MyAcl::ROLE_GUEST;
     }
 
 

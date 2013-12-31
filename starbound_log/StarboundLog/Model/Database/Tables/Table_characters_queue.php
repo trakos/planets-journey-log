@@ -20,7 +20,7 @@ class Table_characters_queue
     {
         $dbAdapter = \StarboundLog::getApplication()->getServiceManager()->get('Zend\Db\Adapter\Adapter');
         $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
-        $resultSetPrototype->setArrayObjectPrototype(new \StarboundLog\Model\Database\Rows\Row_characters_queue());
+        $resultSetPrototype->setArrayObjectPrototype($this->getPrototype());
         $this->tableGateway = new \Zend\Db\TableGateway\TableGateway('characters_queue', $dbAdapter, null, $resultSetPrototype);
     }
 
@@ -32,7 +32,7 @@ class Table_characters_queue
      */
     public function fetchAll($q, $a)
     {
-        return \Trks\TrksDbAdapter::get()->fetchAllPrototyped($q, $a, new \StarboundLog\Model\Database\Rows\Row_characters_queue());
+        return \Trks\TrksDbAdapter::get()->fetchAllPrototyped($q, $a, $this->getPrototype());
     }
 
     /**
@@ -43,7 +43,7 @@ class Table_characters_queue
      */
     public function fetchRow($q, $a)
     {
-        return \Trks\TrksDbAdapter::get()->fetchRowPrototyped($q, $a, new \StarboundLog\Model\Database\Rows\Row_characters_queue());
+        return \Trks\TrksDbAdapter::get()->fetchRowPrototyped($q, $a, $this->getPrototype());
     }
 
     /**
@@ -66,7 +66,7 @@ class Table_characters_queue
     public function getRow($id)
     {
         $id  = (int) $id;
-        $rowSet = $this->tableGateway->select(array('id' => $id));
+        $rowSet = $this->tableGateway->select(array('chaque_id' => $id));
         $row = $rowSet->current();
         if (!$row) {
             throw new \Exception("Could not find row $id");
@@ -107,5 +107,14 @@ class Table_characters_queue
     public function deleteRow($id)
     {
         $this->tableGateway->delete(array('chaque_id' => $id));
+    }
+
+    /**
+     *
+     * @return \StarboundLog\Model\Database\Rows\Row_characters_queue
+     */
+    protected function getPrototype()
+    {
+        return new \StarboundLog\Model\Database\Rows\Row_characters_queue();
     }
 }

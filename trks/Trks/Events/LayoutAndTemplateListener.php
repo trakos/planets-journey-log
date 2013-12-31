@@ -61,9 +61,13 @@ class LayoutAndTemplateListener extends InjectTemplateListener
         $template  .= $this->inflectName($controller);
 
         $action     = $routeMatch->getParam('action');
-        if (null !== $action) {
-            $template .= '/' . $this->inflectName($action);
+        if ($action == 'not-found') {
+            $model->setTemplate('error/404');
+        } else {
+            if (null !== $action) {
+                $template .= '/' . $this->inflectName($action);
+            }
+            $model->setTemplate($template);
         }
-        $model->setTemplate($template);
     }
 }

@@ -2,11 +2,8 @@
 
 class StarboundLog
 {
-    static protected $structureConfig = array(
-        'Main' => array(
-            'Home', 'Planets', 'User'
-        ),
-    );
+
+    static public $structureConfig;
 
     static public function getDefaultModule()
     {

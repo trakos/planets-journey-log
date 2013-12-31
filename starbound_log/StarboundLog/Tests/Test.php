@@ -9,6 +9,7 @@
 namespace StarboundLog\Tests;
 
 
+use StarboundLog\Library\MyAcl;
 use StarboundLog\Model\Database\Proxies\Proxy_users;
 use StarboundLog\Model\Database\Tables\Table_users;
 
@@ -42,6 +43,26 @@ class Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('test', Table_users::get()->fetchRow('SELECT * FROM users WHERE user_login = ?', array('test'))->user_login);
 
         $this->assertEquals('', ob_get_clean() || '');
+    }
+
+    public function testAcl()
+    {
+        $this->assertFalse(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_ADMIN, MyAcl::RES_LOGGED_OFF));
+        $this->assertFalse(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_USER, MyAcl::RES_LOGGED_OFF));
+        $this->assertTrue(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_GUEST, MyAcl::RES_LOGGED_OFF));
+
+        $this->assertTrue(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_ADMIN, MyAcl::RES_GUEST));
+        $this->assertTrue(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_USER, MyAcl::RES_GUEST));
+        $this->assertTrue(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_GUEST, MyAcl::RES_GUEST));
+
+        $this->assertTrue(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_ADMIN, MyAcl::RES_USER));
+        $this->assertTrue(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_USER, MyAcl::RES_USER));
+        $this->assertFalse(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_GUEST, MyAcl::RES_USER));
+
+        $this->assertTrue(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_ADMIN, MyAcl::RES_ADMIN));
+        $this->assertFalse(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_USER, MyAcl::RES_ADMIN));
+        $this->assertFalse(MyAcl::getAcl()->isAllowed(MyAcl::ROLE_GUEST, MyAcl::RES_ADMIN));
+
     }
 
 }

@@ -7,6 +7,7 @@ define('T_PATH_LIB', '/var/www/phpinclude');
 
 define('T_PATH_ZEND2', T_PATH_LIB . '/Zend');
 define('T_PATH_CONFIG', T_PATH_APPLICATION . '/config');
+define('T_PATH_CUSTOM_CONFIG', T_PATH_CONFIG . '/custom');
 
 define('T_PATH_SYMFONY', T_PATH_LIB . '/Symfony');
 define('T_PATH_DOCTRINE', T_PATH_LIB . '/Doctrine');
@@ -36,6 +37,10 @@ require T_PATH_APPLICATION . '/StarboundLog/StarboundLog.php';
     ->registerNamespace(T_NAMESPACE_TRKS, T_PATH_TRKS)
     ->registerNamespace(T_NAMESPACE_APP_SRC, T_PATH_APP_SRC)
     ->register();
+
+// custom configs
+StarboundLog::$structureConfig = require T_PATH_CUSTOM_CONFIG . '/structure.config.php';
+StarboundLog\Library\MyAcl::$aclConfig = require T_PATH_CUSTOM_CONFIG . '/acl.config.php';
 
 // debug
 define('T_DEBUG', T_PATH_APPLICATION == "/var/www/dev/starbound_log_dev");
@@ -70,3 +75,6 @@ StarboundLog::setApplication(Zend\Mvc\Application::init(array(
         'template_path_stack' => StarboundLog::getModulesViewPaths()
     )
 )));
+
+// register custom acl data
+StarboundLog\Library\MyAcl::register();
