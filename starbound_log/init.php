@@ -40,7 +40,9 @@ require T_PATH_APPLICATION . '/StarboundLog/StarboundLog.php';
 
 // custom configs
 StarboundLog::$structureConfig = require T_PATH_CUSTOM_CONFIG . '/structure.config.php';
+StarboundLog::$formConfig = require T_PATH_CUSTOM_CONFIG . '/form.config.php';
 StarboundLog\Library\MyAcl::$aclConfig = require T_PATH_CUSTOM_CONFIG . '/acl.config.php';
+
 
 // debug
 define('T_DEBUG', T_PATH_APPLICATION == "/var/www/dev/starbound_log_dev");
@@ -76,5 +78,7 @@ StarboundLog::setApplication(Zend\Mvc\Application::init(array(
     )
 )));
 
+// load form data
+StarboundLog::init();
 // register custom acl data
 StarboundLog\Library\MyAcl::register();

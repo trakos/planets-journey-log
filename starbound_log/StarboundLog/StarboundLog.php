@@ -4,6 +4,16 @@ class StarboundLog
 {
 
     static public $structureConfig;
+    static public $formConfig;
+
+    static public function init()
+    {
+        \Trks\View\Helper\FormRow::$defaultPartial             = self::$formConfig['partials']['form_row'];
+        \Trks\View\Helper\FormMultiCheckbox::$defaultPartial   = self::$formConfig['partials']['form_multi_checkbox_element'];
+        \Trks\View\Helper\FormMultiCheckbox::$containerPartial = self::$formConfig['partials']['form_multi_checkbox_container'];
+        \Trks\View\Helper\FormElementErrors::$defaultPartial   = self::$formConfig['partials']['form_element_errors'];
+        \Trks\View\Helper\FormButtonRow::$partial              = self::$formConfig['partials']['form_button_row'];
+    }
 
     static public function getDefaultModule()
     {

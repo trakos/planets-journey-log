@@ -28,7 +28,7 @@ class MyAbstractController extends TrksAbstractController
     protected function isAllowed($module, $controller, $action)
     {
         if (!MyAcl::isAllowedToRoute($module, $controller, $action)) {
-            if (MyAcl::getAcl()->isAllowed(Auth::getRole(), MyAcl::RES_LOGGED_OFF)) {
+            if (MyAcl::getAcl()->isAllowed(MyAuth::getRole(), MyAcl::RES_LOGGED_OFF)) {
                 throw new TrksForwardException('main', array('module' => 'main', 'controller' => 'user', 'action' => 'login'));
             } else {
                 throw new TrksForwardException('main');
@@ -38,5 +38,19 @@ class MyAbstractController extends TrksAbstractController
 
     protected function createViewData(ViewModel $viewData)
     {
+    }
+
+    /**
+     * @throws \Exception
+     * @return void|\Zend\Http\PhpEnvironment\Request
+     */
+    public function getRequest()
+    {
+        $request = parent::getRequest();
+        if (!$request || $request instanceof \Zend\Http\PhpEnvironment\Request) {
+            return $request;
+        } else {
+            throw new \Exception("Wrong request type!");
+        }
     }
 }

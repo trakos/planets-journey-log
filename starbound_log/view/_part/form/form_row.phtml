@@ -1,0 +1,29 @@
+<?php
+/* @var \Zend\View\Renderer\PhpRenderer $this */
+/* @var Zend\Form\Element $element */
+/* @var string $label */
+/* @var array $labelAttributes */
+/* @var string $labelPosition */
+/* @var bool $renderErrors */
+?>
+<?php if ($element instanceof Trks\View\Element\ButtonRow || $element instanceof Zend\Form\Element\Submit): ?>
+    <?php $element->setAttribute('class', ($element instanceof Zend\Form\Element\Submit ? 'btn btn-danger ' : '') . $element->getAttribute('class')); ?>
+    <div class="mws-button-row">
+        <?= ($element instanceof Trks\View\Element\ButtonRow) ? $this->formButtonRow($element) : $this->formElement($element); ?>
+        <?= $renderErrors ? $this->formElementErrors($element) : ''; ?>
+    </div>
+<?php elseif ($element instanceof Zend\Form\Element\Csrf || $element instanceof Zend\Form\Element\Hidden): ?>
+    <?= $this->formElement($element); ?>
+    <?= $renderErrors ? $this->formElementErrors($element) : ''; ?>
+<?php else: ?>
+    <?php $element->setAttribute('id', $element->getName()); ?>
+    <div class="mws-form-row">
+        <?php if ($label): ?>
+            <label class="mws-form-label"><?= $this->formLabel($element, $label); ?></label>
+        <?php endif; ?>
+        <div class="mws-form-item">
+            <?= $this->formElement($element); ?>
+            <?= $renderErrors ? $this->formElementErrors($element) : ''; ?>
+        </div>
+    </div>
+<?php endif; ?>

@@ -42,7 +42,7 @@ class MyAcl extends TrksAcl
      */
     static public function isAllowedToRoute($module, $controller, $action)
     {
-        return parent::isRoleAllowedToRoute(self::$aclConfig, Auth::getRole(), $module, $controller, $action);
+        return parent::isRoleAllowedToRoute(self::$aclConfig, MyAuth::getRole(), $module, $controller, $action);
     }
 
     static public function findRouteResource($module, $controller, $action)

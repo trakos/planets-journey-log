@@ -1,0 +1,35 @@
+<?php
+/* @var \Zend\View\Renderer\PhpRenderer $this */
+/* @var \Trks\View\Element\ButtonRow $element */
+/* @var string $name */
+/* @var array $buttons value, isSubmit, class */
+?>
+<?php
+    $buttonsProcessed = [];
+    foreach ($buttons as $key => $button) {
+        if (!is_array($button)) {
+            if (!is_numeric($key)) {
+                $button = array(
+                    'value' => $key,
+                    'isSubmit' => $button
+                );
+            } else {
+                $button = array(
+                    'value' => $button
+                );
+            }
+        } else if (!isset($button['value']) || !$button['value']) {
+            throw new Exception('no name for button provided!');
+        }
+        if (!isset($button['isSubmit'])) {
+            $button['isSubmit'] = in_array($button['value'], [ 'Submit', 'Send', 'Save', 'submit', 'send', 'save' ]);
+        }
+        if (!isset($button['class'])) {
+            $button['class'] = $button['isSubmit'] ? 'btn btn-danger' : 'btn';
+        }
+        $buttonsProcessed[] = $button;
+    }
+?>
+<?php foreach ($buttonsProcessed as $button): ?>
+    <input class="<?= $button['class'] ?>" type="<?= $button['isSubmit'] ? 'submit' : 'button' ?>" value="<?= $button['value'] ?>" name="<?= $name ?>">
+<?php endforeach; ?>

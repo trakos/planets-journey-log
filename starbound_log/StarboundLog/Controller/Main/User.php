@@ -9,8 +9,9 @@
 namespace StarboundLog\Controller\Main;
 
 
-use StarboundLog\Library\Auth;
+use StarboundLog\Library\MyAuth;
 use StarboundLog\Library\MyAbstractController;
+use Zend\Form\Annotation\AnnotationBuilder;
 
 class User extends MyAbstractController
 {
@@ -31,10 +32,16 @@ class User extends MyAbstractController
 
     public function loginAction()
     {
-        if (Auth::hasIdentity()) {
+        if (MyAuth::hasIdentity()) {
             throw new \Exception("!");
         }
 
+        $request = $this->getRequest();
+        if ($request instanceof \Zend\Http\PhpEnvironment\Request) {
+            if ($request->isPost()) {
+                print_r($request->getPost());die();
+            }
+        }
     }
 
     public function settingsAction()

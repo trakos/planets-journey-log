@@ -5,7 +5,7 @@ namespace StarboundLog\Library;
 use StarboundLog\Model\Database\Proxies\Proxy_users;
 use Zend\Authentication\AuthenticationService;
 
-class Auth
+class MyAuth
 {
     static protected $authService;
 

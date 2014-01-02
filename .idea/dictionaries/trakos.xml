@@ -3,6 +3,9 @@
     <words>
       <w>autoloader</w>
       <w>autoregister</w>
+      <w>hydrator</w>
+      <w>instanceof</w>
+      <w>invokables</w>
       <w>starbound</w>
       <w>symfony</w>
       <w>vergroup</w>

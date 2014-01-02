@@ -1,0 +1,9 @@
+<?php
+/* @var \Zend\View\Renderer\PhpRenderer $this */
+/* @var string[] $escapedMessages */
+/* @var string $attributesString */
+/* @var string[] $attributes */
+?>
+<?php foreach ($escapedMessages as $message): ?>
+    <div class="mws-error plain"><?= $message; ?></div>
+<?php endforeach; ?>
