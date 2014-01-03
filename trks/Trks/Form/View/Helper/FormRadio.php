@@ -6,7 +6,7 @@
  * Time: 09:57
  */
 
-namespace Trks\View\Helper;
+namespace Trks\Form\View\Helper;
 
 
 use Zend\Form\ElementInterface;

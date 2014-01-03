@@ -67,7 +67,7 @@ class Student
     public $class;
 
     /**
-     * @Annotation\Type("\Trks\View\Element\ButtonRow")
+     * @Annotation\Type("\Trks\Form\Element\ButtonRow")
      * @Annotation\Attributes({"buttons":{"Submit":1,"Reset":1}})
      */
     public $button;

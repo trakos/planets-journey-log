@@ -1,0 +1,48 @@
+<?php
+/* @var \Trks\View\TrksPhpRenderer $this */
+/* @var \Trks\Struct\MessagesStruct $messages */
+?>
+
+<?php if ($messages->errorMain || $messages->errorList): ?>
+    <div class="mws-form-message error">
+        <?= $messages->errorMain ?>
+        <ul>
+        <?php foreach ($messages->errorList as $message): ?>
+            <li><?= $message ?></li>
+        <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
+<?php if ($messages->warningMain || $messages->warningList): ?>
+    <div class="mws-form-message warning">
+        <?= $messages->warningMain ?>
+        <ul>
+            <?php foreach ($messages->warningList as $message): ?>
+                <li><?= $message ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
+<?php if ($messages->successMain || $messages->successList): ?>
+    <div class="mws-form-message success">
+        <?= $messages->successMain ?>
+        <ul>
+            <?php foreach ($messages->successList as $message): ?>
+                <li><?= $message ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
+<?php if ($messages->infoMain || $messages->infoList): ?>
+    <div class="mws-form-message info">
+        <?= $messages->infoMain ?>
+        <ul>
+            <?php foreach ($messages->infoList as $message): ?>
+                <li><?= $message ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

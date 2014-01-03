@@ -7,7 +7,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Trks\View\Helper;
+namespace Trks\Form\View\Helper;
 
 use Traversable;
 use Zend\Form\ElementInterface;

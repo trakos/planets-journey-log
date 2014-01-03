@@ -1,3 +1,4 @@
+<?php /* @var \Trks\View\TrksPhpRenderer $this */ ?>
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">
         <span>
@@ -5,6 +6,8 @@
         </span>
     </div>
     <div class="mws-panel-body no-padding">
+        <?= $this->messages(\StarboundLog\Model\ViewData::getMessages()); ?>
+
         <?= $this->form()->openTag($this->form); ?>
         <?= $this->formCollection($this->form); ?>
         <?= $this->form()->closeTag(); ?>

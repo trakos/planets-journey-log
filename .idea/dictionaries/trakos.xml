@@ -3,10 +3,13 @@
     <words>
       <w>autoloader</w>
       <w>autoregister</w>
+      <w>csrf</w>
+      <w>functor</w>
       <w>hydrator</w>
       <w>instanceof</w>
       <w>invokables</w>
       <w>starbound</w>
+      <w>struct</w>
       <w>symfony</w>
       <w>vergroup</w>
     </words>

@@ -7,7 +7,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Trks\View\Helper;
+namespace Trks\Form\View\Helper;
 
 use Zend\Form\ElementInterface;
 use Zend\Form\Element\MultiCheckbox as MultiCheckboxElement;
@@ -35,15 +35,12 @@ class FormMultiCheckbox extends \Zend\Form\View\Helper\FormMultiCheckbox
         }
 
         $escapeHtmlHelper = $this->getEscapeHtmlHelper();
-        $labelHelper      = $this->getLabelHelper();
-        $labelClose       = $labelHelper->closeTag();
-        $labelPosition    = $this->getLabelPosition();
-        $globalLabelAttributes = $element->getLabelAttributes();
+        //$globalLabelAttributes = $element->getLabelAttributes();
         $closingBracket   = $this->getInlineClosingBracket();
 
-        if (empty($globalLabelAttributes)) {
+        /*if (empty($globalLabelAttributes)) {
             $globalLabelAttributes = $this->labelAttributes;
-        }
+        }*/
 
         $combinedMarkup = array();
         $count          = 0;
@@ -57,7 +54,7 @@ class FormMultiCheckbox extends \Zend\Form\View\Helper\FormMultiCheckbox
             $value           = '';
             $label           = '';
             $inputAttributes = $attributes;
-            $labelAttributes = $globalLabelAttributes;
+            //$labelAttributes = $globalLabelAttributes;
             $selected        = isset($inputAttributes['selected']) && $inputAttributes['type'] != 'radio' && $inputAttributes['selected'] != false ? true : false;
             $disabled        = isset($inputAttributes['disabled']) && $inputAttributes['disabled'] != false ? true : false;
 
@@ -79,12 +76,12 @@ class FormMultiCheckbox extends \Zend\Form\View\Helper\FormMultiCheckbox
             }
             if (isset($optionSpec['disabled'])) {
                 $disabled = $optionSpec['disabled'];
-            }
+            }/*
             if (isset($optionSpec['label_attributes'])) {
                 $labelAttributes = (isset($labelAttributes))
                     ? array_merge($labelAttributes, $optionSpec['label_attributes'])
                     : $optionSpec['label_attributes'];
-            }
+            }*/
             if (isset($optionSpec['attributes'])) {
                 $inputAttributes = array_merge($inputAttributes, $optionSpec['attributes']);
             }

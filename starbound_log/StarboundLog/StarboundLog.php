@@ -4,15 +4,16 @@ class StarboundLog
 {
 
     static public $structureConfig;
-    static public $formConfig;
+    static public $viewHelperPartialsConfig;
 
     static public function init()
     {
-        \Trks\View\Helper\FormRow::$defaultPartial             = self::$formConfig['partials']['form_row'];
-        \Trks\View\Helper\FormMultiCheckbox::$defaultPartial   = self::$formConfig['partials']['form_multi_checkbox_element'];
-        \Trks\View\Helper\FormMultiCheckbox::$containerPartial = self::$formConfig['partials']['form_multi_checkbox_container'];
-        \Trks\View\Helper\FormElementErrors::$defaultPartial   = self::$formConfig['partials']['form_element_errors'];
-        \Trks\View\Helper\FormButtonRow::$partial              = self::$formConfig['partials']['form_button_row'];
+        \Trks\Form\View\Helper\FormRow::$defaultPartial             = self::$viewHelperPartialsConfig['partials']['form_row'];
+        \Trks\Form\View\Helper\FormMultiCheckbox::$defaultPartial   = self::$viewHelperPartialsConfig['partials']['form_multi_checkbox_element'];
+        \Trks\Form\View\Helper\FormMultiCheckbox::$containerPartial = self::$viewHelperPartialsConfig['partials']['form_multi_checkbox_container'];
+        \Trks\Form\View\Helper\FormElementErrors::$defaultPartial   = self::$viewHelperPartialsConfig['partials']['form_element_errors'];
+        \Trks\Form\View\Helper\FormButtonRow::$partial              = self::$viewHelperPartialsConfig['partials']['form_button_row'];
+        \Trks\View\Helper\Messages::$partial                        = self::$viewHelperPartialsConfig['partials']['messages'];
     }
 
     static public function getDefaultModule()

@@ -7,5 +7,6 @@ return array(
         'form_multi_checkbox_container' => '_part/form/form_multi_checkbox_container',
         'form_element_errors'           => '_part/form/form_element_errors',
         'form_button_row'               => '_part/form/form_button_row',
+        'messages'                      => '_part/messages'
     ),
 );

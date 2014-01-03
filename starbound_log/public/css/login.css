@@ -1,3 +1,27 @@
+#mws-login .mws-login-messages, #mws-login .mws-login-messages {
+    padding: 4px 6px;
+    font-size: 0.9em;
+    color: #ffffff;
+    margin: 10px 0;
+}
+
+#mws-login .mws-login-messages .error, #mws-login-ui .mws-login-messages .error {
+
+}
+
+#mws-login .mws-form-message
+{
+    margin: 15px 0 10px 0;
+}
+
+#mws-login .mws-form-message {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
 
 /* Login Box
 ================================================== */

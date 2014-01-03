@@ -40,7 +40,7 @@ require T_PATH_APPLICATION . '/StarboundLog/StarboundLog.php';
 
 // custom configs
 StarboundLog::$structureConfig = require T_PATH_CUSTOM_CONFIG . '/structure.config.php';
-StarboundLog::$formConfig = require T_PATH_CUSTOM_CONFIG . '/form.config.php';
+StarboundLog::$viewHelperPartialsConfig = require T_PATH_CUSTOM_CONFIG . '/view_helper_partials.config.php';
 StarboundLog\Library\MyAcl::$aclConfig = require T_PATH_CUSTOM_CONFIG . '/acl.config.php';
 
 

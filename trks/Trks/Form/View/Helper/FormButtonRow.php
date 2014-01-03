@@ -7,9 +7,9 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Trks\View\Helper;
+namespace Trks\Form\View\Helper;
 
-use Trks\View\Element\ButtonRow;
+use Trks\Form\Element\ButtonRow;
 use \Zend\Form\ElementInterface;
 use \Zend\Form\Element\MultiCheckbox as MultiCheckboxElement;
 use \Zend\Form\Exception;
@@ -33,7 +33,7 @@ class FormButtonRow extends \Zend\Form\View\Helper\FormInput
      *
      * @param  ElementInterface|null $element
      *
-     * @return string|FormMultiCheckbox
+     * @return string|FormButtonRow
      */
     public function __invoke(ElementInterface $element = null)
     {
@@ -62,7 +62,7 @@ class FormButtonRow extends \Zend\Form\View\Helper\FormInput
             ));
         }
 
-        $name = static::getName($element);
+        //$name = static::getName($element);
 
         $options = $element->getButtons();
         if (empty($options)) {

@@ -5,6 +5,7 @@ namespace StarboundLog\Controller\Main;
 
 use StarboundLog\Library\MyAbstractController;
 use StarboundLog\Model\Forms\Student;
+use StarboundLog\Model\ViewData;
 use Zend\Form\Annotation\AnnotationBuilder;
 use Zend\Form\Element;
 
@@ -13,27 +14,14 @@ class Planets extends MyAbstractController
     public function allAction()
     {
         $student    = new Student();
-        $builder    = new AnnotationBuilder();
-        $form       = $builder->createForm($student);
+        $formResult = $this->useAnnotationForm($student, 'main', 'all', 'planets');
 
-        $request = $this->getRequest();
-        if ($request->isPost()){
-            $form->bind($student);
-            $form->setData($request->getPost());
-            if ($form->isValid()){
-                print_r($form->getData());
-            }
-        }
+        if ($formResult->isPost && !$formResult->isValid) ViewData::getMessages()->successMain = 'There were some errors';
 
-        $form->setAttribute('action', $this->url()->fromRoute('main', array(
-            'controller' => 'planets',
-            'action' => 'all',
-        )));
-        $form->prepare();
-        foreach ($form->getElements() as $element) {
+        foreach ($formResult->form->getElements() as $element) {
             /* @var Element $element */
         }
-        return array('form'=>$form);
+        return array('form' => $formResult->form);
     }
 
     public function myAction()

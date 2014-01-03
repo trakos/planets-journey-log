@@ -10,7 +10,6 @@ namespace StarboundLog\Library;
 
 
 use StarboundLog\Model\ViewData;
-use StarboundLog\Model\ViewData\Menu\Item;
 use Trks\TrksAbstractController;
 use Trks\TrksForwardException;
 use Zend\View\Model\ViewModel;
@@ -36,8 +35,14 @@ class MyAbstractController extends TrksAbstractController
         }
     }
 
+    /**
+     * Called after action dispatch.
+     *
+     * @param ViewModel $viewData
+     */
     protected function createViewData(ViewModel $viewData)
     {
+        ViewData::$identity = MyAuth::hasIdentity() ? MyAuth::getIdentity() : null;
     }
 
     /**

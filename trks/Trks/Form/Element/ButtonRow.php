@@ -7,9 +7,10 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-namespace Trks\View\Element;
+namespace Trks\Form\Element;
 
 
+use Zend\Form\Element\MultiCheckbox;
 use Zend\Form\ElementInterface;
 use Zend\Form\Exception\InvalidArgumentException;
 use Zend\InputFilter\InputProviderInterface;
@@ -161,7 +162,7 @@ class ButtonRow extends \Zend\Form\Element implements InputProviderInterface
      * Sets the value that should be selected.
      *
      * @param mixed $value The value to set.
-     * @return MultiCheckbox
+     * @return ButtonRow
      */
     public function setValue($value)
     {
