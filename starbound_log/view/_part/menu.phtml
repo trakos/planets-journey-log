@@ -4,7 +4,7 @@
     <?php /* @var \Zend\Navigation\Page\AbstractPage $page */ ?>
     <?php if (!$this->navigation('navigation')->menu()->accept($page)) continue; ?>
     <li class="active">
-        <a href="<?= $this->escapeHtmlAttr($page->getHref()); ?>">
+        <a href="<?= $this->escapeHtmlAttr($page->getHref()); ?>" class="<?= $page->get('icon') ?>">
             <i class="icon-<?= $this->escapeHtmlAttr($page->get('icon')); ?>"></i>
             <?= $this->escapeHtml($page->getLabel()); ?>
         </a>

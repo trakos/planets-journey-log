@@ -34,7 +34,7 @@ class MyAuthAdapter implements \Zend\Authentication\Adapter\AdapterInterface
     {
         $user = Proxy_users::get()->auth($this->username, $this->password);
         if (!$user) {
-            return new Result(Result::FAILURE, null, array("Username or password invalid!"));
+            return new Result(Result::FAILURE, null, array("The username or password you have entered is incorrect."));
         }
         return new Result(Result::SUCCESS, $user->user_id);
     }

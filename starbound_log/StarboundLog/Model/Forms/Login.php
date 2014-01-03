@@ -36,7 +36,7 @@ class Login
     /*
      * @Annotation\Type("\Zend\Form\Element\Csrf")
      */
-    //public $csrf;
+    public $csrf;
 
     /**
      * @Annotation\Type("\Trks\Form\Element\ButtonRow")

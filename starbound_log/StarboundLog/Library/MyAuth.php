@@ -53,5 +53,10 @@ class MyAuth
         return self::hasIdentity() ? self::getIdentity()->getRole() : MyAcl::ROLE_GUEST;
     }
 
+    public static function clearIdentity()
+    {
+        self::getAuthService()->clearIdentity();
+    }
+
 
 }

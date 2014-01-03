@@ -30,7 +30,10 @@ class User extends MyAbstractController
 
     public function logoffAction()
     {
-
+        if (MyAuth::hasIdentity()) {
+            MyAuth::clearIdentity();
+        }
+        return $this->redirect()->toRoute('main');
     }
 
     public function loginAction()
@@ -45,7 +48,15 @@ class User extends MyAbstractController
         if ($formResult->isPost && !$formResult->isValid) {
             ViewData::getMessages()->errorMain = 'Form validation failed.';
         } else if ($formResult->isPost && $formResult->isValid) {
-            ViewData::getMessages()->errorMain = 'The username or password you have entered is incorrect.';
+            $loginResult = MyAuth::authenticate($loginForm->username, $loginForm->password);
+            if ($loginResult->getCode() == \Zend\Authentication\Result::SUCCESS) {
+                return $this->redirect()->toRoute('main');
+            }
+            if (count($loginResult->getMessages()) == 1) {
+                ViewData::getMessages()->errorMain = $loginResult->getMessages()[0];
+            } else {
+                ViewData::getMessages()->errorList = $loginResult->getMessages();
+            }
         }
         return array('form' => $formResult->form);
     }

@@ -3,6 +3,37 @@
 <?= $this->render('_part/header.phtml'); ?>
 <body>
 
+<?php if (!\StarboundLog\Model\ViewData::$identity): ?>
+    <div id="mws-login-ui" style="display: none;">
+
+        <div id="mws-login-form">
+            <form class="mws-form"
+                  action="<?= $this->url('main', array('controller' => 'user', 'action' => 'login')) ?>" method="post">
+                <div class="mws-form-row">
+                    <div class="mws-form-item">
+                        <input type="text" name="username" class="mws-login-username required" placeholder="username">
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <div class="mws-form-item">
+                        <input type="password" name="password" class="mws-login-password required"
+                               placeholder="password">
+                    </div>
+                </div>
+                <?= $this->formHidden(new \Zend\Form\Element\Csrf('csrf')) ?>
+                <div class="mws-form-row">
+                    <input type="submit" name="submit" value="Login" class="btn btn-success mws-login-button">
+
+                    <p style="clear:both; margin:15px 0 0 0; color:#fff;">
+                        Don't have an account?
+                        <a href="<?= $this->url('main', array('controller' => 'user', 'action' => 'register')) ?>">Click here!</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+<?php endif; ?>
+
 <div id="mws-header" class="clearfix">
     <?php /* Logo Container */ ?>
     <div id="mws-logo-container">
@@ -57,23 +88,24 @@
         */
         ?>
         <?php /* User Information and functions section */ ?>
-        <div id="mws-user-info" class="mws-inset">
+        <?php if (\StarboundLog\Model\ViewData::$identity): ?>
+            <?php $identity = \StarboundLog\Model\ViewData::$identity; ?>
+            <div id="mws-user-info" class="mws-inset">
 
-            <?php /* User Photo */ ?>
-            <div id="mws-user-photo">
-                <img src="/images/icon_user.png" alt="user"/>
-            </div>
+                <?php /* User Photo */ ?>
+                <div id="mws-user-photo">
+                    <img src="/images/icon_user.png" alt="user"/>
+                </div>
 
-            <?php /* Username and Functions */ ?>
-            <div id="mws-user-functions">
-                <div id="mws-username">Hello, John Doe</div>
-                <ul>
-                    <li><a class="model-login" href="#">Profile</a></li>
-                    <li><a href="#">Change Password</a></li>
-                    <li><a href="index.html">Logout</a></li>
-                </ul>
+                <?php /* Username and Functions */ ?>
+                <div id="mws-user-functions">
+                    <div id="mws-username">Hello, <?= $identity->user_login; ?></div>
+                    <ul>
+                        <li><a href="<?= $this->url('main', array('controller' => 'user', 'action' => 'logout')) ?>">Logout</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </div>
 
