@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 30.12.13
- * Time: 07:09
- */
 
 namespace Trks\Build\Sql;
 
@@ -378,17 +372,17 @@ class TrksEntityGenerator extends EntityGenerator
 
     private function getClassToExtendName()
     {
-        $refl = new \ReflectionClass($this->getClassToExtend());
+        $reflection = new \ReflectionClass($this->getClassToExtend());
 
-        return '\\' . $refl->getName();
+        return '\\' . $reflection->getName();
     }
 
     private function hasProperty($property, ClassMetadataInfo $metadata)
     {
         if ($this->extendsClass()) {
             // don't generate property if its already on the base class.
-            $reflClass = new \ReflectionClass($this->getClassToExtend());
-            if ($reflClass->hasProperty($property)) {
+            $reflectionClass = new \ReflectionClass($this->getClassToExtend());
+            if ($reflectionClass->hasProperty($property)) {
                 return true;
             }
         }

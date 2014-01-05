@@ -1,17 +1,11 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 29.12.13
- * Time: 03:02
- */
 
 namespace StarboundLog\Library;
 
 
 use StarboundLog\Model\ViewData;
-use Trks\TrksAbstractController;
-use Trks\TrksForwardException;
+use Trks\Mvc\Controller\TrksAbstractController;
+use Trks\Mvc\Controller\TrksForwardException;
 use Zend\View\Model\ViewModel;
 
 class MyAbstractController extends TrksAbstractController
@@ -21,7 +15,7 @@ class MyAbstractController extends TrksAbstractController
      * @param $controller
      * @param $action
      *
-     * @throws \Trks\TrksForwardException
+     * @throws \Trks\Mvc\Controller\TrksForwardException
      *
      */
     protected function isAllowed($module, $controller, $action)

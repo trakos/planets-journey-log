@@ -1,17 +1,27 @@
 <component name="ProjectDictionaryState">
   <dictionary name="trakos">
     <words>
+      <w>alnum</w>
       <w>autoloader</w>
       <w>autoregister</w>
+      <w>biome</w>
+      <w>chapla</w>
+      <w>chaque</w>
       <w>csrf</w>
+      <w>dbname</w>
       <w>functor</w>
       <w>hydrator</w>
       <w>instanceof</w>
       <w>invokables</w>
+      <w>isset</w>
+      <w>metadatas</w>
+      <w>phtml</w>
+      <w>recaptcha</w>
       <w>starbound</w>
       <w>struct</w>
       <w>symfony</w>
       <w>vergroup</w>
+      <w>versiongroups</w>
     </words>
   </dictionary>
 </component>

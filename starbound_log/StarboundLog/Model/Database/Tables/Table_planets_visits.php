@@ -3,15 +3,15 @@
 namespace StarboundLog\Model\Database\Tables;
 
 /**
- * Table_planets_visists
+ * Table_planets_visits
  * 
  */
-class Table_planets_visists
+class Table_planets_visits
 {
     static private $instance;
     static public function get()
     {
-        return self::$instance ? : (self::$instance = new Table_planets_visists());
+        return self::$instance ? : (self::$instance = new Table_planets_visits());
     }
 
     protected $tableGateway;
@@ -21,34 +21,34 @@ class Table_planets_visists
         $dbAdapter = \StarboundLog::getApplication()->getServiceManager()->get('Zend\Db\Adapter\Adapter');
         $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
         $resultSetPrototype->setArrayObjectPrototype($this->getPrototype());
-        $this->tableGateway = new \Zend\Db\TableGateway\TableGateway('planets_visists', $dbAdapter, null, $resultSetPrototype);
+        $this->tableGateway = new \Zend\Db\TableGateway\TableGateway('planets_visits', $dbAdapter, null, $resultSetPrototype);
     }
 
     /**
      * @param $q
      * @param $a
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_planets_visists[]
+     * @return \StarboundLog\Model\Database\Rows\Row_planets_visits[]
      */
     public function fetchAll($q, $a)
     {
-        return \Trks\TrksDbAdapter::get()->fetchAllPrototyped($q, $a, $this->getPrototype());
+        return \Trks\Singletons\TrksDbAdapter::get()->fetchAllPrototyped($q, $a, $this->getPrototype());
     }
 
     /**
      * @param $q
      * @param $a
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_planets_visists
+     * @return \StarboundLog\Model\Database\Rows\Row_planets_visits
      */
     public function fetchRow($q, $a)
     {
-        return \Trks\TrksDbAdapter::get()->fetchRowPrototyped($q, $a, $this->getPrototype());
+        return \Trks\Singletons\TrksDbAdapter::get()->fetchRowPrototyped($q, $a, $this->getPrototype());
     }
 
     /**
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_planets_visists[]
+     * @return \StarboundLog\Model\Database\Rows\Row_planets_visits[]
      */
     public function getAllRows()
     {
@@ -61,7 +61,7 @@ class Table_planets_visists
      * @param $id
      *
      * @throws \Exception
-     * @return \StarboundLog\Model\Database\Rows\Row_planets_visists
+     * @return \StarboundLog\Model\Database\Rows\Row_planets_visits
      */
     public function getRow($id)
     {
@@ -75,12 +75,12 @@ class Table_planets_visists
     }
 
     /**
-     * @param \StarboundLog\Model\Database\Rows\Row_planets_visists $row
+     * @param \StarboundLog\Model\Database\Rows\Row_planets_visits $row
      *
      * @throws \Exception
      * @return int Updated or inserted id.
      */
-    public function saveRow(\StarboundLog\Model\Database\Rows\Row_planets_visists $row)
+    public function saveRow(\StarboundLog\Model\Database\Rows\Row_planets_visits $row)
     {
         $data = array(
             'visit_name' => $row->visit_name,
@@ -117,10 +117,10 @@ class Table_planets_visists
 
     /**
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_planets_visists
+     * @return \StarboundLog\Model\Database\Rows\Row_planets_visits
      */
     protected function getPrototype()
     {
-        return new \StarboundLog\Model\Database\Rows\Row_planets_visists();
+        return new \StarboundLog\Model\Database\Rows\Row_planets_visits();
     }
 }

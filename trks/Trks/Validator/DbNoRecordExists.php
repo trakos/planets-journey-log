@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 03.01.14
- * Time: 12:25
- */
 
 namespace Trks\Validator;
 

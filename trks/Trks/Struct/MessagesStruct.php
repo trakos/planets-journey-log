@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 03.01.14
- * Time: 09:00
- */
 
 namespace Trks\Struct;
 

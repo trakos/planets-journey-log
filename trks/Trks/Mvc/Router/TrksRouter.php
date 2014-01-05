@@ -1,6 +1,6 @@
 <?php
 
-namespace Trks;
+namespace Trks\Mvc\Router;
 
 
 use Zend\Mvc\Router\Http\Segment;

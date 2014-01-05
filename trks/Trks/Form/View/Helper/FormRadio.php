@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 02.01.14
- * Time: 09:57
- */
 
 namespace Trks\Form\View\Helper;
 

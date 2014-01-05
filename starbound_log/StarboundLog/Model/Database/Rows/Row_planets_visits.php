@@ -3,12 +3,12 @@
 namespace StarboundLog\Model\Database\Rows;
 
 /**
- * Row_planets_visists
+ * Row_planets_visits
  * 
  * 
- * name="planets_visists"
+ * name="planets_visits"
  */
-class Row_planets_visists
+class Row_planets_visits
 {
     /**
      * @var integer

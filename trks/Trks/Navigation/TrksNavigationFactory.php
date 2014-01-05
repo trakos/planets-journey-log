@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 31.12.13
- * Time: 06:55
- */
 
-namespace Trks;
+namespace Trks\Navigation;
 
 
 use Zend\Mvc\Router\RouteInterface;
@@ -28,9 +22,10 @@ abstract class TrksNavigationFactory extends AbstractNavigationFactory
     abstract function getResourceForRoute($module, $controller, $action);
 
     /**
-     * @param array $pages
-     * @param RouteMatch $routeMatch
-     * @param RouteInterface $router
+     * @param array                                $pages
+     * @param RouteMatch                           $routeMatch
+     * @param \Zend\Mvc\Router\RouteStackInterface $router
+     *
      * @return mixed
      */
     protected function injectComponents(array $pages, RouteMatch $routeMatch = null, RouteStackInterface $router = null)

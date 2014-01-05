@@ -1,6 +1,6 @@
 <?php
 
-namespace Trks;
+namespace Trks\Mvc\Controller;
 
 class TrksForwardException extends \Exception
 {

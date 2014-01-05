@@ -1,15 +1,9 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 31.12.13
- * Time: 02:35
- */
 
 namespace StarboundLog\Library;
 
 
-use Trks\TrksAcl;
+use Trks\Singletons\TrksAcl;
 
 class MyAcl extends TrksAcl
 {

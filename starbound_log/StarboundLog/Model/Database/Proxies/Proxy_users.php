@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 30.12.13
- * Time: 10:22
- */
 
 namespace StarboundLog\Model\Database\Proxies;
 

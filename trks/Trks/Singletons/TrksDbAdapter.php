@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 30.12.13
- * Time: 09:40
- */
 
-namespace Trks;
+namespace Trks\Singletons;
 
 
 class TrksDbAdapter

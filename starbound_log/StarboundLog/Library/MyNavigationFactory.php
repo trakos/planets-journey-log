@@ -1,15 +1,9 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 31.12.13
- * Time: 06:55
- */
 
 namespace StarboundLog\Library;
 
 
-use Trks\TrksNavigationFactory;
+use Trks\Navigation\TrksNavigationFactory;
 use Zend\Mvc\Router\Http\RouteInterface;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\Permissions\Acl\Resource\GenericResource;

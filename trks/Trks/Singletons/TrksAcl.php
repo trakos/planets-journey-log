@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 31.12.13
- * Time: 02:09
- */
 
-namespace Trks;
+namespace Trks\Singletons;
 
 
 use Zend\Permissions\Acl\Acl;

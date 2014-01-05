@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 03.01.14
- * Time: 10:51
- */
 
 namespace StarboundLog\Model\Forms;
 

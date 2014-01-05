@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: trakos
- * Date: 17.12.13
- * Time: 12:31
- * To change this template use File | Settings | File Templates.
- */
 
 namespace Trks\Events;
 

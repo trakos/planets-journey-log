@@ -37,6 +37,7 @@
     }
 ?>
 <?php foreach ($buttonsProcessed as $button): ?>
+    <!--suppress HtmlFormInputWithoutLabel -->
     <input class="<?= $button['class'] ?>"
            type="<?= $button['isSubmit'] ? 'submit' : 'button' ?>"
            value="<?= $button['value'] ?>"

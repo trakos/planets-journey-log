@@ -8,7 +8,7 @@ use Zend\Form\FormInterface;
 use Zend\View\Renderer\PhpRenderer;
 
 /**
- * Klasa istnieje jedynie dla adnotacji poniżej i code completion w widokach, de facto nie jest nigdzie wykorzystywana
+ * This class exists only for the annotations below and code completion inside views, it is not in fact used anywhere!
  * @inheritdoc
  *
  * @package Trks\Build\View

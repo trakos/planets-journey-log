@@ -1,6 +1,6 @@
 <?php
 
-namespace Trks;
+namespace Trks\Mvc\Controller;
 
 
 use Trks\Struct\UsingFormResult;
