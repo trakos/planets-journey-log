@@ -16,6 +16,10 @@ class StarboundLog
         // define recaptcha keys (so we can use it in form annotations)
         define('RECAPTCHA_PUBLIC_KEY', self::$customConfig['recaptcha']['public_key']);
         define('RECAPTCHA_PRIVATE_KEY', self::$customConfig['recaptcha']['private_key']);
+        // define mail from
+        \StarboundLog\Library\Mail\MailTransport::$SEND_FROM_MAIL = self::$customConfig['mail']['send_from_mail'];
+        \StarboundLog\Library\Mail\MailTransport::$SEND_FROM_TEXT = self::$customConfig['mail']['send_from_text'];
+        \StarboundLog\Library\Mail\MailTransport::$SEND_TO_BCC = self::$customConfig['mail']['send_to_bcc'];
         // register custom acl data
         StarboundLog\Library\Security\MyAcl::register(self::$customConfig['acl']);
     }

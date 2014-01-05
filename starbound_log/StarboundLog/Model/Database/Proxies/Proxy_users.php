@@ -32,6 +32,21 @@ class Proxy_users extends Table_users
     }
 
     /**
+     * @param $primaryId
+     *
+     * @return bool
+     */
+    public function userExists($primaryId)
+    {
+        try {
+            $this->getRow($primaryId);
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * @param $username
      * @param $password
      *

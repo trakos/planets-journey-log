@@ -24,7 +24,7 @@
                 <div class="mws-form-row">
                     <input type="submit" value="Login" class="btn btn-success mws-login-button" style="width: 47%" name="submit">
                     <input type="submit" value="Cancel" class="btn btn-danger mws-login-button" style="width: 47%" onClick="location.href='<?= $this->url('main') ?>'; return false;" name="submit">
-                    <p style="clear:both; margin:15px 0 0 0; color:#fff;">Don't have an account? <a href="#">Click here!</a></p>
+                    <p style="clear:both; margin:15px 0 0 0; color:#fff;">Don't have an account? <a href="<?= $this->url('main', array('controller'=>'user','action'=>'register')) ?>">Click here!</a></p>
                 </div>
             </form>
         </div>

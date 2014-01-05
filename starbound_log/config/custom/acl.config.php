@@ -38,6 +38,12 @@ return array(
             array(
                 'module'     => 'main',
                 'controller' => 'user',
+                'action'     => 'confirm-email-address',
+                'resource'   => Acl::RES_GUEST
+            ),
+            array(
+                'module'     => 'main',
+                'controller' => 'user',
                 'action'     => 'login',
                 'resource'   => Acl::RES_LOGGED_OFF
             ),

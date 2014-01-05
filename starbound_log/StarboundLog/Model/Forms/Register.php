@@ -28,7 +28,7 @@ class Register
      *              "table":"users",
      *              "field":"user_login",
      *              "adapter":"Zend\Db\Adapter\Adapter",
-     *              "messageTemplates":
+     *              "messages":
      *              {
      *                  "recordFound":"This username is already taken"
      *              }
@@ -72,7 +72,7 @@ class Register
      *              "table":"users",
      *              "field":"user_mail",
      *              "adapter":"Zend\Db\Adapter\Adapter",
-     *              "messageTemplates":
+     *              "messages":
      *              {
      *                  "recordFound":"Account with this e-mail address already exists"
      *              }
@@ -84,7 +84,24 @@ class Register
 
     /**
      * @Annotation\Type("Zend\Form\Element\Captcha")
-     * @Annotation\Options({"captcha":{"class":"recaptcha","options":{"private_key":RECAPTCHA_PRIVATE_KEY,"public_key":RECAPTCHA_PUBLIC_KEY}}})
+     * @Annotation\Options(
+     *      {
+     *          "captcha":
+     *          {
+     *              "class":"recaptcha",
+     *              "options":
+     *              {
+     *                  "private_key":RECAPTCHA_PRIVATE_KEY,
+     *                  "public_key":RECAPTCHA_PUBLIC_KEY,
+     *                  "messages":
+     *                  {
+     *                      "missingValue":"Captcha value is missing",
+     *                      "badCaptcha":"Captcha value is wrong"
+     *                  }
+     *              }
+     *          }
+     *      }
+     *  )
      */
     public $captcha;
 
@@ -96,7 +113,7 @@ class Register
 
     /**
      * @Annotation\Type("\Trks\Form\Element\ButtonRow")
-     * @Annotation\Attributes({"buttons":{"Submit":1,"Reset":1}})
+     * @Annotation\Attributes({"buttons":{"Submit":1}})
      */
     public $submit;
 
