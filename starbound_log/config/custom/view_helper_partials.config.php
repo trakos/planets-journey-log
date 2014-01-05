@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'partials' => array(
+    'view_helper_partials' => array(
         'form_row'                      => '_part/form/form_row',
         'form_multi_checkbox_element'   => '_part/form/form_multi_checkbox',
         'form_multi_checkbox_container' => '_part/form/form_multi_checkbox_container',

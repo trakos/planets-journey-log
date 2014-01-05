@@ -6,7 +6,7 @@
         </span>
     </div>
     <div class="mws-panel-body no-padding">
-        <?= $this->messages(\StarboundLog\Model\ViewData::getMessages()); ?>
+        <?= $this->messages()->render(); ?>
 
         <?= $this->form()->openTag($this->form); ?>
         <?= $this->formCollection($this->form); ?>

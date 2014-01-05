@@ -38,15 +38,15 @@ class TrksAcl
         }
     }
 
-    static public function isRoleAllowedToRoute($config, $roleName, $module, $controller, $action)
+    static public function isRoleAllowedToRouteInConfig($config, $roleName, $module, $controller, $action)
     {
         if ($action == 'not-found') return true;
-        $resource = self::findRouteResource($config, $module, $controller, $action);
+        $resource = self::findRouteResourceInConfig($config, $module, $controller, $action);
         if (!$resource) return false;
         return self::getAcl()->isAllowed($roleName, $resource);
     }
 
-    static public function findRouteResource($config, $module, $controller, $action)
+    static public function findRouteResourceInConfig($config, $module, $controller, $action)
     {
         foreach ($config['route_permissions'] as $routePermission) {
             if (

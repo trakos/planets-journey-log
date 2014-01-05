@@ -17,9 +17,12 @@ class MyAcl extends TrksAcl
     const RES_GUEST = "guest";
     const RES_LOGGED_OFF = "loginPage";
 
-    static public function register()
+    static protected $aclConfig;
+
+    static public function register($aclConfig)
     {
-        parent::register(\StarboundLog::$aclConfig);
+        self::$aclConfig = $aclConfig;
+        parent::register(self::$aclConfig);
     }
 
     /**
@@ -31,11 +34,11 @@ class MyAcl extends TrksAcl
      */
     static public function isAllowedToRoute($module, $controller, $action)
     {
-        return parent::isRoleAllowedToRoute(\StarboundLog::$aclConfig, MyAuth::getRole(), $module, $controller, $action);
+        return parent::isRoleAllowedToRouteInConfig(self::$aclConfig, MyAuth::getRole(), $module, $controller, $action);
     }
 
     static public function findRouteResource($module, $controller, $action)
     {
-        return parent::findRouteResource(\StarboundLog::$aclConfig, $module, $controller, $action);
+        return parent::findRouteResourceInConfig(self::$aclConfig, $module, $controller, $action);
     }
 } 

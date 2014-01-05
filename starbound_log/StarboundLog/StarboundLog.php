@@ -2,29 +2,27 @@
 
 class StarboundLog
 {
+    protected static $customConfig;
 
-    static public $structureConfig;
-    static public $viewHelperPartialsConfig;
-    public static $recaptchaConfig;
-    public static $aclConfig;
-
-    static public function init()
+    static public function init($customConfig)
     {
-        \Trks\Form\View\Helper\FormRow::$defaultPartial             = self::$viewHelperPartialsConfig['partials']['form_row'];
-        \Trks\Form\View\Helper\FormMultiCheckbox::$defaultPartial   = self::$viewHelperPartialsConfig['partials']['form_multi_checkbox_element'];
-        \Trks\Form\View\Helper\FormMultiCheckbox::$containerPartial = self::$viewHelperPartialsConfig['partials']['form_multi_checkbox_container'];
-        \Trks\Form\View\Helper\FormElementErrors::$defaultPartial   = self::$viewHelperPartialsConfig['partials']['form_element_errors'];
-        \Trks\Form\View\Helper\FormButtonRow::$partial              = self::$viewHelperPartialsConfig['partials']['form_button_row'];
-        \Trks\View\Helper\Messages::$partial                        = self::$viewHelperPartialsConfig['partials']['messages'];
-        define('RECAPTCHA_PUBLIC_KEY', self::$recaptchaConfig['recaptcha']['public_key']);
-        define('RECAPTCHA_PRIVATE_KEY', self::$recaptchaConfig['recaptcha']['private_key']);
+        self::$customConfig                                         = $customConfig;
+        \Trks\Form\View\Helper\FormRow::$defaultPartial             = self::$customConfig['view_helper_partials']['form_row'];
+        \Trks\Form\View\Helper\FormMultiCheckbox::$defaultPartial   = self::$customConfig['view_helper_partials']['form_multi_checkbox_element'];
+        \Trks\Form\View\Helper\FormMultiCheckbox::$containerPartial = self::$customConfig['view_helper_partials']['form_multi_checkbox_container'];
+        \Trks\Form\View\Helper\FormElementErrors::$defaultPartial   = self::$customConfig['view_helper_partials']['form_element_errors'];
+        \Trks\Form\View\Helper\FormButtonRow::$partial              = self::$customConfig['view_helper_partials']['form_button_row'];
+        \Trks\View\Helper\Messages::$partial                        = self::$customConfig['view_helper_partials']['messages'];
+        // define recaptcha keys (so we can use it in form annotations)
+        define('RECAPTCHA_PUBLIC_KEY', self::$customConfig['recaptcha']['public_key']);
+        define('RECAPTCHA_PRIVATE_KEY', self::$customConfig['recaptcha']['private_key']);
         // register custom acl data
-        StarboundLog\Library\Security\MyAcl::register();
+        StarboundLog\Library\Security\MyAcl::register(self::$customConfig['acl']);
     }
 
     static public function getDefaultModule()
     {
-        return array_keys(self::$structureConfig)[0];
+        return array_keys(self::$customConfig['controllers_structure'])[0];
     }
 
     static public function getModuleNamespaces()
@@ -35,7 +33,7 @@ class StarboundLog
     static public function getModulePaths()
     {
         $array = array();
-        foreach (self::$structureConfig as $moduleName => $controllers) {
+        foreach (self::$customConfig['controllers_structure'] as $moduleName => $controllers) {
             $array[T_NAMESPACE_MODULES . '\\' . $moduleName] = T_PATH_MODULES . $moduleName;
         }
         return $array;
@@ -44,8 +42,8 @@ class StarboundLog
     static public function getControllers()
     {
         $array = array();
-        foreach (self::$structureConfig as $moduleName => $controllers) {
-            foreach (self::$structureConfig[$moduleName] as $controllerName) {
+        foreach (self::$customConfig['controllers_structure'] as $moduleName => $controllers) {
+            foreach (self::$customConfig['controllers_structure'][$moduleName] as $controllerName) {
                 $array[$moduleName . '-' . $controllerName] = T_NAMESPACE_MODULES . '\\' . $moduleName . '\\' . $controllerName;
             }
         }
@@ -55,7 +53,7 @@ class StarboundLog
     static public function getModulesViewPaths()
     {
         $array = array();
-        foreach (self::$structureConfig as $moduleName => $controllers) {
+        foreach (self::$customConfig['controllers_structure'] as $moduleName => $controllers) {
             $array[] = T_PATH_APPLICATION . '/view/' . strtolower($moduleName) . '/';
         }
         return $array;
