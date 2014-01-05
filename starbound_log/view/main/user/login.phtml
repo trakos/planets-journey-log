@@ -20,6 +20,7 @@
                         <?= $this->formElement($form->get('password')) ?>
                     </div>
                 </div>
+                <?= $this->formElement($form->get('csrf')) ?>
                 <div class="mws-form-row">
                     <input type="submit" value="Login" class="btn btn-success mws-login-button" style="width: 47%" name="submit">
                     <input type="submit" value="Cancel" class="btn btn-danger mws-login-button" style="width: 47%" onClick="location.href='<?= $this->url('main') ?>'; return false;" name="submit">

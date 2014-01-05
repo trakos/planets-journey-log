@@ -1,0 +1,15 @@
+<?php /* @var \Trks\View\TrksPhpRenderer $this */ ?>
+<div class="mws-panel grid_5 grid_center grid_vertical_center">
+    <div class="mws-panel-header">
+        <span>
+            Register
+        </span>
+    </div>
+    <div class="mws-panel-body no-padding">
+        <?= $this->messages(\StarboundLog\Model\ViewData::getMessages()); ?>
+
+        <?= $this->form()->openTag($this->form); ?>
+        <?= $this->formCollection($this->form); ?>
+        <?= $this->form()->closeTag(); ?>
+    </div>
+</div>

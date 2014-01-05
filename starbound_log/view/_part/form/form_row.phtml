@@ -7,23 +7,42 @@
 /* @var bool $renderErrors */
 ?>
 <?php if ($element instanceof Trks\Form\Element\ButtonRow || $element instanceof Zend\Form\Element\Submit): ?>
-    <div class="<?= $element instanceof Trks\Form\Element\ButtonRow && $element->getAttribute('class') ? $element->getAttribute('class') : 'mws-button-row'; ?>">
+    <div
+        class="<?= $element instanceof Trks\Form\Element\ButtonRow && $element->getAttribute('class') ? $element->getAttribute('class') : 'mws-button-row'; ?>"
+        >
         <?php $element->setAttribute('class', ($element instanceof Zend\Form\Element\Submit ? 'btn btn-danger ' : '') . $element->getAttribute('class')); ?>
         <?= ($element instanceof Trks\Form\Element\ButtonRow) ? $this->formButtonRow($element) : $this->formElement($element); ?>
         <?= $renderErrors ? $this->formElementErrors($element) : ''; ?>
     </div>
-<?php elseif ($element instanceof Zend\Form\Element\Csrf || $element instanceof Zend\Form\Element\Hidden): ?>
+<?php
+elseif (
+    $element instanceof Zend\Form\Element\Csrf
+    || $element instanceof Zend\Form\Element\Hidden
+): ?>
     <?= $this->formElement($element); ?>
     <?= $renderErrors ? $this->formElementErrors($element) : ''; ?>
-<?php else: ?>
+<?php
+else: ?>
     <?php $element->setAttribute('id', $element->getName()); ?>
     <div class="mws-form-row">
         <?php if ($label): ?>
             <label class="mws-form-label"><?= $this->formLabel($element, $label); ?></label>
         <?php endif; ?>
-        <div class="mws-form-item">
+        <?php if ($element instanceof \Zend\Form\Element\Captcha): ?>
             <?= $this->formElement($element); ?>
-            <?= $renderErrors ? $this->formElementErrors($element) : ''; ?>
-        </div>
+            <?php if ($renderErrors): ?>
+                <div class="mws-form-item">
+                    <?= $renderErrors ? $this->formElementErrors($element) : ''; ?>
+                </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <div class="mws-form-item">
+                <?= $this->formElement($element); ?>
+                <?php if ($element->getOption('description')): ?>
+                    <div class="mws-error plain" style="color:black;"><?= $this->escapeHtml($element->getOption('description')) ?></div>
+                <?php endif; ?>
+                <?= $renderErrors ? $this->formElementErrors($element) : ''; ?>
+            </div>
+        <?php endif; ?>
     </div>
 <?php endif; ?>

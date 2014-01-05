@@ -33,7 +33,7 @@ class Login
      */
     public $password;
 
-    /*
+    /**
      * @Annotation\Type("\Zend\Form\Element\Csrf")
      */
     public $csrf;

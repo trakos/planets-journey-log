@@ -9,12 +9,14 @@ define('T_PATH_ZEND2', T_PATH_LIB . '/Zend');
 define('T_PATH_CONFIG', T_PATH_APPLICATION . '/config');
 define('T_PATH_CUSTOM_CONFIG', T_PATH_CONFIG . '/custom');
 
+define('T_PATH_ZEND_SERVICE', T_PATH_LIB . '/ZendService');
 define('T_PATH_SYMFONY', T_PATH_LIB . '/Symfony');
 define('T_PATH_DOCTRINE', T_PATH_LIB . '/Doctrine');
 define('T_PATH_TRKS', T_PATH_LIB . '/Trks');
 define('T_PATH_APP_SRC', T_PATH_APPLICATION . '/StarboundLog');
 define('T_PATH_MODULES', T_PATH_APPLICATION . '/StarboundLog/Controller/');
 
+define('T_NAMESPACE_ZEND_SERVICE', 'ZendService');
 define('T_NAMESPACE_DOCTRINE', 'Doctrine');
 define('T_NAMESPACE_SYMFONY', 'Symfony');
 define('T_NAMESPACE_TRKS', 'Trks');
@@ -32,6 +34,7 @@ require T_PATH_APPLICATION . '/StarboundLog/StarboundLog.php';
     ->setOptions(array(
         'autoregister_zf' => true
     ))
+    ->registerNamespace(T_NAMESPACE_ZEND_SERVICE, T_PATH_ZEND_SERVICE)
     ->registerNamespace(T_NAMESPACE_SYMFONY, T_PATH_SYMFONY)
     ->registerNamespace(T_NAMESPACE_DOCTRINE, T_PATH_DOCTRINE)
     ->registerNamespace(T_NAMESPACE_TRKS, T_PATH_TRKS)
@@ -41,7 +44,8 @@ require T_PATH_APPLICATION . '/StarboundLog/StarboundLog.php';
 // custom configs
 StarboundLog::$structureConfig = require T_PATH_CUSTOM_CONFIG . '/structure.config.php';
 StarboundLog::$viewHelperPartialsConfig = require T_PATH_CUSTOM_CONFIG . '/view_helper_partials.config.php';
-StarboundLog\Library\MyAcl::$aclConfig = require T_PATH_CUSTOM_CONFIG . '/acl.config.php';
+StarboundLog::$recaptchaConfig = require T_PATH_CUSTOM_CONFIG . '/recaptcha.config.php';
+StarboundLog::$aclConfig = require T_PATH_CUSTOM_CONFIG . '/acl.config.php';
 
 
 // debug
@@ -78,7 +82,5 @@ StarboundLog::setApplication(Zend\Mvc\Application::init(array(
     )
 )));
 
-// load form data
+// load custom config data
 StarboundLog::init();
-// register custom acl data
-StarboundLog\Library\MyAcl::register();

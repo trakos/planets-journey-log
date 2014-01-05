@@ -37,6 +37,7 @@
         ->appendStylesheet($this->basePath() . '/mws_admin/css/themer.css', 'screen', null, null)
         ->appendStylesheet($this->basePath() . '/css/login.css', 'screen', null, null)
         ->appendStylesheet($this->basePath() . '/css/menu.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/css/style.css', 'screen', null, null)
     ?>
 
     <!--[if lt IE 9]>
@@ -70,5 +71,6 @@
         ->appendFile($this->basePath() . '/mws_admin/js/core/mws.js')
         ->appendFile($this->basePath() . '/mws_admin/js/core/login.js')
         ->appendFile($this->basePath() . '/js/login.js')
+        ->appendFile($this->basePath() . '/js/var.js')
     ?>
 </head>

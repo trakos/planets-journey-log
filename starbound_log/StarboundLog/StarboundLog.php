@@ -5,6 +5,8 @@ class StarboundLog
 
     static public $structureConfig;
     static public $viewHelperPartialsConfig;
+    public static $recaptchaConfig;
+    public static $aclConfig;
 
     static public function init()
     {
@@ -14,6 +16,10 @@ class StarboundLog
         \Trks\Form\View\Helper\FormElementErrors::$defaultPartial   = self::$viewHelperPartialsConfig['partials']['form_element_errors'];
         \Trks\Form\View\Helper\FormButtonRow::$partial              = self::$viewHelperPartialsConfig['partials']['form_button_row'];
         \Trks\View\Helper\Messages::$partial                        = self::$viewHelperPartialsConfig['partials']['messages'];
+        define('RECAPTCHA_PUBLIC_KEY', self::$recaptchaConfig['recaptcha']['public_key']);
+        define('RECAPTCHA_PRIVATE_KEY', self::$recaptchaConfig['recaptcha']['private_key']);
+        // register custom acl data
+        StarboundLog\Library\MyAcl::register();
     }
 
     static public function getDefaultModule()

@@ -13,11 +13,6 @@ use Trks\TrksAcl;
 
 class MyAcl extends TrksAcl
 {
-    /**
-     * acl.config.php
-     * @var array
-     */
-    static public $aclConfig;
 
     const ROLE_ADMIN = "admin";
     const ROLE_USER = "user";
@@ -30,7 +25,7 @@ class MyAcl extends TrksAcl
 
     static public function register()
     {
-        parent::register(self::$aclConfig);
+        parent::register(\StarboundLog::$aclConfig);
     }
 
     /**
@@ -42,11 +37,11 @@ class MyAcl extends TrksAcl
      */
     static public function isAllowedToRoute($module, $controller, $action)
     {
-        return parent::isRoleAllowedToRoute(self::$aclConfig, MyAuth::getRole(), $module, $controller, $action);
+        return parent::isRoleAllowedToRoute(\StarboundLog::$aclConfig, MyAuth::getRole(), $module, $controller, $action);
     }
 
     static public function findRouteResource($module, $controller, $action)
     {
-        return parent::findRouteResource(self::$aclConfig, $module, $controller, $action);
+        return parent::findRouteResource(\StarboundLog::$aclConfig, $module, $controller, $action);
     }
 } 
