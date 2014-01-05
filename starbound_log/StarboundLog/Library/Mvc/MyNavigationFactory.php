@@ -33,6 +33,6 @@ class MyNavigationFactory extends TrksNavigationFactory
         if (!$module || !$controller || !$action) {
             return MyAcl::RES_ADMIN;
         }
-        return MyAcl::findRouteResource($module, $controller, $action);
+        return MyAcl::findRouteResource($module, $controller, $action) ? : MyAcl::RES_ADMIN;
     }
 }

@@ -45,7 +45,7 @@ class User extends MyAbstractController
 
     }
 
-    public function logoffAction()
+    public function logoutAction()
     {
         if (MyAuth::hasIdentity()) {
             MyAuth::clearIdentity();
