@@ -57,15 +57,28 @@ class Register
 
     /**
      * @Annotation\Type("Zend\Form\Element\Text")
-     * @Annotation\Required(false)
      * @Annotation\Attributes({"class":"large"})
      * @Annotation\Options(
      *      {
      *          "label":"E-mail address",
-     *          "description": "Optional, allows to retrieve a forgotten password"
      *      }
      * )
      * @Annotation\Validator({"name":"EmailAddress"})
+     * @Annotation\Validator(
+     *      {
+     *          "name":"\Trks\Validator\DbNoRecordExists",
+     *          "options":
+     *          {
+     *              "table":"users",
+     *              "field":"user_mail",
+     *              "adapter":"Zend\Db\Adapter\Adapter",
+     *              "messageTemplates":
+     *              {
+     *                  "recordFound":"Account with this e-mail address already exists"
+     *              }
+     *          }
+     *      }
+     * )
      */
     public $mail;
 

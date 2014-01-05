@@ -1,6 +1,6 @@
 <?php
 
-namespace StarboundLog\Library;
+namespace StarboundLog\Library\Security;
 
 use StarboundLog\Model\Database\Proxies\Proxy_users;
 use Zend\Authentication\AuthenticationService;

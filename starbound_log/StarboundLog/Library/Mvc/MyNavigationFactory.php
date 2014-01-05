@@ -1,8 +1,9 @@
 <?php
 
-namespace StarboundLog\Library;
+namespace StarboundLog\Library\Mvc;
 
 
+use StarboundLog\Library\Security\MyAcl;
 use Trks\Navigation\TrksNavigationFactory;
 use Zend\Mvc\Router\Http\RouteInterface;
 use Zend\Mvc\Router\RouteMatch;

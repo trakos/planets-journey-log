@@ -19,7 +19,7 @@ class StarboundLog
         define('RECAPTCHA_PUBLIC_KEY', self::$recaptchaConfig['recaptcha']['public_key']);
         define('RECAPTCHA_PRIVATE_KEY', self::$recaptchaConfig['recaptcha']['private_key']);
         // register custom acl data
-        StarboundLog\Library\MyAcl::register();
+        StarboundLog\Library\Security\MyAcl::register();
     }
 
     static public function getDefaultModule()

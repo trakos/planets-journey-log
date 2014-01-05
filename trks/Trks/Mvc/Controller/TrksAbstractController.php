@@ -3,6 +3,7 @@
 namespace Trks\Mvc\Controller;
 
 
+use Trks\Mvc\Controller\Plugin\TrksFlashMessenger;
 use Trks\Struct\UsingFormResult;
 use Zend\Form\Annotation\AnnotationBuilder;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -22,6 +23,13 @@ abstract class TrksAbstractController extends AbstractActionController
      * @throws TrksForwardException
      */
     abstract protected function isAllowed($module, $controller, $action);
+
+    private $_trksFlashMessenger;
+
+    public function flashMessenger()
+    {
+        return $this->_trksFlashMessenger ? : ($this->_trksFlashMessenger = new TrksFlashMessenger());
+    }
 
     /**
      * @param object $object

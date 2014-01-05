@@ -1,6 +1,6 @@
 <?php
 
-namespace StarboundLog\Library;
+namespace StarboundLog\Library\Security;
 
 
 use Trks\Singletons\TrksAcl;

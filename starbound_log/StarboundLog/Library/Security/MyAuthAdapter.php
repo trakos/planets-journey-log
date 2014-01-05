@@ -1,6 +1,6 @@
 <?php
 
-namespace StarboundLog\Library;
+namespace StarboundLog\Library\Security;
 
 use StarboundLog\Model\Database\Proxies\Proxy_users;
 use Zend\Authentication\Result;
@@ -16,7 +16,7 @@ class MyAuthAdapter implements \Zend\Authentication\Adapter\AdapterInterface
      * @param $username
      * @param $password
      *
-     * @return \StarboundLog\Library\MyAuthAdapter
+     * @return \StarboundLog\Library\Security\MyAuthAdapter
      */
     public function __construct($username, $password)
     {

@@ -3,7 +3,7 @@
 namespace StarboundLog\Controller\Main;
 
 
-use StarboundLog\Library\MyAbstractController;
+use StarboundLog\Library\Mvc\MyAbstractController;
 use StarboundLog\Model\Forms\Student;
 use StarboundLog\Model\ViewData;
 use Zend\Form\Annotation\AnnotationBuilder;
@@ -16,7 +16,7 @@ class Planets extends MyAbstractController
         $student    = new Student();
         $formResult = $this->useAnnotationForm($student, 'main', 'all', 'planets');
 
-        if ($formResult->isPost && !$formResult->isValid) ViewData::getMessages()->successMain = 'There were some errors';
+        if ($formResult->isPost && !$formResult->isValid) $this->flashMessenger()->addErrorMessage('There were some errors');
 
         foreach ($formResult->form->getElements() as $element) {
             /* @var Element $element */

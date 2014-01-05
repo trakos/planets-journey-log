@@ -9,7 +9,7 @@
         <div class="mws-login-lock"><i class="icon-lock"></i></div>
         <div id="mws-login-form">
             <form class="mws-form" action="" method="post">
-                <?= $this->messages(\StarboundLog\Model\ViewData::getMessages()) ?>
+                <?= $this->messages()->render(); ?>
                 <div class="mws-form-row">
                     <div class="mws-form-item">
                         <?= $this->formElement($form->get('username')) ?>

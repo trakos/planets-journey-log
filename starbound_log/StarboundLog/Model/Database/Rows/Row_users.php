@@ -30,6 +30,16 @@ class Row_users
      */
     public $user_mail;
 
+    /**
+     * @var boolean
+     */
+    public $user_mailConfirmed;
+
+    /**
+     * @var \DateTime
+     */
+    public $user_lastMail;
+
 
     public function exchangeArray($data)
     {
@@ -37,5 +47,7 @@ class Row_users
         $this->user_login = (isset($data['user_login'])) ? $data['user_login'] : null;
         $this->user_password = (isset($data['user_password'])) ? $data['user_password'] : null;
         $this->user_mail = (isset($data['user_mail'])) ? $data['user_mail'] : null;
+        $this->user_mailConfirmed = (isset($data['user_mailConfirmed'])) ? $data['user_mailConfirmed'] : null;
+        $this->user_lastMail = (isset($data['user_lastMail'])) ? $data['user_lastMail'] : null;
     }
 }

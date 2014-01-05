@@ -3,7 +3,7 @@
 namespace StarboundLog\Model\Database\Entities;
 
 
-use StarboundLog\Library\MyAcl;
+use StarboundLog\Library\Security\MyAcl;
 use StarboundLog\Model\Database\Rows\Row_users;
 
 class Entity_users extends Row_users

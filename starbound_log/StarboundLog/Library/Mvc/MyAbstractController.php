@@ -1,8 +1,10 @@
 <?php
 
-namespace StarboundLog\Library;
+namespace StarboundLog\Library\Mvc;
 
 
+use StarboundLog\Library\Security\MyAcl;
+use StarboundLog\Library\Security\MyAuth;
 use StarboundLog\Model\ViewData;
 use Trks\Mvc\Controller\TrksAbstractController;
 use Trks\Mvc\Controller\TrksForwardException;

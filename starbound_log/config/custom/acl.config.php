@@ -1,6 +1,6 @@
 <?php
 
-use StarboundLog\Library\MyAcl as Acl;
+use StarboundLog\Library\Security\MyAcl as Acl;
 
 return array(
     'roles'             => array(

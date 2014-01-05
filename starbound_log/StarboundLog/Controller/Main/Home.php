@@ -9,7 +9,7 @@
 
 namespace StarboundLog\Controller\Main;
 
-use StarboundLog\Library\MyAbstractController;
+use StarboundLog\Library\Mvc\MyAbstractController;
 use Zend\View\Model\ViewModel;
 
 class Home extends MyAbstractController

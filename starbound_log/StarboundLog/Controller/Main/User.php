@@ -3,8 +3,8 @@
 namespace StarboundLog\Controller\Main;
 
 
-use StarboundLog\Library\MyAuth;
-use StarboundLog\Library\MyAbstractController;
+use StarboundLog\Library\Security\MyAuth;
+use StarboundLog\Library\Mvc\MyAbstractController;
 use StarboundLog\Model\Database\Proxies\Proxy_users;
 use StarboundLog\Model\Forms\Login;
 use StarboundLog\Model\Forms\Register;
@@ -24,9 +24,9 @@ class User extends MyAbstractController
 
 
         if ($formResult->isPost && !$formResult->isValid) {
-            ViewData::getMessages()->errorMain = 'Form validation failed.';
+            $this->flashMessenger()->addErrorMessage('Form validation failed.');
         } else if ($formResult->isPost && $formResult->isValid) {
-            //Proxy_users::get()->register($registerForm->username, $registerForm->password, $registerForm->mail);
+            Proxy_users::get()->createUser($registerForm->username, $registerForm->password, $registerForm->mail);
         }
         return array('form' => $formResult->form);
     }
@@ -54,17 +54,13 @@ class User extends MyAbstractController
 
 
         if ($formResult->isPost && !$formResult->isValid) {
-            ViewData::getMessages()->errorMain = 'Form validation failed.';
+            $this->flashMessenger()->addErrorMessage('Form validation failed.');
         } else if ($formResult->isPost && $formResult->isValid) {
             $loginResult = MyAuth::authenticate($loginForm->username, $loginForm->password);
             if ($loginResult->getCode() == \Zend\Authentication\Result::SUCCESS) {
                 return $this->redirect()->toRoute('main');
             }
-            if (count($loginResult->getMessages()) == 1) {
-                ViewData::getMessages()->errorMain = $loginResult->getMessages()[0];
-            } else {
-                ViewData::getMessages()->errorList = $loginResult->getMessages();
-            }
+            $this->flashMessenger()->addErrorMessage($loginResult->getMessages());
         }
         return array('form' => $formResult->form);
     }

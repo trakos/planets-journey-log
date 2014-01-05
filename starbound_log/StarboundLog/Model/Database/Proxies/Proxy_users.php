@@ -53,12 +53,13 @@ class Proxy_users extends Table_users
      *
      * @return Entity_users
      */
-    public function register($login, $password, $mail)
+    public function createUser($login, $password, $mail)
     {
         $user = new Row_users();
         $user->user_login = $login;
         $user->user_password = password_hash($password, PASSWORD_DEFAULT);
         $user->user_mail = $mail;
+        $user->user_mailConfirmed = false;
         $this->saveRow($user);
         return $user;
     }
