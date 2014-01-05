@@ -55,7 +55,7 @@ class TrksFlashMessenger extends \Zend\Mvc\Controller\Plugin\FlashMessenger
     {
         if (is_array($messages)) {
             foreach ($messages as $message) {
-                parent::addSuccessMessage($messages);
+                parent::addSuccessMessage($message);
             }
         } else {
             parent::addSuccessMessage($messages);
@@ -74,7 +74,7 @@ class TrksFlashMessenger extends \Zend\Mvc\Controller\Plugin\FlashMessenger
     {
         if (is_array($messages)) {
             foreach ($messages as $message) {
-                parent::addInfoMessage($messages);
+                parent::addInfoMessage($message);
             }
         } else {
             parent::addInfoMessage($messages);
@@ -93,7 +93,7 @@ class TrksFlashMessenger extends \Zend\Mvc\Controller\Plugin\FlashMessenger
     {
         if (is_array($messages)) {
             foreach ($messages as $message) {
-                parent::addErrorMessage($messages);
+                parent::addErrorMessage($message);
             }
         } else {
             parent::addErrorMessage($messages);

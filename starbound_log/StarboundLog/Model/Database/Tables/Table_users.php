@@ -86,6 +86,8 @@ class Table_users
             'user_login' => $row->user_login,
             'user_password' => $row->user_password,
             'user_mail' => $row->user_mail,
+            'user_mailConfirmed' => $row->user_mailConfirmed,
+            'user_lastMail' => $row->user_lastMail,
         );
 
         $id = (int)$row->user_id;
