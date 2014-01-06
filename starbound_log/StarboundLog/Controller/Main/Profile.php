@@ -11,7 +11,10 @@ namespace StarboundLog\Controller\Main;
 
 use StarboundLog\Library\Mvc\MyAbstractController;
 use StarboundLog\Library\Security\MyAuth;
+use StarboundLog\Model\Database\Proxies\Proxy_planets_favorites;
 use StarboundLog\Model\Database\Rows\Row_users_characters;
+use StarboundLog\Model\Database\Tables\Table_planets;
+use StarboundLog\Model\Database\Tables\Table_planets_favorites;
 use StarboundLog\Model\Database\Tables\Table_users_characters;
 use StarboundLog\Model\Forms\CharacterAddForm;
 use StarboundLog\Model\Forms\CharacterEditForm;
@@ -36,12 +39,38 @@ class Profile extends MyAbstractController
 
     public function addToFavoritesAction()
     {
+        $id = $this->params()->fromRoute('id', 0);
+        if ($id) {
+            $planet = Table_planets::get()->getRow($id);
+            if ($planet) {
+                Proxy_planets_favorites::get()->addFavorite($planet->planet_id);
 
+                return new JsonModel(array(
+                    'success' => true
+                ));
+            }
+        }
+        return new JsonModel(array(
+            'success' => false
+        ));
     }
 
     public function removeFromFavoritesAction()
     {
+        $id = $this->params()->fromRoute('id', 0);
+        if ($id) {
+            $planet = Table_planets::get()->getRow($id);
+            if ($planet && Proxy_planets_favorites::get()->hasFavorite($planet->planet_id)) {
+                Proxy_planets_favorites::get()->removeFavorite($planet->planet_id);
 
+                return new JsonModel(array(
+                    'success' => true
+                ));
+            }
+        }
+        return new JsonModel(array(
+            'success' => false
+        ));
     }
 
     public function charactersAction()

@@ -32,6 +32,7 @@
         ->appendStylesheet($this->basePath() . '/mws_admin/css/icons/icol32.css', 'screen', null, null)
         ->appendStylesheet($this->basePath() . '/mws_admin/jui/css/jquery.ui.all.css', 'screen', null, null)
         ->appendStylesheet($this->basePath() . '/mws_admin/jui/jquery-ui.custom.css', 'screen', null, null)
+        ->appendStylesheet($this->basePath() . '/mws_admin/plugins/ibutton/jquery.ibutton.css', 'screen', null, null)
         ->appendStylesheet($this->basePath() . '/mws_admin/css/mws-theme.css', 'screen', null, null)
         ->appendStylesheet($this->basePath() . '/mws_admin/css/login.css', 'screen', null, null)
         ->appendStylesheet($this->basePath() . '/mws_admin/css/themer.css', 'screen', null, null)
@@ -52,21 +53,23 @@
         ->appendFile($this->basePath() . '/mws_admin/js/libs/jquery-1.8.3.min.js')
         ->appendFile($this->basePath() . '/mws_admin/js/libs/jquery.mousewheel.min.js')
         ->appendFile($this->basePath() . '/mws_admin/js/libs/jquery.placeholder.min.js')
+        ->appendFile($this->basePath() . '/mws_admin/js/libs/excanvas.min.js')
 
         ->appendFile($this->basePath() . '/mws_admin/jui/js/jquery-ui-1.9.2.min.js')
         ->appendFile($this->basePath() . '/mws_admin/jui/js/jquery-ui-effects.min.js')
         ->appendFile($this->basePath() . '/mws_admin/jui/jquery-ui.custom.min.js')
         ->appendFile($this->basePath() . '/mws_admin/jui/js/jquery.ui.touch-punch.js')
+
         ->appendFile($this->basePath() . '/mws_admin/plugins/datatables/jquery.dataTables.min.js')
-        ->appendFile($this->basePath() . '/mws_admin/js/libs/excanvas.min.js')
         ->appendFile($this->basePath() . '/mws_admin/plugins/flot/jquery.flot.min.js')
         ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.tooltip.min.js')
         ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.pie.min.js')
         ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.stack.min.js')
         ->appendFile($this->basePath() . '/mws_admin/plugins/flot/plugins/jquery.flot.resize.min.js')
-
         ->appendFile($this->basePath() . '/mws_admin/plugins/colorpicker/colorpicker-min.js')
         ->appendFile($this->basePath() . '/mws_admin/plugins/validate/jquery.validate-min.js')
+        ->appendFile($this->basePath() . '/mws_admin/plugins/ibutton/jquery.ibutton.min.js')
+
         ->appendFile($this->basePath() . '/mws_admin/custom-plugins/wizard/wizard.min.js')
         ->appendFile($this->basePath() . '/mws_admin/bootstrap/js/bootstrap.min.js')
         ->appendFile($this->basePath() . '/mws_admin/js/core/mws.js')

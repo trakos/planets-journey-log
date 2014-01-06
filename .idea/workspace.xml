@@ -13,15 +13,25 @@
     <bookmark url="file://$PROJECT_DIR$/zend/Zend/Mvc/View/Http/InjectTemplateListener.php" line="46" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8f20203-91d7-4b53-804b-f4cebdb2942e" name="Default" comment="characters (dodawanie, usuwanie, edytowanie), json-y, podział kontrolera user na user i profile, cancelFormUrl w ViewData&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/PlanetVisitForm.php" />
-      <change type="MOVED" beforePath="C:\home\coding\starbound_log\starbound_log\StarboundLog\Model\Forms\CharacterAdd.php" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterAddForm.php" />
-      <change type="MOVED" beforePath="C:\home\coding\starbound_log\starbound_log\StarboundLog\Model\Forms\CharacterEdit.php" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterEditForm.php" />
-      <change type="MOVED" beforePath="C:\home\coding\starbound_log\starbound_log\StarboundLog\Model\Forms\Login.php" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/LoginForm.php" />
-      <change type="MOVED" beforePath="C:\home\coding\starbound_log\starbound_log\StarboundLog\Model\Forms\Register.php" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/RegisterForm.php" />
+    <list default="true" id="a8f20203-91d7-4b53-804b-f4cebdb2942e" name="Default" comment="zmiany w bazie danych (uwzględnienie sektorów, rozdział na planety w ramach systemu i oddzielenie księżyców, od razu sektory mają wersje zamiast konkretne wizyty)&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/AddPlanetVisitForm.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/BiomeSelect.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/CharacterSelect.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/MoonSelect.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/PlanetSelect.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/PlanetTierSelect.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/RatingSelect.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/SectorSelect.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/VersionSelect.php" />
+      <change type="DELETED" beforePath="C:\home\coding\starbound_log\starbound_log\StarboundLog\Model\Forms\PlanetVisitForm.php" afterPath="" />
+      <change type="MOVED" beforePath="C:\home\coding\starbound_log\starbound_log\view\main\planets\all.phtml" afterPath="$PROJECT_DIR$/starbound_log/view/main/planets/add.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Planets.php" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Planets.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Profile.php" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/User.php" afterPath="$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/config/zend/navigation.config.php" afterPath="$PROJECT_DIR$/starbound_log/config/zend/navigation.config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/view/_part/header.phtml" afterPath="$PROJECT_DIR$/starbound_log/view/_part/header.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/trakos.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/trakos.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starbound_log/public/js/var.js" afterPath="$PROJECT_DIR$/starbound_log/public/js/var.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="starbound_log.iws" />
@@ -86,66 +96,115 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PlanetVisitForm.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/PlanetVisitForm.php">
+      <file leaf-file-name="AddPlanetVisitForm.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/AddPlanetVisitForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="62" selection-end="62" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="238">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterForm.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/RegisterForm.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="10" selection-start="275" selection-end="275" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="595">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CharacterAddForm.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterAddForm.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="13" selection-start="368" selection-end="368" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="459">
+            <state line="65" column="88" selection-start="2381" selection-end="2381" vertical-scroll-proportion="-11.615385" vertical-offset="803" max-vertical-offset="2006">
               <folding>
-                <element signature="e#925#1060#0" expanded="true" />
+                <element signature="e#71#274#0" expanded="true" />
+                <element signature="e#343#524#0" expanded="true" />
+                <element signature="e#555#772#0" expanded="true" />
+                <element signature="e#798#1015#0" expanded="true" />
+                <element signature="e#1041#1270#0" expanded="true" />
+                <element signature="e#1301#1582#0" expanded="true" />
+                <element signature="e#1611#1845#0" expanded="true" />
+                <element signature="e#1904#2041#0" expanded="true" />
+                <element signature="e#2418#2614#0" expanded="true" />
+                <element signature="e#2645#2786#0" expanded="true" />
+                <element signature="e#2815#3136#0" expanded="true" />
+                <element signature="e#3166#3487#0" expanded="true" />
+                <element signature="e#3519#3786#0" expanded="true" />
+                <element signature="e#3814#4239#0" expanded="true" />
+                <element signature="e#4275#4398#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CharacterEditForm.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterEditForm.php">
+      <file leaf-file-name="BiomeSelect.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/BiomeSelect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="12" selection-start="368" selection-end="368" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="306">
+            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="493">
+              <folding>
+                <element signature="e#54#88#0" expanded="true" />
+                <marker date="1389028923667" expanded="true" signature="407:466" placeholder="SELECT biome..biomes..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FormMultiCheckbox.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trks/Trks/Form/View/Helper/FormMultiCheckbox.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="2006">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginForm.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/LoginForm.php">
+      <file leaf-file-name="RatingSelect.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/RatingSelect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="8" selection-start="229" selection-end="229" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="442">
+            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="493">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navigation.config.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/starbound_log/config/zend/navigation.config.php">
+      <file leaf-file-name="SectorSelect.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/SectorSelect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="42" selection-start="2894" selection-end="2894" vertical-scroll-proportion="-23.538462" vertical-offset="663" max-vertical-offset="2074">
+            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="527">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Profile.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Profile.php">
+      <file leaf-file-name="VersionSelect.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/VersionSelect.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="39" selection-start="1058" selection-end="1058" vertical-scroll-proportion="0.40420562" vertical-offset="147" max-vertical-offset="2074">
+            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.018599562" vertical-offset="0" max-vertical-offset="914">
+              <folding>
+                <marker date="1389028946747" expanded="true" signature="409:496" placeholder="SELECT versi..starbound_versions..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CharacterSelect.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/CharacterSelect.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="595">
+              <folding>
+                <element signature="e#54#95#0" expanded="true" />
+                <marker date="1389028926923" expanded="true" signature="520:605" placeholder="SELECT chara..users_characters..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MoonSelect.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/MoonSelect.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="663">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlanetSelect.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/PlanetSelect.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="646">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlanetTierSelect.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/PlanetTierSelect.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="612">
               <folding />
             </state>
           </provider>
@@ -180,18 +239,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/starbound_log/view/_mail/registration.html" />
-        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Database/Tables/Table_users.php" />
-        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Library/Singletons/Registration.php" />
-        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Library/Mail/MailRenderer.php" />
-        <option value="$PROJECT_DIR$/starbound_log/view/_mail/registration.phtml" />
-        <option value="$PROJECT_DIR$/trks/Trks/Singletons/TrksAcl.php" />
-        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Library/Mvc/MyNavigationFactory.php" />
-        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Character.php" />
-        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/User.php" />
-        <option value="$PROJECT_DIR$/starbound_log/config/custom/controllers_structure.config.php" />
-        <option value="$PROJECT_DIR$/starbound_log/config/custom/acl.config.php" />
-        <option value="$PROJECT_DIR$/trks/Trks/Model/TrksAbstractRow.php" />
         <option value="$PROJECT_DIR$/trks/Trks/Model/TrksAbstractTable.php" />
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Database/Tables/Table_users_characters.php" />
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Database/Tables/Table_biomes.php" />
@@ -208,8 +255,6 @@
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Database/Rows/Row_users.php" />
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Database/Rows/Row_planets_visits.php" />
         <option value="$PROJECT_DIR$/trks/Trks/Build/Sql/TrksEntityGenerator.php" />
-        <option value="$PROJECT_DIR$/starbound_log/view/_part/header.phtml" />
-        <option value="$PROJECT_DIR$/starbound_log/public/js/var.js" />
         <option value="$PROJECT_DIR$/starbound_log/config/zend/view_manager.config.php" />
         <option value="$PROJECT_DIR$/starbound_log/view/main/profile/rename-character.phtml" />
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterEdit.php" />
@@ -227,10 +272,24 @@
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterAddForm.php" />
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterEditForm.php" />
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/LoginForm.php" />
-        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/PlanetVisitForm.php" />
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/RegisterForm.php" />
         <option value="$PROJECT_DIR$/starbound_log/config/zend/navigation.config.php" />
         <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Profile.php" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/PlanetVisitForm.php" />
+        <option value="$PROJECT_DIR$/zend/Zend/Form/Element/Number.php" />
+        <option value="$PROJECT_DIR$/starbound_log/view/main/planets/my.phtml" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Planets.php" />
+        <option value="$PROJECT_DIR$/starbound_log/public/js/var.js" />
+        <option value="$PROJECT_DIR$/starbound_log/view/_part/header.phtml" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/AddPlanetVisitForm.php" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/BiomeSelect.php" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/CharacterSelect.php" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/MoonSelect.php" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/PlanetSelect.php" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/PlanetTierSelect.php" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/RatingSelect.php" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/SectorSelect.php" />
+        <option value="$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/VersionSelect.php" />
       </list>
     </option>
   </component>
@@ -550,6 +609,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="zend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="starbound_log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Element" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="starbound_log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="trks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -661,6 +760,32 @@
               <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Helper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="starbound_log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Trks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -733,6 +858,10 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="planets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -767,24 +896,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="starbound_log" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="starbound_log" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -860,11 +971,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Database" />
+              <option name="myItemId" value="Forms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Tables" />
+              <option name="myItemId" value="Elements" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -887,10 +998,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Rows" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -917,28 +1024,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Proxies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="starbound_log" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="starbound_log" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StarboundLog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Database" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1048,11 +1133,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\home\coding\starbound_log\starbound_log\StarboundLog\Model\Forms\Elements" />
+      <recent name="C:\home\coding\starbound_log\starbound_log\view\main\planets" />
       <recent name="C:\home\coding\starbound_log\starbound_log\StarboundLog\Model\Database\Proxies" />
       <recent name="C:\home\coding\starbound_log\starbound_log\view\main\profile" />
       <recent name="C:\home\coding\starbound_log\starbound_log\StarboundLog\Model\Forms" />
-      <recent name="C:\home\coding\starbound_log\trks\Trks\Validator" />
-      <recent name="C:\home\coding\starbound_log\zend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\home\coding\starbound_log\starbound_log\public\images" />
@@ -1319,7 +1404,7 @@
       <workItem from="1388360282045" duration="54980000" />
       <workItem from="1388626719405" duration="1226000" />
       <workItem from="1388630835128" duration="50631000" />
-      <workItem from="1388908515955" duration="49967000" />
+      <workItem from="1388908515955" duration="58834000" />
     </task>
     <task id="LOCAL-00001" summary="developr">
       <created>1387326523069</created>
@@ -1445,11 +1530,27 @@
       <created>1389019368936</created>
       <updated>1389019368936</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="refaktoryzacje nazw klas formularzowych, favorites zamiast queue">
+      <created>1389019925497</created>
+      <updated>1389019925497</updated>
+    </task>
+    <task id="LOCAL-00033" summary="zmiany w bazie danych (uwzględnienie sektorów, rozdział na planety w ramach systemu i oddzielenie księżyców)">
+      <created>1389025497397</created>
+      <updated>1389025497397</updated>
+    </task>
+    <task id="LOCAL-00034" summary="zmiany w bazie danych (uwzględnienie sektorów, rozdział na planety w ramach systemu i oddzielenie księżyców, od razu sektory mają wersje zamiast konkretne wizyty)&#10;">
+      <created>1389026295168</created>
+      <updated>1389026295168</updated>
+    </task>
+    <task id="LOCAL-00035" summary="zmiany w bazie danych (uwzględnienie sektorów, rozdział na planety w ramach systemu i oddzielenie księżyców, od razu sektory mają wersje zamiast konkretne wizyty)&#10;">
+      <created>1389028898434</created>
+      <updated>1389028898434</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246298000" />
+    <option name="totallyTimeSpent" value="255165000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1475,76 +1576,41 @@
     <frame x="177" y="0" width="2382" height="1440" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17340791" sideWeight="0.33039647" order="0" side_tool="true" content_ui="tabs" x="1268" y="734" width="1109" height="1240" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32735777" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12908778" sideWeight="0.4606625" order="0" side_tool="true" content_ui="tabs" x="1268" y="734" width="1109" height="1240" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32735777" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2922837" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2922837" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17340791" sideWeight="0.6685022" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17340791" sideWeight="0.66873705" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18545611" sideWeight="0.4979296" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998441" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289166" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998441" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289166" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289166" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12908778" sideWeight="0.53933746" order="1" side_tool="false" content_ui="tabs" x="1121" y="508" width="494" height="423" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289166" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12908778" sideWeight="0.53933746" order="1" side_tool="false" content_ui="tabs" x="1121" y="508" width="494" height="423" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19707401" sideWeight="0.670304" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24707717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24707717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998441" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998441" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1858864" sideWeight="0.5005807" order="0" side_tool="true" content_ui="tabs" x="1268" y="734" width="1109" height="1240" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17340791" sideWeight="0.66952455" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1858864" sideWeight="0.49941927" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289166" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289166" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21729776" sideWeight="0.670304" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.248636" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32735777" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998441" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12908778" sideWeight="0.5404564" order="1" side_tool="false" content_ui="tabs" x="1121" y="508" width="494" height="423" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998441" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969603" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USERS">
@@ -1558,9 +1624,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="error page fix" />
-    <MESSAGE value="gotowy szkielet - dodany routing a'la zend1 (model/kontroler/akcja)" />
-    <MESSAGE value="doctrine - generowanie repo" />
     <MESSAGE value="rename controllera, menu items przekazywane do view" />
     <MESSAGE value="rozdzielenie na library w StarboundLog i oddzielne, &quot;globalne&quot; - Trks" />
     <MESSAGE value="phpunit, testy, i zaczątek auth" />
@@ -1583,7 +1646,10 @@
     <MESSAGE value="ajax loader (spinner, indeterminate progress bar maskujący diva)&#10;" />
     <MESSAGE value="characters (dodawanie, usuwanie, edytowanie), json-y, podział kontrolera user na user i profile, cancelFormUrl w ViewData" />
     <MESSAGE value="zmiany w bazie (planets_favorites)" />
-    <option name="LAST_COMMIT_MESSAGE" value="zmiany w bazie (planets_favorites)" />
+    <MESSAGE value="refaktoryzacje nazw klas formularzowych, favorites zamiast queue" />
+    <MESSAGE value="zmiany w bazie danych (uwzględnienie sektorów, rozdział na planety w ramach systemu i oddzielenie księżyców)" />
+    <MESSAGE value="zmiany w bazie danych (uwzględnienie sektorów, rozdział na planety w ramach systemu i oddzielenie księżyców, od razu sektory mają wersje zamiast konkretne wizyty)&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="zmiany w bazie danych (uwzględnienie sektorów, rozdział na planety w ramach systemu i oddzielenie księżyców, od razu sektory mają wersje zamiast konkretne wizyty)&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1595,218 +1661,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zend/Zend/Validator/Db/AbstractDb.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="48" selection-start="815" selection-end="828" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="3706">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zend/Doctrine/ORM/Tools/EntityGenerator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1057" column="21" selection-start="34160" selection-end="34191" vertical-scroll-proportion="-254.88461" vertical-offset="8282" max-vertical-offset="18921">
-          <folding>
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1368258672000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trks/Trks/Build/Sql/Generator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="48" selection-start="2566" selection-end="2566" vertical-scroll-proportion="-15.230769" vertical-offset="828" max-vertical-offset="2312">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trks/Trks/Build/Sql/TrksTableGenerator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="6" selection-start="3264" selection-end="3309" vertical-scroll-proportion="-6.3846154" vertical-offset="1704" max-vertical-offset="4709">
-          <folding>
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1388995515461" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trks/Trks/Build/Sql/TrksEntityGenerator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="8" selection-start="3359" selection-end="3359" vertical-scroll-proportion="-19.846153" vertical-offset="1286" max-vertical-offset="9146">
-          <folding>
-            <element signature="e#185#221#0" expanded="true" />
-            <element signature="e#4344#4478#0" expanded="true" />
-            <element signature="e#4633#4781#0" expanded="true" />
-            <element signature="e#4899#5098#0" expanded="true" />
-            <element signature="e#5341#5599#0" expanded="true" />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1389004477030" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/view/_part/header.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="97" selection-start="2095" selection-end="2095" vertical-scroll-proportion="-13.730769" vertical-offset="255" max-vertical-offset="1411">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/public/js/var.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="82" selection-start="1370" selection-end="1421" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/config/zend/view_helpers.config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="940">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/config/zend/view_manager.config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="10" selection-start="812" selection-end="812" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zend/Zend/Mvc/Service/ViewJsonStrategyFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="32" selection-start="1093" selection-end="1093" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zend/Zend/View/Strategy/JsonStrategy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="20" selection-start="1117" selection-end="1117" vertical-scroll-proportion="13.769231" vertical-offset="732" max-vertical-offset="1717">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zend/Zend/View/Model/ViewModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="20" selection-start="1550" selection-end="1550" vertical-scroll-proportion="-12.038462" vertical-offset="231" max-vertical-offset="4913">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zend/Zend/View/Model/JsonModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="6" selection-start="410" selection-end="410" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="765">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trks/Trks/Model/TrksAbstractRow.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="15" selection-start="132" selection-end="132" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="425">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/public/js/loader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="9" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1139">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/public/mws_admin/js/libs/jquery-1.8.3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5516" column="4" selection-start="154061" selection-end="154061" vertical-scroll-proportion="0.33297873" vertical-offset="93204" max-vertical-offset="160871">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zend/Zend/Form/Element.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="276" column="20" selection-start="6345" selection-end="6345" vertical-scroll-proportion="0.33260393" vertical-offset="2654" max-vertical-offset="4114">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zend/Zend/Form/Form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="849" column="23" selection-start="25526" selection-end="25526" vertical-scroll-proportion="-22.076923" vertical-offset="10000" max-vertical-offset="10914">
-          <folding>
-            <element signature="e#7371#7624#0" expanded="false" />
-            <element signature="e#8797#8903#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/view/main/profile/rename-character.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="18" selection-start="185" selection-end="185" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/starbound_log/init.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="81" selection-start="1202" selection-end="1202" vertical-scroll-proportion="-18.961538" vertical-offset="0" max-vertical-offset="1564">
@@ -1880,13 +1734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/view/main/profile/add-character.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="25" selection-start="192" selection-end="192" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/starbound_log/view/main/home/index.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
@@ -1902,15 +1749,6 @@
           <folding>
             <marker date="1388742012322" expanded="false" signature="-1:-1" placeholder="..." />
             <marker date="1388742012322" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Planets.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="940">
-          <folding>
-            <element signature="e#49#99#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1941,16 +1779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trks/Trks/Mvc/Controller/TrksAbstractController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="30" selection-start="3072" selection-end="3072" vertical-scroll-proportion="-41.46154" vertical-offset="452" max-vertical-offset="1683">
-          <folding>
-            <element signature="e#40#90#0" expanded="true" />
-            <element signature="e#877#1103#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/starbound_log/view/_part/tbody.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="446" selection-end="446" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="595">
@@ -1973,13 +1801,6 @@
           <folding>
             <marker date="1389010595619" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Database/Rows/Row_planets_favorites.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="17.153847" vertical-offset="446" max-vertical-offset="1360">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2018,37 +1839,14 @@
             <element signature="e#378#472#0" expanded="true" />
             <element signature="e#541#588#0" expanded="true" />
             <element signature="e#624#674#0" expanded="true" />
-            <marker date="1389019232560" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..planets_favorites..." />
+            <marker date="1389019232000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..planets_favorites..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterAddForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="368" selection-end="368" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="459">
-          <folding>
-            <element signature="e#925#1060#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterEditForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="12" selection-start="368" selection-end="368" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="306">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/LoginForm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="8" selection-start="229" selection-end="229" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="442">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/PlanetVisitForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="62" selection-end="62" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="238">
           <folding />
         </state>
       </provider>
@@ -2067,10 +1865,238 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/trks/Trks/Singletons/TrksDbAdapter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="27" selection-start="118" selection-end="118" vertical-scroll-proportion="1.9615384" vertical-offset="204" max-vertical-offset="1343">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zend/Zend/Form/Element/Select.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="66" selection-start="2806" selection-end="2823" vertical-scroll-proportion="-10.961538" vertical-offset="752" max-vertical-offset="3247">
+          <folding>
+            <element signature="e#6218#6311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zend/Zend/Form/View/Helper/FormSelect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="37" selection-start="4186" selection-end="4186" vertical-scroll-proportion="-13.730769" vertical-offset="1275" max-vertical-offset="3519">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterEditForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="12" selection-start="368" selection-end="368" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_PLUGINS_DIR$/php-133.326/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_9.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="9" selection-start="4140" selection-end="4140" vertical-scroll-proportion="-10.961538" vertical-offset="242" max-vertical-offset="3383">
+          <folding>
+            <element signature="e#22770#23240#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zend/Zend/Form/Element.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="6" selection-start="424" selection-end="424" vertical-scroll-proportion="40.53846" vertical-offset="1173" max-vertical-offset="4114">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zend/Zend/Form/Element/Number.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="13" selection-start="1862" selection-end="1862" vertical-scroll-proportion="-12.0" vertical-offset="487" max-vertical-offset="1343">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Database/Rows/Row_systems.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="13.730769" vertical-offset="357" max-vertical-offset="1292">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Database/Rows/Row_planets_visits.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/view/_part/form/form_row.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="940">
+          <folding>
+            <marker date="1388894183282" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/view/main/profile/add-character.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="25" selection-start="0" selection-end="471" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/view/main/planets/add.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="40" selection-start="93" selection-end="93" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="39" selection-start="1058" selection-end="1058" vertical-scroll-proportion="0.40420562" vertical-offset="147" max-vertical-offset="2074">
+        <state line="83" column="5" selection-start="2477" selection-end="3335" vertical-scroll-proportion="-12.0" vertical-offset="844" max-vertical-offset="2516">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/CharacterAddForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="920" selection-end="1080" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="680">
+          <folding>
+            <element signature="e#157#354#0" expanded="true" />
+            <element signature="e#384#766#0" expanded="true" />
+            <element signature="e#925#1060#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trks/Trks/Mvc/Controller/TrksAbstractController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="23" selection-start="1127" selection-end="1127" vertical-scroll-proportion="-12.038462" vertical-offset="384" max-vertical-offset="1683">
+          <folding>
+            <element signature="e#40#90#0" expanded="true" />
+            <element signature="e#877#1103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Controller/Main/Planets.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="77" selection-start="473" selection-end="473" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="748">
+          <folding>
+            <element signature="e#49#99#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/public/js/var.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="32" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/view/_part/header.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="90" selection-start="4463" selection-end="4463" vertical-scroll-proportion="-27.461538" vertical-offset="510" max-vertical-offset="1462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trks/Trks/Form/View/Helper/FormMultiCheckbox.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2006">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/AddPlanetVisitForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="88" selection-start="2381" selection-end="2381" vertical-scroll-proportion="-11.615385" vertical-offset="803" max-vertical-offset="2006">
+          <folding>
+            <element signature="e#71#274#0" expanded="true" />
+            <element signature="e#343#524#0" expanded="true" />
+            <element signature="e#555#772#0" expanded="true" />
+            <element signature="e#798#1015#0" expanded="true" />
+            <element signature="e#1041#1270#0" expanded="true" />
+            <element signature="e#1301#1582#0" expanded="true" />
+            <element signature="e#1611#1845#0" expanded="true" />
+            <element signature="e#1904#2041#0" expanded="true" />
+            <element signature="e#2418#2614#0" expanded="true" />
+            <element signature="e#2645#2786#0" expanded="true" />
+            <element signature="e#2815#3136#0" expanded="true" />
+            <element signature="e#3166#3487#0" expanded="true" />
+            <element signature="e#3519#3786#0" expanded="true" />
+            <element signature="e#3814#4239#0" expanded="true" />
+            <element signature="e#4275#4398#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/BiomeSelect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="493">
+          <folding>
+            <element signature="e#54#88#0" expanded="true" />
+            <marker date="1389028923667" expanded="true" signature="407:466" placeholder="SELECT biome..biomes..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/CharacterSelect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="595">
+          <folding>
+            <element signature="e#54#95#0" expanded="true" />
+            <marker date="1389028926923" expanded="true" signature="520:605" placeholder="SELECT chara..users_characters..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/MoonSelect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/PlanetSelect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/PlanetTierSelect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/RatingSelect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="493">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/SectorSelect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starbound_log/StarboundLog/Model/Forms/Elements/VersionSelect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.018599562" vertical-offset="0" max-vertical-offset="914">
+          <folding>
+            <marker date="1389028946747" expanded="true" signature="409:496" placeholder="SELECT versi..starbound_versions..." />
+          </folding>
         </state>
       </provider>
     </entry>

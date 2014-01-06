@@ -11,6 +11,7 @@
       <w>dbname</w>
       <w>functor</w>
       <w>hydrator</w>
+      <w>ibutton</w>
       <w>instanceof</w>
       <w>invokables</w>
       <w>isset</w>
@@ -22,6 +23,7 @@
       <w>struct</w>
       <w>symfony</w>
       <w>tbody</w>
+      <w>textarea</w>
       <w>vergroup</w>
       <w>versiongroups</w>
     </words>

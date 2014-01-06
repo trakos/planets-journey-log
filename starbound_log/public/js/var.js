@@ -19,6 +19,7 @@
     $(function() {
         $(window).resize(onResize);
         onResize();
+        $('.ibutton').iButton();
 
         // Checkable Tables
         $('table tbody td.single-checkbox-column :checkbox').on('change', function () {
