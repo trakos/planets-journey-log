@@ -17,7 +17,7 @@ use Zend\Form\Annotation;
  * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ObjectProperty")
  * @Annotation\Attributes({"class":"mws-form-inline mws-form "})
  */
-class CharacterEdit extends CharacterAdd
+class CharacterEditForm extends CharacterAddForm
 {
     /**
      * @Annotation\Type("Zend\Form\Element\Hidden")

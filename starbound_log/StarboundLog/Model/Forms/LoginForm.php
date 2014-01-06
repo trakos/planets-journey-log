@@ -9,7 +9,7 @@ use Zend\Form\Annotation;
  * @Annotation\Name("Login")
  * @Annotation\Attributes({"class":" mws-form "})
  */
-class Login
+class LoginForm
 {
     /**
      * @Annotation\Type("Zend\Form\Element\Text")

@@ -11,7 +11,7 @@ use Zend\Form\Annotation;
  * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ObjectProperty")
  * @Annotation\Attributes({"class":"mws-form-inline mws-form "})
  */
-class Register
+class RegisterForm
 {
     /**
      * @Annotation\Type("Zend\Form\Element\Text")

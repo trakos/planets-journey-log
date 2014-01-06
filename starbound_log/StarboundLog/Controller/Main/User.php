@@ -7,8 +7,8 @@ use StarboundLog\Library\Security\MyAuth;
 use StarboundLog\Library\Mvc\MyAbstractController;
 use StarboundLog\Library\Singletons\Registration;
 use StarboundLog\Model\Database\Proxies\Proxy_users;
-use StarboundLog\Model\Forms\Login;
-use StarboundLog\Model\Forms\Register;
+use StarboundLog\Model\Forms\LoginForm;
+use StarboundLog\Model\Forms\RegisterForm;
 use StarboundLog\Model\ViewData;
 use Trks\Mvc\Controller\TrksForwardException;
 use Zend\Form\Annotation\AnnotationBuilder;
@@ -21,7 +21,7 @@ class User extends MyAbstractController
         if (MyAuth::hasIdentity()) {
             return $this->redirect()->toRoute('main');
         }
-        $registerForm = new Register();
+        $registerForm = new RegisterForm();
         $formResult   = $this->useAnnotationForm($registerForm, 'main', 'register', 'user');
 
 
@@ -53,7 +53,7 @@ class User extends MyAbstractController
         if (MyAuth::hasIdentity()) {
             return $this->redirect()->toRoute('main');
         }
-        $loginForm  = new Login();
+        $loginForm  = new LoginForm();
         $formResult = $this->useAnnotationForm($loginForm, 'main', 'login', 'user');
 
 

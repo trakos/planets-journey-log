@@ -13,8 +13,8 @@ use StarboundLog\Library\Mvc\MyAbstractController;
 use StarboundLog\Library\Security\MyAuth;
 use StarboundLog\Model\Database\Rows\Row_users_characters;
 use StarboundLog\Model\Database\Tables\Table_users_characters;
-use StarboundLog\Model\Forms\CharacterAdd;
-use StarboundLog\Model\Forms\CharacterEdit;
+use StarboundLog\Model\Forms\CharacterAddForm;
+use StarboundLog\Model\Forms\CharacterEditForm;
 use StarboundLog\Model\ViewData;
 use Zend\View\Model\JsonModel;
 
@@ -29,17 +29,17 @@ class Profile extends MyAbstractController
         $this->queueTableUrl = $this->url()->fromRoute('main', array('controller' => 'profile', 'action' => 'queue'));
     }
 
-    public function queueAction()
+    public function favoritesAction()
     {
 
     }
 
-    public function addToQueueAction()
+    public function addToFavoritesAction()
     {
 
     }
 
-    public function removeFromQueueAction()
+    public function removeFromFavoritesAction()
     {
 
     }
@@ -54,7 +54,7 @@ class Profile extends MyAbstractController
     public function addCharacterAction()
     {
         ViewData::$formCancelUrl = $this->characterTableUrl;
-        $characterAddForm = new CharacterAdd();
+        $characterAddForm = new CharacterAddForm();
         $formResult       = $this->useAnnotationForm($characterAddForm, 'main', 'add-character', 'profile');
 
         if ($formResult->isPost && !$formResult->isValid) {
@@ -83,7 +83,7 @@ class Profile extends MyAbstractController
             return $this->redirect()->toUrl($this->characterTableUrl);
         }
 
-        $characterEditForm       = new CharacterEdit();
+        $characterEditForm       = new CharacterEditForm();
         $characterEditForm->id   = $userCharacter->character_id;
         $characterEditForm->name = $userCharacter->character_name;
         $formResult              = $this->useAnnotationForm($characterEditForm, 'main', 'rename-character', 'profile');
