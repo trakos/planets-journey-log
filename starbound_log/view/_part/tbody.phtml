@@ -1,0 +1,30 @@
+<?php
+/* @var \Trks\View\TrksPhpRenderer $this */
+/* @var array[]|object[] $tableData */
+/* @var $rowKeyOrder */
+/* @var $drawCheckbox */
+/* @var $checkboxValueIndex */
+if (!isset($rowKeyOrder) || empty($rowKeyOrder) || !is_array($rowKeyOrder)) {
+    $rowKeyOrder = !empty($tableData) ? array_keys(is_array($tableData[0]) ? $tableData[0] : get_object_vars($tableData[0])) : array();
+}
+if (!isset($drawCheckbox)) {
+    $drawCheckbox = false;
+}
+?>
+
+<tbody>
+<?php foreach ($tableData as $rowData): ?>
+    <tr>
+        <?php if ($drawCheckbox): ?>
+            <td class="<?= $drawCheckbox == 'single' ? 'single-checkbox-column' : 'checkbox-column' ?>">
+                <label>
+                    <input type="checkbox" value="<?= is_array($rowData) ? $rowData[$checkboxValueIndex] : $rowData->$checkboxValueIndex ?>">
+                </label>
+            </td>
+        <?php endif; ?>
+        <?php foreach ($rowKeyOrder as $key): ?>
+            <td><?= $this->escapeHtml(is_array($rowData) ? $rowData[$key] : $rowData->$key); ?></td>
+        <?php endforeach; ?>
+    </tr>
+<?php endforeach; ?>
+</tbody>

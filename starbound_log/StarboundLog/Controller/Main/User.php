@@ -40,11 +40,6 @@ class User extends MyAbstractController
         return array('form' => $formResult->form);
     }
 
-    public function queueAction()
-    {
-
-    }
-
     public function logoutAction()
     {
         if (MyAuth::hasIdentity()) {
@@ -95,10 +90,5 @@ class User extends MyAbstractController
             }
         }
         return $this->redirect()->toRoute('main');
-    }
-
-    public function settingsAction()
-    {
-
     }
 }

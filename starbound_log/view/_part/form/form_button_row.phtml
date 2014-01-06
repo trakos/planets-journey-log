@@ -24,14 +24,22 @@
         if (!isset($button['isSubmit'])) {
             $button['isSubmit'] = in_array($button['value'], [ 'Submit', 'Send', 'Save', 'submit', 'send', 'save' ]);
         }
-        if (!isset($button['class'])) {
-            $button['class'] = $button['isSubmit'] ? 'btn btn-danger' : 'btn';
-        }
         if (!isset($button['style'])) {
             $button['style'] = '';
         }
         if (!isset($button['onClick'])) {
             $button['onClick'] = '';
+            if ($button['isSubmit'] == -1) {
+                if (StarboundLog\Model\ViewData::$formCancelUrl) {
+                    $button['onClick'] = sprintf('location.href=\'%s\';', $this->escapeJs(StarboundLog\Model\ViewData::$formCancelUrl));
+                } else {
+                    $button['onClick'] = 'history.go(-1);';
+                }
+                $button['isSubmit'] = 0;
+            }
+        }
+        if (!isset($button['class'])) {
+            $button['class'] = $button['isSubmit'] ? 'btn btn-danger' : 'btn';
         }
         $buttonsProcessed[] = $button;
     }

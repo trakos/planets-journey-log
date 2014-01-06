@@ -13,7 +13,7 @@ use Zend\View\Model\ViewModel;
 
 abstract class TrksAbstractController extends AbstractActionController
 {
-    abstract protected function createViewData(ViewModel $viewData);
+    abstract protected function createViewData();
 
     /**
      * @param $module
@@ -24,6 +24,10 @@ abstract class TrksAbstractController extends AbstractActionController
      */
     abstract protected function isAllowed($module, $controller, $action);
 
+    protected function init()
+    {
+
+    }
     private $_trksFlashMessenger;
 
     public function flashMessenger()
@@ -84,14 +88,13 @@ abstract class TrksAbstractController extends AbstractActionController
 
         try {
             $this->isAllowed($module, $controller, $action);
+            $this->init();
             $result = parent::onDispatch($e);
         } catch (TrksForwardException $exception) {
             return $this->redirect()->toRoute($exception->redirectRoute, $exception->redirectParams, $exception->redirectOptions);
         }
 
-        if ($result instanceof ViewModel) {
-            $this->createViewData($result);
-        }
+        $this->createViewData();
         return $result;
     }
 } 

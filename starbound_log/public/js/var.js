@@ -14,6 +14,30 @@
             event.preventDefault();
         });
     };
-    $(onResize);
-    $(window).resize(onResize);
+
+
+    $(function() {
+        $(window).resize(onResize);
+        onResize();
+
+        // Checkable Tables
+        $('table tbody td.single-checkbox-column :checkbox').on('change', function () {
+            var that = this;
+            $(this).parents('table').children('tbody').each(function (i, tbody) {
+                $(tbody).find('.single-checkbox-column').each(function (j, cb) {
+                    var checkbox = $(':checkbox', $(cb));
+                    if (checkbox.get(0) != that) {
+                        checkbox.prop("checked", false);//.trigger('change');
+                    }
+                });
+            });
+        });
+        $('.mws-table tbody tr').click(function() {
+            if ($(this).find('td.single-checkbox-column')) {
+                var checkbox = $(this).find('td.single-checkbox-column :checkbox');
+                checkbox.prop("checked", !checkbox.prop("checked"));
+                checkbox.change();
+            }
+        });
+    });
 }

@@ -50,6 +50,12 @@ return array(
             array(
                 'module'     => 'main',
                 'controller' => 'user',
+                'action'     => 'logout',
+                'resource'   => Acl::RES_USER
+            ),
+            array(
+                'module'     => 'main',
+                'controller' => 'profile',
                 'action'     => null,
                 'resource'   => Acl::RES_USER
             ),

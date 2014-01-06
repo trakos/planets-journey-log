@@ -36,7 +36,7 @@ class MyAbstractController extends TrksAbstractController
      *
      * @param ViewModel $viewData
      */
-    protected function createViewData(ViewModel $viewData)
+    protected function createViewData()
     {
         ViewData::$identity = MyAuth::hasIdentity() ? MyAuth::getIdentity() : null;
     }

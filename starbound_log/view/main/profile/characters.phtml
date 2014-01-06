@@ -1,0 +1,101 @@
+<?php /* @var \Trks\View\TrksPhpRenderer $this */ ?>
+<?php /* @var \StarboundLog\Model\Database\Rows\Row_users_characters[] $characters */ ?>
+
+<script type="text/javascript">
+
+    function getSelectedCheckbox() {
+        var checkbox = $('#table_characters').find('td.single-checkbox-column :checked');
+        if (checkbox.length < 1) alert('You have not selected any row!');
+        else if (checkbox.length > 1) alert('You have selected more than one row!');
+        else return checkbox;
+        return null;
+    }
+
+    $(function () {
+        var panelMask;
+        var maskAble = $('.mask-able');
+        if (maskAble.length == 1) {
+            panelMask = new AjaxLoader(maskAble, []);
+        }
+
+        $("#character_remove_selected").click(function () {
+            var url = "<?= $this->url('main', array('controller' => 'profile', 'action' => 'remove-character', 'id' => '--id--')) ?>";
+            var checkbox = getSelectedCheckbox();
+
+            if (checkbox) {
+                var id = checkbox.prop('value');
+                if (confirm("Are you sure you want to remove this character? This action will also remove all history/visits for it!")) {
+                    url = url.replace('--id--', id);
+                    panelMask.reAdd();
+                    $.getJSON(url)
+                        .done(function (json) {
+                            panelMask.remove();
+                            if (json.success) {
+                                var tr = getSelectedCheckbox().parents("tr");
+                                tr.length ? tr.get(0).remove() : null;
+                                alert("Character removed.");
+                            } else {
+                                alert("There was some unexpected problem while removing the character.");
+                            }
+                        })
+                        .fail(function (jqxhr, textStatus, error) {
+                            panelMask.remove();
+                            alert("Removing failed, there might be some connection problem or session has expired.");
+                        });
+                }
+            }
+        });
+
+        $("#character_rename_selected").click(function () {
+            var url = "<?= $this->url('main', array('controller' => 'profile', 'action' => 'rename-character', 'id' => '--id--')) ?>";
+            var checkbox = getSelectedCheckbox();
+
+            if (checkbox) {
+                var id = checkbox.prop('value');
+                url = url.replace('--id--', id);
+                location.href = url;
+            }
+        });
+    });
+</script>
+
+<div class="mws-panel mask-able">
+    <div class="mws-panel-header">
+        <span>
+            Your characters
+        </span>
+    </div>
+    <div class="mws-panel-toolbar">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <a class="btn" href="<?= $this->url('main', array('controller' => 'profile', 'action' => 'add-character')) ?>">
+                    <i class="icol-add"></i>
+                    Add
+                </a>
+                <a class="btn" href="#" id="character_remove_selected">
+                    <i class="icol-bin-closed"></i>
+                    Remove
+                </a>
+                <a class="btn" href="#" id="character_rename_selected">
+                    <i class="icol-pencil"></i>
+                    Rename
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="mws-panel-body no-padding">
+        <?= $this->messages()->render(); ?>
+        <table class="mws-table" id="table_characters">
+            <?=
+            $this->render("_part/tbody", array(
+                'tableData'          => $characters,
+                'rowKeyOrder'        => array('character_name'),
+                'drawCheckbox'       => 'single',
+                'checkboxValueIndex' => 'character_id',
+            )); ?>
+        </table>
+        <?php if (empty($characters)): ?>
+            <p class="empty-table">No characters defined</p>
+        <?php endif; ?>
+    </div>
+</div>

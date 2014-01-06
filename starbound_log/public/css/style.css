@@ -4,3 +4,20 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.mws-table .single-checkbox-column {
+    width: 32px;
+    text-align: center;
+}
+
+.mws-table tbody tr:hover td,
+.mws-table tbody tr.even:hover td,
+.mws-table tbody tr.odd:hover td {
+    background-color: #c5d52b;
+}
+
+p.empty-table {
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+}
