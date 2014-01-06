@@ -41,4 +41,25 @@ class Row_planets extends \Trks\Model\TrksAbstractRow
             'planet_y' => $this->planet_y,
         );
     }
+
+    /**
+     *
+     * @return void
+     */
+    public function save()
+    {
+        \StarboundLog\Model\Database\Tables\Table_planets::get()->saveRow($this);
+    }
+
+    /**
+     * @param int $primaryId
+     *
+     * @return \StarboundLog\Model\Database\Rows\Row_planets|null
+     */
+    static public function get($primaryId)
+    {
+        return \StarboundLog\Model\Database\Tables\Table_planets::get()->getRow($primaryId);
+    }
+
+
 }

@@ -7,8 +7,12 @@ use Doctrine\ORM\Mapping\ClassMetadataInfo,
     Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Tools\EntityGenerator;
 
+/**
+ * @property array metadatas
+ */
 class TrksEntityGenerator extends EntityGenerator
 {
+    public $tableNamespace;
     /**
      * @var bool
      */
@@ -138,7 +142,53 @@ class TrksEntityGenerator extends EntityGenerator
 <toArray>
         );
     }
+
+    /**
+     *
+     * @return void
+     */
+    public function save()
+    {
+        <table_class>::get()->saveRow($this);
+    }
+
+    /**
+     * @param int $primaryId
+     *
+     * @return <row_class>|null
+     */
+    static public function get($primaryId)
+    {
+        return <table_class>::get()->getRow($primaryId);
+    }
+
+<connected_rows_getters>
 }
+';
+    private static $getConnectedTemplate =
+'
+    /**
+     *
+     * @return <row_class>|null
+     */
+    public function get<entity_name>()
+    {
+        if (!$this-><join_column_name>) return null;
+        return <table_class>::get()->getRow($this-><join_column_name>);
+    }
+
+    /**
+     *
+     * @param <row_class> $entity
+     *
+     * @throws \Exception
+     * @return void
+     */
+    public function set<entity_name>($entity)
+    {
+        if (!$entity-><foreign_column_name>) throw new \Exception("Row has to be initialized!");
+        $this-><join_column_name> = $entity-><foreign_column_name>;
+    }
 ';
 
     public function __construct()
@@ -179,6 +229,8 @@ class TrksEntityGenerator extends EntityGenerator
      */
     public function generate(array $metadatas, $outputDirectory)
     {
+        $this->metadatas = $metadatas;
+
         foreach ($metadatas as $metadata) {
             $this->writeEntityClass($metadata, $outputDirectory);
         }
@@ -237,6 +289,9 @@ class TrksEntityGenerator extends EntityGenerator
             '<entityBody>',
             '<exchangeArray>',
             '<toArray>',
+            '<row_class>',
+            '<table_class>',
+            '<connected_rows_getters>',
         );
 
         $replacements = array(
@@ -246,10 +301,23 @@ class TrksEntityGenerator extends EntityGenerator
             $this->generateEntityBody($metadata),
             $this->generateExchangeArray($metadata),
             $this->generateToArray($metadata),
+            $this->getEntityRowClassName($metadata->table['name']),
+            $this->getEntityTableClassName($metadata->table['name']),
+            $this->generateConnectedRowsGetters($metadata),
         );
 
         $code = str_replace($placeHolders, $replacements, self::$classTemplate);
         return str_replace('<spaces>', $this->spaces, $code);
+    }
+
+    protected function getEntityTableClassName($tableName)
+    {
+        return '\\' . $this->tableNamespace . '\\' . 'Table_' . $tableName;
+    }
+
+    protected function getEntityRowClassName($tableName)
+    {
+        return '\\' . $this->namespace . '\\' . 'Row_' . $tableName;
     }
 
     protected function generateEntityNamespace(ClassMetadataInfo $metadata)
@@ -299,6 +367,19 @@ class TrksEntityGenerator extends EntityGenerator
                 . (isset($fieldMapping['default']) ? ' = ' . var_export($fieldMapping['default'], true) : null) . ";\n";
         }
 
+        foreach ($metadata->associationMappings as $associationMapping) {
+            if ($this->hasProperty($associationMapping['fieldName'], $metadata)) {
+                continue;
+            }
+
+            if ($associationMapping['isOwningSide'] == 1) {
+                foreach ($associationMapping['targetToSourceKeyColumns'] as $columnName) {
+                    $lines[] = $this->spaces . $this->fieldVisibility . ' $' . $columnName
+                        . ($associationMapping['type'] == 'manyToMany' ? ' = array()' : null) . ";\n";
+                }
+            }
+        }
+
         return implode("\n", $lines);
     }
 
@@ -308,6 +389,17 @@ class TrksEntityGenerator extends EntityGenerator
 
         foreach ($metadata->fieldMappings as $fieldMapping) {
             $lines[] = $this->spaces . $this->spaces . str_replace('<property>', $fieldMapping['columnName'], self::$arrayExchangeFieldTemplate);
+        }
+        foreach ($metadata->associationMappings as $associationMapping) {
+            if ($this->hasProperty($associationMapping['fieldName'], $metadata)) {
+                continue;
+            }
+
+            if ($associationMapping['isOwningSide'] == 1) {
+                foreach ($associationMapping['targetToSourceKeyColumns'] as $columnName) {
+                    $lines[] = $this->spaces . $this->spaces . str_replace('<property>', $columnName, self::$arrayExchangeFieldTemplate);
+                }
+            }
         }
 
         return implode("\n", $lines);
@@ -320,8 +412,72 @@ class TrksEntityGenerator extends EntityGenerator
         foreach ($metadata->fieldMappings as $fieldMapping) {
             $lines[] = $this->spaces . $this->spaces . $this->spaces . str_replace('<property>', $fieldMapping['columnName'], self::$toArrayFieldTemplate);
         }
+        foreach ($metadata->associationMappings as $associationMapping) {
+            if ($this->hasProperty($associationMapping['fieldName'], $metadata)) {
+                continue;
+            }
+
+            if ($associationMapping['isOwningSide'] == 1) {
+                foreach ($associationMapping['targetToSourceKeyColumns'] as $columnName) {
+                    $lines[] = $this->spaces . $this->spaces . $this->spaces . str_replace('<property>', $columnName, self::$toArrayFieldTemplate);
+                }
+            }
+        }
 
         return implode("\n", $lines);
+    }
+
+    protected function generateConnectedRowsGetters(ClassMetadataInfo $metadata)
+    {
+        $lines = array();
+
+        foreach ($metadata->associationMappings as $associationMapping) {
+            if (
+                count($associationMapping['targetToSourceKeyColumns']) > 1
+                || $associationMapping['isOwningSide'] != 1
+                || $associationMapping['type'] == ClassMetadataInfo::MANY_TO_MANY
+            ) {
+                continue;
+            }
+
+            $placeHolders = array(
+                '<row_class>',
+                '<table_class>',
+                '<entity_name>',
+                '<join_column_name>',
+                '<foreign_column_name>',
+            );
+
+            $columnName = current($associationMapping['targetToSourceKeyColumns']);
+            $foreignColumnName = current($associationMapping['sourceToTargetKeyColumns']);
+
+            $connectedEntityMetadata = $this->findEntityMetadata($associationMapping['targetEntity']);
+            $connectedTableName = $connectedEntityMetadata->table['name'];
+
+            $replacements = array(
+                $this->getEntityRowClassName($connectedTableName),
+                $this->getEntityTableClassName($connectedTableName),
+                ucfirst($associationMapping['fieldName']),
+                $columnName,
+                $foreignColumnName,
+            );
+            $code = str_replace($placeHolders, $replacements, self::$getConnectedTemplate);
+            $lines[] = str_replace('<spaces>', $this->spaces, $code);
+
+        }
+
+        return implode("\n", $lines);
+    }
+
+    protected function findEntityMetadata($entityName)
+    {
+        foreach ($this->metadatas as $metadata) {
+            /* @var ClassMetadataInfo $metadata */
+            if ($metadata->name == $entityName) {
+                return $metadata;
+            }
+        }
+        throw new \Exception("Failed to find $entityName!");
     }
 
     protected function generateFieldMappingPropertyDocBlock(array $fieldMapping, ClassMetadataInfo $metadata)

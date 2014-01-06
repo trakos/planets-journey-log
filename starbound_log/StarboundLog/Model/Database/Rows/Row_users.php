@@ -62,4 +62,25 @@ class Row_users extends \Trks\Model\TrksAbstractRow
             'user_lastMail' => $this->user_lastMail,
         );
     }
+
+    /**
+     *
+     * @return void
+     */
+    public function save()
+    {
+        \StarboundLog\Model\Database\Tables\Table_users::get()->saveRow($this);
+    }
+
+    /**
+     * @param int $primaryId
+     *
+     * @return \StarboundLog\Model\Database\Rows\Row_users|null
+     */
+    static public function get($primaryId)
+    {
+        return \StarboundLog\Model\Database\Tables\Table_users::get()->getRow($primaryId);
+    }
+
+
 }

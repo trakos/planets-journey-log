@@ -69,7 +69,9 @@ class Generator
         $exporter->setEntityGenerator($entityGenerator);
 
         $entityGenerator->namespace = $this->namespace;
+        $entityGenerator->tableNamespace = $this->tableNamespace;
         $entityGenerator->setNumSpaces($this->numSpaces);
+        $entityGenerator->metadatas = $metadata;
 
         if ($this->classToExtend !== null) {
             $entityGenerator->setClassToExtend($this->classToExtend);

@@ -34,4 +34,25 @@ class Row_starbound_versiongroups extends \Trks\Model\TrksAbstractRow
             'vergroup_label' => $this->vergroup_label,
         );
     }
+
+    /**
+     *
+     * @return void
+     */
+    public function save()
+    {
+        \StarboundLog\Model\Database\Tables\Table_starbound_versiongroups::get()->saveRow($this);
+    }
+
+    /**
+     * @param int $primaryId
+     *
+     * @return \StarboundLog\Model\Database\Rows\Row_starbound_versiongroups|null
+     */
+    static public function get($primaryId)
+    {
+        return \StarboundLog\Model\Database\Tables\Table_starbound_versiongroups::get()->getRow($primaryId);
+    }
+
+
 }

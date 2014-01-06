@@ -34,4 +34,25 @@ class Row_biomes extends \Trks\Model\TrksAbstractRow
             'biome_name' => $this->biome_name,
         );
     }
+
+    /**
+     *
+     * @return void
+     */
+    public function save()
+    {
+        \StarboundLog\Model\Database\Tables\Table_biomes::get()->saveRow($this);
+    }
+
+    /**
+     * @param int $primaryId
+     *
+     * @return \StarboundLog\Model\Database\Rows\Row_biomes|null
+     */
+    static public function get($primaryId)
+    {
+        return \StarboundLog\Model\Database\Tables\Table_biomes::get()->getRow($primaryId);
+    }
+
+
 }
