@@ -16,29 +16,33 @@ class Row_planets extends \Trks\Model\TrksAbstractRow
     public $planet_id;
 
     /**
-     * @var integer
+     * @var boolean
      */
-    public $planet_x;
+    public $planet_number;
 
     /**
-     * @var integer
+     * @var boolean
      */
-    public $planet_y;
+    public $planet_moon;
+
+    public $planet_system_id;
 
 
     public function exchangeArray($data)
     {
         $this->planet_id = (isset($data['planet_id'])) ? $data['planet_id'] : null;
-        $this->planet_x = (isset($data['planet_x'])) ? $data['planet_x'] : null;
-        $this->planet_y = (isset($data['planet_y'])) ? $data['planet_y'] : null;
+        $this->planet_number = (isset($data['planet_number'])) ? $data['planet_number'] : null;
+        $this->planet_moon = (isset($data['planet_moon'])) ? $data['planet_moon'] : null;
+        $this->planet_system_id = (isset($data['planet_system_id'])) ? $data['planet_system_id'] : null;
     }
 
     public function toArray()
     {
         return array(
             'planet_id' => $this->planet_id,
-            'planet_x' => $this->planet_x,
-            'planet_y' => $this->planet_y,
+            'planet_number' => $this->planet_number,
+            'planet_moon' => $this->planet_moon,
+            'planet_system_id' => $this->planet_system_id,
         );
     }
 
@@ -61,5 +65,28 @@ class Row_planets extends \Trks\Model\TrksAbstractRow
         return \StarboundLog\Model\Database\Tables\Table_planets::get()->getRow($primaryId);
     }
 
+
+    /**
+     *
+     * @return \StarboundLog\Model\Database\Rows\Row_systems|null
+     */
+    public function getPlanetSystem()
+    {
+        if (!$this->planet_system_id) return null;
+        return \StarboundLog\Model\Database\Tables\Table_systems::get()->getRow($this->planet_system_id);
+    }
+
+    /**
+     *
+     * @param \StarboundLog\Model\Database\Rows\Row_systems $entity
+     *
+     * @throws \Exception
+     * @return void
+     */
+    public function setPlanetSystem($entity)
+    {
+        if (!$entity->system_id) throw new \Exception("Row has to be initialized!");
+        $this->planet_system_id = $entity->system_id;
+    }
 
 }
