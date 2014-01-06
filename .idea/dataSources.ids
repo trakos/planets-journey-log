@@ -11,7 +11,7 @@
       <column name="biome_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="biome_name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="biome_id"/>
-      <exported-key name="fk_planets_visits_biomes1" table="planets_visists" schema="" catalog="starbound_log_dev" columns="visit_biome_id"/>
+      <exported-key name="fk_planets_visits_biomes1" table="planets_visits" schema="" catalog="starbound_log_dev" columns="visit_biome_id"/>
       <index name="biome_name_UNIQUE" unique="true" columns="biome_name"/>
     </table>
     <table name="characters_planets" schema="" catalog="starbound_log_dev" type="TABLE">
@@ -26,28 +26,27 @@
       <index name="chapla_unique" unique="true" columns="chapla_planet_id,chapla_character_id"/>
       <index name="fk_characters_planets_users_characters1_idx" unique="false" columns="chapla_character_id"/>
     </table>
-    <table name="characters_queue" schema="" catalog="starbound_log_dev" type="TABLE">
-      <column name="chaque_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="chaque_character_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="chaque_planet_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="chaque_done" sqlType="BIT" length="0" precision="0" nullable="false" jdbcType="-7"/>
-      <primary-key name="PRIMARY" columns="chaque_id"/>
-      <foreign-key name="fk_characters_queue_users_characters1" columns="chaque_character_id" ref-table="users_characters" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="character_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fk_characters_queue_planets1" columns="chaque_planet_id" ref-table="planets" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="planet_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="fk_characters_queue_planets1_idx" unique="false" columns="chaque_planet_id"/>
-      <index name="fk_characters_queue_users_characters1_idx" unique="false" columns="chaque_character_id"/>
-    </table>
     <table name="planets" schema="" catalog="starbound_log_dev" type="TABLE">
       <column name="planet_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="planet_x" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="planet_y" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="planet_id"/>
       <exported-key name="fk_characters_planets_planets1" table="characters_planets" schema="" catalog="starbound_log_dev" columns="chapla_planet_id"/>
-      <exported-key name="fk_characters_queue_planets1" table="characters_queue" schema="" catalog="starbound_log_dev" columns="chaque_planet_id"/>
-      <exported-key name="fk_planets_visits_planets1" table="planets_visists" schema="" catalog="starbound_log_dev" columns="visit_planet_id"/>
+      <exported-key name="fk_planets_favorites_planets1" table="planets_favorites" schema="" catalog="starbound_log_dev" columns="plafav_planet_id"/>
+      <exported-key name="fk_planets_visits_planets1" table="planets_visits" schema="" catalog="starbound_log_dev" columns="visit_planet_id"/>
       <index name="coordinates_unique" unique="true" columns="planet_x,planet_y"/>
     </table>
-    <table name="planets_visists" schema="" catalog="starbound_log_dev" type="TABLE">
+    <table name="planets_favorites" schema="" catalog="starbound_log_dev" type="TABLE">
+      <column name="plafav_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="plafav_user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="plafav_planet_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="plafav_id"/>
+      <foreign-key name="fk_planets_favorites_users1" columns="plafav_user_id" ref-table="users" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_planets_favorites_planets1" columns="plafav_planet_id" ref-table="planets" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="planet_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_characters_queue_planets1_idx" unique="false" columns="plafav_planet_id"/>
+      <index name="fk_characters_queue_users_characters1_idx" unique="false" columns="plafav_user_id"/>
+    </table>
+    <table name="planets_visits" schema="" catalog="starbound_log_dev" type="TABLE">
       <column name="visit_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="visit_planet_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="visit_user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -61,16 +60,16 @@
       <column name="visit_created" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
       <column name="visit_updated" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="visit_id"/>
-      <foreign-key name="fk_planets_visists_starbound_versions1" columns="visit_version_id" ref-table="starbound_versions" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="version_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fk_planets_visits_biomes1" columns="visit_biome_id" ref-table="biomes" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="biome_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fk_planets_visits_planets1" columns="visit_planet_id" ref-table="planets" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="planet_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_planets_visits_users1" columns="visit_user_id" ref-table="users" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_planets_visits_planets1" columns="visit_planet_id" ref-table="planets" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="planet_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_planets_visits_biomes1" columns="visit_biome_id" ref-table="biomes" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="biome_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_planets_visits_starbound_versions1" columns="visit_version_id" ref-table="starbound_versions" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="version_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="planet_user_unique" unique="true" columns="visit_planet_id,visit_user_id"/>
       <index name="fk_planets_visists_starbound_versions1_idx" unique="false" columns="visit_version_id"/>
       <index name="fk_planets_visits_biomes1_idx" unique="false" columns="visit_biome_id"/>
       <index name="fk_planets_visits_planets1_idx" unique="false" columns="visit_planet_id"/>
       <index name="fk_planets_visits_users1_idx" unique="false" columns="visit_user_id"/>
-      <index name="index6" unique="false" columns="visit_rating"/>
+      <index name="visit_rating_index" unique="false" columns="visit_rating"/>
     </table>
     <table name="starbound_versiongroups" schema="" catalog="starbound_log_dev" type="TABLE">
       <column name="vergroup_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -85,7 +84,7 @@
       <column name="version_vergroup_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="version_id"/>
       <foreign-key name="fk_starbound_versions_starbound_versiongroups1" columns="version_vergroup_id" ref-table="starbound_versiongroups" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="vergroup_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fk_planets_visists_starbound_versions1" table="planets_visists" schema="" catalog="starbound_log_dev" columns="visit_version_id"/>
+      <exported-key name="fk_planets_visits_starbound_versions1" table="planets_visits" schema="" catalog="starbound_log_dev" columns="visit_version_id"/>
       <index name="fk_starbound_versions_starbound_versiongroups1_idx" unique="false" columns="version_vergroup_id"/>
     </table>
     <table name="users" schema="" catalog="starbound_log_dev" type="TABLE">
@@ -93,8 +92,11 @@
       <column name="user_login" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
       <column name="user_password" sqlType="VARCHAR" length="256" precision="0" nullable="false" jdbcType="12"/>
       <column name="user_mail" sqlType="VARCHAR" length="256" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_mailConfirmed" sqlType="BIT" length="0" precision="0" nullable="false" jdbcType="-7" def="MA=="/>
+      <column name="user_lastMail" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="user_id"/>
-      <exported-key name="fk_planets_visits_users1" table="planets_visists" schema="" catalog="starbound_log_dev" columns="visit_user_id"/>
+      <exported-key name="fk_planets_favorites_users1" table="planets_favorites" schema="" catalog="starbound_log_dev" columns="plafav_user_id"/>
+      <exported-key name="fk_planets_visits_users1" table="planets_visits" schema="" catalog="starbound_log_dev" columns="visit_user_id"/>
       <exported-key name="fk_users_characters_users" table="users_characters" schema="" catalog="starbound_log_dev" columns="character_user_id"/>
       <index name="login_unique" unique="true" columns="user_login"/>
     </table>
@@ -105,7 +107,6 @@
       <primary-key name="PRIMARY" columns="character_id"/>
       <foreign-key name="fk_users_characters_users" columns="character_user_id" ref-table="users" ref-schema="" ref-catalog="starbound_log_dev" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_characters_planets_users_characters1" table="characters_planets" schema="" catalog="starbound_log_dev" columns="chapla_character_id"/>
-      <exported-key name="fk_characters_queue_users_characters1" table="characters_queue" schema="" catalog="starbound_log_dev" columns="chaque_character_id"/>
       <index name="fk_users_characters_users_idx" unique="false" columns="character_user_id"/>
     </table>
   </data-source>
