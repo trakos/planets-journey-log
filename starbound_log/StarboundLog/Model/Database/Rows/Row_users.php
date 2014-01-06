@@ -8,7 +8,7 @@ namespace StarboundLog\Model\Database\Rows;
  * 
  * name="users"
  */
-class Row_users
+class Row_users extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -49,5 +49,17 @@ class Row_users
         $this->user_mail = (isset($data['user_mail'])) ? $data['user_mail'] : null;
         $this->user_mailConfirmed = (isset($data['user_mailConfirmed'])) ? $data['user_mailConfirmed'] : null;
         $this->user_lastMail = (isset($data['user_lastMail'])) ? $data['user_lastMail'] : null;
+    }
+
+    public function toArray()
+    {
+        return array(
+            'user_id' => $this->user_id,
+            'user_login' => $this->user_login,
+            'user_password' => $this->user_password,
+            'user_mail' => $this->user_mail,
+            'user_mailConfirmed' => $this->user_mailConfirmed,
+            'user_lastMail' => $this->user_lastMail,
+        );
     }
 }

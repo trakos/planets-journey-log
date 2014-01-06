@@ -8,7 +8,7 @@ namespace StarboundLog\Model\Database\Rows;
  * 
  * name="biomes"
  */
-class Row_biomes
+class Row_biomes extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -25,5 +25,13 @@ class Row_biomes
     {
         $this->biome_id = (isset($data['biome_id'])) ? $data['biome_id'] : null;
         $this->biome_name = (isset($data['biome_name'])) ? $data['biome_name'] : null;
+    }
+
+    public function toArray()
+    {
+        return array(
+            'biome_id' => $this->biome_id,
+            'biome_name' => $this->biome_name,
+        );
     }
 }

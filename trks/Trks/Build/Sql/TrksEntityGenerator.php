@@ -112,6 +112,7 @@ class TrksEntityGenerator extends EntityGenerator
     );
 
     protected static $arrayExchangeFieldTemplate = '$this-><property> = (isset($data[\'<property>\'])) ? $data[\'<property>\'] : null;';
+    protected static $toArrayFieldTemplate = '\'<property>\' => $this-><property>,';
 
     /**
      * @var string
@@ -129,6 +130,13 @@ class TrksEntityGenerator extends EntityGenerator
     public function exchangeArray($data)
     {
 <exchangeArray>
+    }
+
+    public function toArray()
+    {
+        return array(
+<toArray>
+        );
     }
 }
 ';
@@ -227,7 +235,8 @@ class TrksEntityGenerator extends EntityGenerator
             '<entityAnnotation>',
             '<entityClassName>',
             '<entityBody>',
-            '<exchangeArray>'
+            '<exchangeArray>',
+            '<toArray>',
         );
 
         $replacements = array(
@@ -235,7 +244,8 @@ class TrksEntityGenerator extends EntityGenerator
             $this->generateEntityDocBlock($metadata),
             $this->generateEntityClassName($metadata),
             $this->generateEntityBody($metadata),
-            $this->generateExchangeArray($metadata)
+            $this->generateExchangeArray($metadata),
+            $this->generateToArray($metadata),
         );
 
         $code = str_replace($placeHolders, $replacements, self::$classTemplate);
@@ -298,6 +308,17 @@ class TrksEntityGenerator extends EntityGenerator
 
         foreach ($metadata->fieldMappings as $fieldMapping) {
             $lines[] = $this->spaces . $this->spaces . str_replace('<property>', $fieldMapping['columnName'], self::$arrayExchangeFieldTemplate);
+        }
+
+        return implode("\n", $lines);
+    }
+
+    protected function generateToArray(ClassMetadataInfo $metadata)
+    {
+        $lines = array();
+
+        foreach ($metadata->fieldMappings as $fieldMapping) {
+            $lines[] = $this->spaces . $this->spaces . $this->spaces . str_replace('<property>', $fieldMapping['columnName'], self::$toArrayFieldTemplate);
         }
 
         return implode("\n", $lines);

@@ -11,10 +11,13 @@ use StarboundLog\Model\Database\Tables\Table_users;
  * Class Proxy_users
  *
  * @package StarboundLog\Model\Database\Proxies
+ *
  * @method \StarboundLog\Model\Database\Entities\Entity_users[] fetchAll($q, $a)
+ * @method \StarboundLog\Model\Database\Entities\Entity_users|null fetchRow($q, $a)
+ * @method \StarboundLog\Model\Database\Entities\Entity_users[] filterRows(array $filterArray)
+ * @method \StarboundLog\Model\Database\Entities\Entity_users|null filterRowsGetFirst(array $filterArray)
  * @method \StarboundLog\Model\Database\Entities\Entity_users[] getAllRows()
- * @method \StarboundLog\Model\Database\Entities\Entity_users fetchRow($q, $a)
- * @method \StarboundLog\Model\Database\Entities\Entity_users getRow($primaryId)
+ * @method \StarboundLog\Model\Database\Entities\Entity_users|null getRow($primaryId)
  */
 class Proxy_users extends Table_users
 {
@@ -38,12 +41,7 @@ class Proxy_users extends Table_users
      */
     public function userExists($primaryId)
     {
-        try {
-            $this->getRow($primaryId);
-        } catch (\Exception $e) {
-            return false;
-        }
-        return true;
+        return $this->getRow($primaryId) != null;
     }
 
     /**
@@ -54,7 +52,7 @@ class Proxy_users extends Table_users
      */
     public function auth($username, $password)
     {
-        $user = $this->fetchRow('SELECT * FROM users WHERE user_login = ?', array($username));
+        $user = $this->filterRowsGetFirst(array('user_login' => $username));
         if ($user && password_verify($password, $user->user_password)) {
             return $user;
         }

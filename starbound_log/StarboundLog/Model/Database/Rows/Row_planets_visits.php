@@ -8,7 +8,7 @@ namespace StarboundLog\Model\Database\Rows;
  * 
  * name="planets_visits"
  */
-class Row_planets_visits
+class Row_planets_visits extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -61,5 +61,19 @@ class Row_planets_visits
         $this->visit_shared = (isset($data['visit_shared'])) ? $data['visit_shared'] : null;
         $this->visit_created = (isset($data['visit_created'])) ? $data['visit_created'] : null;
         $this->visit_updated = (isset($data['visit_updated'])) ? $data['visit_updated'] : null;
+    }
+
+    public function toArray()
+    {
+        return array(
+            'visit_id' => $this->visit_id,
+            'visit_name' => $this->visit_name,
+            'visit_rating' => $this->visit_rating,
+            'visit_tier' => $this->visit_tier,
+            'visit_comment' => $this->visit_comment,
+            'visit_shared' => $this->visit_shared,
+            'visit_created' => $this->visit_created,
+            'visit_updated' => $this->visit_updated,
+        );
     }
 }

@@ -4,9 +4,15 @@ namespace StarboundLog\Model\Database\Tables;
 
 /**
  * Table_characters_planets
- * 
+ *
+ * @method \StarboundLog\Model\Database\Rows\Row_characters_planets[] fetchAll($q, $a)
+ * @method \StarboundLog\Model\Database\Rows\Row_characters_planets|null fetchRow($q, $a)
+ * @method \StarboundLog\Model\Database\Rows\Row_characters_planets[] filterRows(array $filterArray)
+ * @method \StarboundLog\Model\Database\Rows\Row_characters_planets|null filterRowsGetFirst(array $filterArray)
+ * @method \StarboundLog\Model\Database\Rows\Row_characters_planets[] getAllRows()
+ * @method \StarboundLog\Model\Database\Rows\Row_characters_planets|null getRow($primaryId)
  */
-class Table_characters_planets
+class Table_characters_planets extends \Trks\Model\TrksAbstractTable
 {
     static private $instance;
     static public function get()
@@ -14,100 +20,22 @@ class Table_characters_planets
         return self::$instance ? : (self::$instance = new Table_characters_planets());
     }
 
-    protected $tableGateway;
-
-    public function __construct()
-    {
-        $dbAdapter = \StarboundLog::getApplication()->getServiceManager()->get('Zend\Db\Adapter\Adapter');
-        $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
-        $resultSetPrototype->setArrayObjectPrototype($this->getPrototype());
-        $this->tableGateway = new \Zend\Db\TableGateway\TableGateway('characters_planets', $dbAdapter, null, $resultSetPrototype);
-    }
-
     /**
-     * @param $q
-     * @param $a
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_characters_planets[]
+     * @return string
      */
-    public function fetchAll($q, $a)
+    public function getTableName()
     {
-        return \Trks\Singletons\TrksDbAdapter::get()->fetchAllPrototyped($q, $a, $this->getPrototype());
-    }
-
-    /**
-     * @param $q
-     * @param $a
-     *
-     * @return \StarboundLog\Model\Database\Rows\Row_characters_planets
-     */
-    public function fetchRow($q, $a)
-    {
-        return \Trks\Singletons\TrksDbAdapter::get()->fetchRowPrototyped($q, $a, $this->getPrototype());
+        return 'characters_planets';
     }
 
     /**
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_characters_planets[]
+     * @return \Zend\Db\Adapter\Adapter
      */
-    public function getAllRows()
+    public function getDbAdapter()
     {
-        $resultSet = $this->tableGateway->select();
-        return $resultSet;
-    }
-
-    /**
-     *
-     * @param $id
-     *
-     * @throws \Exception
-     * @return \StarboundLog\Model\Database\Rows\Row_characters_planets
-     */
-    public function getRow($id)
-    {
-        $id  = (int) $id;
-        $rowSet = $this->tableGateway->select(array('chapla_id' => $id));
-        $row = $rowSet->current();
-        if (!$row) {
-            throw new \Exception("Could not find row $id");
-        }
-        return $row;
-    }
-
-    /**
-     * @param \StarboundLog\Model\Database\Rows\Row_characters_planets $row
-     *
-     * @throws \Exception
-     * @return int Updated or inserted id.
-     */
-    public function saveRow(\StarboundLog\Model\Database\Rows\Row_characters_planets $row)
-    {
-        $data = array(
-            'chapla_time' => $row->chapla_time,
-            'chapla_notes' => $row->chapla_notes,
-        );
-
-        $id = (int)$row->chapla_id;
-        if ($id == 0) {
-            $this->tableGateway->insert($data);
-            $row->chapla_id = (int)$this->tableGateway->lastInsertValue;
-            return (int)$this->tableGateway->lastInsertValue;
-        } else {
-            if ($this->getRow($id)) {
-                $this->tableGateway->update($data, array('chapla_id' => $id));
-                return $id;
-            } else {
-                throw new \Exception('Row id does not exist');
-            }
-        }
-    }
-
-    /**
-     * @param int $id
-     */
-    public function deleteRow($id)
-    {
-        $this->tableGateway->delete(array('chapla_id' => $id));
+        return \StarboundLog::getApplication()->getServiceManager()->get('Zend\Db\Adapter\Adapter');
     }
 
     /**
@@ -117,5 +45,28 @@ class Table_characters_planets
     protected function getPrototype()
     {
         return new \StarboundLog\Model\Database\Rows\Row_characters_planets();
+    }
+
+    /**
+     *
+     * @return string
+     */
+    protected function getPrimaryKeyName()
+    {
+        return 'chapla_id';
+    }
+
+    /**
+     * @param \StarboundLog\Model\Database\Rows\Row_characters_planets|\Trks\Model\TrksAbstractRow $row
+     *
+     * @throws \Exception
+     * @return int
+     */
+    public function saveRow(\Trks\Model\TrksAbstractRow $row)
+    {
+        if (!$row instanceof \StarboundLog\Model\Database\Rows\Row_characters_planets) {
+            throw new \Exception("Row is for a wrong table!");
+        }
+        return parent::saveRow($row);
     }
 }

@@ -8,7 +8,7 @@ namespace StarboundLog\Model\Database\Rows;
  * 
  * name="starbound_versions"
  */
-class Row_starbound_versions
+class Row_starbound_versions extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -31,5 +31,14 @@ class Row_starbound_versions
         $this->version_id = (isset($data['version_id'])) ? $data['version_id'] : null;
         $this->version_released = (isset($data['version_released'])) ? $data['version_released'] : null;
         $this->version_label = (isset($data['version_label'])) ? $data['version_label'] : null;
+    }
+
+    public function toArray()
+    {
+        return array(
+            'version_id' => $this->version_id,
+            'version_released' => $this->version_released,
+            'version_label' => $this->version_label,
+        );
     }
 }

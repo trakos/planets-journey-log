@@ -4,9 +4,15 @@ namespace StarboundLog\Model\Database\Tables;
 
 /**
  * Table_starbound_versions
- * 
+ *
+ * @method \StarboundLog\Model\Database\Rows\Row_starbound_versions[] fetchAll($q, $a)
+ * @method \StarboundLog\Model\Database\Rows\Row_starbound_versions|null fetchRow($q, $a)
+ * @method \StarboundLog\Model\Database\Rows\Row_starbound_versions[] filterRows(array $filterArray)
+ * @method \StarboundLog\Model\Database\Rows\Row_starbound_versions|null filterRowsGetFirst(array $filterArray)
+ * @method \StarboundLog\Model\Database\Rows\Row_starbound_versions[] getAllRows()
+ * @method \StarboundLog\Model\Database\Rows\Row_starbound_versions|null getRow($primaryId)
  */
-class Table_starbound_versions
+class Table_starbound_versions extends \Trks\Model\TrksAbstractTable
 {
     static private $instance;
     static public function get()
@@ -14,100 +20,22 @@ class Table_starbound_versions
         return self::$instance ? : (self::$instance = new Table_starbound_versions());
     }
 
-    protected $tableGateway;
-
-    public function __construct()
-    {
-        $dbAdapter = \StarboundLog::getApplication()->getServiceManager()->get('Zend\Db\Adapter\Adapter');
-        $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
-        $resultSetPrototype->setArrayObjectPrototype($this->getPrototype());
-        $this->tableGateway = new \Zend\Db\TableGateway\TableGateway('starbound_versions', $dbAdapter, null, $resultSetPrototype);
-    }
-
     /**
-     * @param $q
-     * @param $a
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_starbound_versions[]
+     * @return string
      */
-    public function fetchAll($q, $a)
+    public function getTableName()
     {
-        return \Trks\Singletons\TrksDbAdapter::get()->fetchAllPrototyped($q, $a, $this->getPrototype());
-    }
-
-    /**
-     * @param $q
-     * @param $a
-     *
-     * @return \StarboundLog\Model\Database\Rows\Row_starbound_versions
-     */
-    public function fetchRow($q, $a)
-    {
-        return \Trks\Singletons\TrksDbAdapter::get()->fetchRowPrototyped($q, $a, $this->getPrototype());
+        return 'starbound_versions';
     }
 
     /**
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_starbound_versions[]
+     * @return \Zend\Db\Adapter\Adapter
      */
-    public function getAllRows()
+    public function getDbAdapter()
     {
-        $resultSet = $this->tableGateway->select();
-        return $resultSet;
-    }
-
-    /**
-     *
-     * @param $id
-     *
-     * @throws \Exception
-     * @return \StarboundLog\Model\Database\Rows\Row_starbound_versions
-     */
-    public function getRow($id)
-    {
-        $id  = (int) $id;
-        $rowSet = $this->tableGateway->select(array('version_id' => $id));
-        $row = $rowSet->current();
-        if (!$row) {
-            throw new \Exception("Could not find row $id");
-        }
-        return $row;
-    }
-
-    /**
-     * @param \StarboundLog\Model\Database\Rows\Row_starbound_versions $row
-     *
-     * @throws \Exception
-     * @return int Updated or inserted id.
-     */
-    public function saveRow(\StarboundLog\Model\Database\Rows\Row_starbound_versions $row)
-    {
-        $data = array(
-            'version_released' => $row->version_released,
-            'version_label' => $row->version_label,
-        );
-
-        $id = (int)$row->version_id;
-        if ($id == 0) {
-            $this->tableGateway->insert($data);
-            $row->version_id = (int)$this->tableGateway->lastInsertValue;
-            return (int)$this->tableGateway->lastInsertValue;
-        } else {
-            if ($this->getRow($id)) {
-                $this->tableGateway->update($data, array('version_id' => $id));
-                return $id;
-            } else {
-                throw new \Exception('Row id does not exist');
-            }
-        }
-    }
-
-    /**
-     * @param int $id
-     */
-    public function deleteRow($id)
-    {
-        $this->tableGateway->delete(array('version_id' => $id));
+        return \StarboundLog::getApplication()->getServiceManager()->get('Zend\Db\Adapter\Adapter');
     }
 
     /**
@@ -117,5 +45,28 @@ class Table_starbound_versions
     protected function getPrototype()
     {
         return new \StarboundLog\Model\Database\Rows\Row_starbound_versions();
+    }
+
+    /**
+     *
+     * @return string
+     */
+    protected function getPrimaryKeyName()
+    {
+        return 'version_id';
+    }
+
+    /**
+     * @param \StarboundLog\Model\Database\Rows\Row_starbound_versions|\Trks\Model\TrksAbstractRow $row
+     *
+     * @throws \Exception
+     * @return int
+     */
+    public function saveRow(\Trks\Model\TrksAbstractRow $row)
+    {
+        if (!$row instanceof \StarboundLog\Model\Database\Rows\Row_starbound_versions) {
+            throw new \Exception("Row is for a wrong table!");
+        }
+        return parent::saveRow($row);
     }
 }

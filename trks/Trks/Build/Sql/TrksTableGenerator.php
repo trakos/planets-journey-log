@@ -86,7 +86,16 @@ class TrksTableGenerator extends EntityGenerator
 
 <namespace>
 
-<entityAnnotation>
+/**
+ * <table_class>
+ *
+ * @method <row_class>[] fetchAll($q, $a)
+ * @method <row_class>|null fetchRow($q, $a)
+ * @method <row_class>[] filterRows(array $filterArray)
+ * @method <row_class>|null filterRowsGetFirst(array $filterArray)
+ * @method <row_class>[] getAllRows()
+ * @method <row_class>|null getRow($primaryId)
+ */
 <entityClassName>
 {
     static private $instance;
@@ -95,99 +104,22 @@ class TrksTableGenerator extends EntityGenerator
         return self::$instance ? : (self::$instance = new <table_class>());
     }
 
-    protected $tableGateway;
-
-    public function __construct()
-    {
-        $dbAdapter = \StarboundLog::getApplication()->getServiceManager()->get(\'Zend\Db\\Adapter\\Adapter\');
-        $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
-        $resultSetPrototype->setArrayObjectPrototype($this->getPrototype());
-        $this->tableGateway = new \Zend\Db\TableGateway\TableGateway(\'<row_table>\', $dbAdapter, null, $resultSetPrototype);
-    }
-
     /**
-     * @param $q
-     * @param $a
      *
-     * @return <row_class>[]
+     * @return string
      */
-    public function fetchAll($q, $a)
+    public function getTableName()
     {
-        return \Trks\Singletons\TrksDbAdapter::get()->fetchAllPrototyped($q, $a, $this->getPrototype());
-    }
-
-    /**
-     * @param $q
-     * @param $a
-     *
-     * @return <row_class>
-     */
-    public function fetchRow($q, $a)
-    {
-        return \Trks\Singletons\TrksDbAdapter::get()->fetchRowPrototyped($q, $a, $this->getPrototype());
+        return \'<row_table>\';
     }
 
     /**
      *
-     * @return <row_class>[]
+     * @return \\Zend\Db\\Adapter\\Adapter
      */
-    public function getAllRows()
+    public function getDbAdapter()
     {
-        $resultSet = $this->tableGateway->select();
-        return $resultSet;
-    }
-
-    /**
-     *
-     * @param $id
-     *
-     * @throws \Exception
-     * @return <row_class>
-     */
-    public function getRow($id)
-    {
-        $id  = (int) $id;
-        $rowSet = $this->tableGateway->select(array(\'<row_primary_column>\' => $id));
-        $row = $rowSet->current();
-        if (!$row) {
-            throw new \Exception("Could not find row $id");
-        }
-        return $row;
-    }
-
-    /**
-     * @param <row_class> $row
-     *
-     * @throws \Exception
-     * @return int Updated or inserted id.
-     */
-    public function saveRow(<row_class> $row)
-    {
-        $data = array(
-<array_assigns>
-        );
-
-        $id = (int)$row-><row_primary_column>;
-        if ($id == 0) {
-            $this->tableGateway->insert($data);
-            $row-><row_primary_column> = (int)$this->tableGateway->lastInsertValue;
-            return (int)$this->tableGateway->lastInsertValue;
-        } else {
-            if ($this->getRow($id)) {
-                $this->tableGateway->update($data, array(\'<row_primary_column>\' => $id));
-                return $id;
-            } else {
-                throw new \Exception(\'Row id does not exist\');
-            }
-        }
-    }
-
-    /**
-     * @param int $id
-     */
-    public function deleteRow($id)
-    {
-        $this->tableGateway->delete(array(\'<row_primary_column>\' => $id));
+        return \StarboundLog::getApplication()->getServiceManager()->get(\'Zend\Db\\Adapter\\Adapter\');
     }
 
     /**
@@ -198,9 +130,31 @@ class TrksTableGenerator extends EntityGenerator
     {
         return new <row_class>();
     }
+
+    /**
+     *
+     * @return string
+     */
+    protected function getPrimaryKeyName()
+    {
+        return \'<row_primary_column>\';
+    }
+
+    /**
+     * @param <row_class>|\Trks\Model\TrksAbstractRow $row
+     *
+     * @throws \Exception
+     * @return int
+     */
+    public function saveRow(\\Trks\\Model\\TrksAbstractRow $row)
+    {
+        if (!$row instanceof <row_class>) {
+            throw new \Exception("Row is for a wrong table!");
+        }
+        return parent::saveRow($row);
+    }
 }
 ';
-    private static $arrayAssignTemplate = '\'<column>\' => $row-><column>,';
 
     public function __construct()
     {
@@ -293,24 +247,20 @@ class TrksTableGenerator extends EntityGenerator
     {
         $placeHolders = array(
             '<namespace>',
-            '<entityAnnotation>',
             '<entityClassName>',
             '<table_class>',
             '<row_class>',
             '<row_table>',
             '<row_primary_column>',
-            '<array_assigns>'
         );
 
         $replacements = array(
             $this->generateEntityNamespace($metadata),
-            $this->generateEntityDocBlock($metadata),
             $this->generateEntityTableClassName($metadata),
             $this->getEntityTableClassName($metadata),
             $this->getEntityRowClassName($metadata),
             $metadata->getTableName(),
             $this->getPrimaryIdColumn($metadata),
-            $this->generateArrayAssigns($metadata)
         );
 
         $code = str_replace($placeHolders, $replacements, self::$classTemplate);
@@ -322,18 +272,6 @@ class TrksTableGenerator extends EntityGenerator
     protected function generateEntityNamespace(ClassMetadataInfo $metadata)
     {
         return 'namespace ' . $this->namespace .';';
-    }
-
-    protected function generateEntityDocBlock(ClassMetadataInfo $metadata)
-    {
-        $lines = array(
-            '/**',
-            ' * ' . 'Table_' . $metadata->table['name'],
-            ' * ',
-            ' */'
-        );
-
-        return implode("\n", $lines);
     }
 
     protected function getEntityTableClassName(ClassMetadataInfo $metadata)
@@ -350,20 +288,6 @@ class TrksTableGenerator extends EntityGenerator
     {
         return 'class ' . 'Table_' . $metadata->table['name'] .
         ($this->extendsClass() ? ' extends ' . $this->getClassToExtendName() : null);
-    }
-
-    protected function generateArrayAssigns(ClassMetadataInfo $metadata)
-    {
-        $lines = array();
-
-        foreach ($metadata->fieldMappings as $fieldMapping) {
-            if (isset($fieldMapping['id']) && $fieldMapping['id']) {
-                continue;
-            }
-            $lines[] = $this->spaces . $this->spaces . $this->spaces . str_replace('<column>', $fieldMapping['columnName'], self::$arrayAssignTemplate);
-        }
-
-        return implode("\n", $lines);
     }
 
     protected function getPrimaryIdColumn(ClassMetadataInfo $metadata)

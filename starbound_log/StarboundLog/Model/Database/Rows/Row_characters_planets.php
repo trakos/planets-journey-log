@@ -8,7 +8,7 @@ namespace StarboundLog\Model\Database\Rows;
  * 
  * name="characters_planets"
  */
-class Row_characters_planets
+class Row_characters_planets extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -31,5 +31,14 @@ class Row_characters_planets
         $this->chapla_id = (isset($data['chapla_id'])) ? $data['chapla_id'] : null;
         $this->chapla_time = (isset($data['chapla_time'])) ? $data['chapla_time'] : null;
         $this->chapla_notes = (isset($data['chapla_notes'])) ? $data['chapla_notes'] : null;
+    }
+
+    public function toArray()
+    {
+        return array(
+            'chapla_id' => $this->chapla_id,
+            'chapla_time' => $this->chapla_time,
+            'chapla_notes' => $this->chapla_notes,
+        );
     }
 }

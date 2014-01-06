@@ -13,7 +13,8 @@ class Generator
     protected $tableNamespace = "StarboundLog\\Model\\Database\\Tables";
     protected $tablesDirectory = "./StarboundLog/Model/Database/Tables";
     protected $numSpaces = 4;
-    protected $classToExtend = null;
+    protected $classToExtend = "\\Trks\\Model\\TrksAbstractRow";
+    protected $tableClassToExtend = "\\Trks\\Model\\TrksAbstractTable";
 
     protected $metadataFactory;
     protected $databaseDriver;
@@ -109,8 +110,8 @@ class Generator
         $entityGenerator->rowNamespace = $this->namespace;
         $entityGenerator->setNumSpaces($this->numSpaces);
 
-        if ($this->classToExtend !== null) {
-            $entityGenerator->setClassToExtend($this->classToExtend);
+        if ($this->tableClassToExtend !== null) {
+            $entityGenerator->setClassToExtend($this->tableClassToExtend);
         }
 
         if (count($metadata)) {

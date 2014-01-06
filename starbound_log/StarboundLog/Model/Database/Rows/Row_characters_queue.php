@@ -8,7 +8,7 @@ namespace StarboundLog\Model\Database\Rows;
  * 
  * name="characters_queue"
  */
-class Row_characters_queue
+class Row_characters_queue extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -25,5 +25,13 @@ class Row_characters_queue
     {
         $this->chaque_id = (isset($data['chaque_id'])) ? $data['chaque_id'] : null;
         $this->chaque_done = (isset($data['chaque_done'])) ? $data['chaque_done'] : null;
+    }
+
+    public function toArray()
+    {
+        return array(
+            'chaque_id' => $this->chaque_id,
+            'chaque_done' => $this->chaque_done,
+        );
     }
 }

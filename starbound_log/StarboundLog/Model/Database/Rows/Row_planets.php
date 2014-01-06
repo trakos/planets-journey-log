@@ -8,7 +8,7 @@ namespace StarboundLog\Model\Database\Rows;
  * 
  * name="planets"
  */
-class Row_planets
+class Row_planets extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -31,5 +31,14 @@ class Row_planets
         $this->planet_id = (isset($data['planet_id'])) ? $data['planet_id'] : null;
         $this->planet_x = (isset($data['planet_x'])) ? $data['planet_x'] : null;
         $this->planet_y = (isset($data['planet_y'])) ? $data['planet_y'] : null;
+    }
+
+    public function toArray()
+    {
+        return array(
+            'planet_id' => $this->planet_id,
+            'planet_x' => $this->planet_x,
+            'planet_y' => $this->planet_y,
+        );
     }
 }
