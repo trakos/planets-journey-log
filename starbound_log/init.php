@@ -29,6 +29,8 @@ define('T_PATH_CONFIG_GLOB_ZEND', T_PATH_CONFIG . '/zend/*.config.php');
 define('T_PATH_CONFIG_GLOB_CUSTOM', T_PATH_CONFIG . '/custom/*.config.php');
 define('T_PATH_CONFIG_CUSTOM_CACHE', T_PATH_CONFIG . '/custom_config_cache.php');
 
+define('T_DATETIME_FORMAT_MYSQL', 'Y-m-d H:i:s');
+
 /** @noinspection PhpIncludeInspection */
 require T_PATH_ZEND2 . '/Loader/StandardAutoloader.php';
 require T_PATH_APPLICATION . '/StarboundLog/StarboundLog.php';
