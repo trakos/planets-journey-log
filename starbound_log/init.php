@@ -8,6 +8,7 @@ define('T_PATH_LIB', '/var/www/phpinclude');
 define('T_PATH_ZEND2', T_PATH_LIB . '/Zend');
 define('T_PATH_CONFIG', T_PATH_APPLICATION . '/config');
 define('T_PATH_MAIL_VIEW', T_PATH_APPLICATION . '/view/_mail');
+define('T_PATH_DATA', T_PATH_APPLICATION . '/data');
 
 define('T_PATH_ZEND_SERVICE', T_PATH_LIB . '/ZendService');
 define('T_PATH_SYMFONY', T_PATH_LIB . '/Symfony');

@@ -60,7 +60,7 @@ class Planets extends MyAbstractController
                 if ($form->character && !$character) {
                     $this->flashMessenger()->addErrorMessage('Character not found!');
                 } else {
-                    // jeśli w ogóle nie podano który character, albo jeśli znaleziono ten character i był obecnie zalogowanego usera
+                    // jeśli w ogóle nie podano który character, albo jeśli znaleziono ten character (i był obecnie zalogowanego usera)
                     $visit                  = new Row_planets_visits();
                     $visit->visit_biome_id  = $form->biomeId;
                     $visit->visit_comment   = $form->visitComment;
