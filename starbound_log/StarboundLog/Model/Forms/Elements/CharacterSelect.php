@@ -19,12 +19,11 @@ class CharacterSelect extends Select
     {
         $characters = [];
         if (MyAuth::hasIdentity()) {
-            $q = 'SELECT character_id, character_name FROM users_characters WHERE character_user_id = ?';
-            $a = [ MyAuth::getIdentity()->user_id ];
+            $q          = 'SELECT character_id, character_name FROM users_characters WHERE character_user_id = ?';
+            $a          = [MyAuth::getIdentity()->user_id];
             $characters = TrksDbAdapter::get()->fetchAll($q, $a);
             $characters = array_column($characters, 'character_name', 'character_id');
         }
-        $characters[0] = '» none «';
-        return $characters;
+        return [0 => '» none «'] + $characters;
     }
 } 

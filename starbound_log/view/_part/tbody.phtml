@@ -12,7 +12,6 @@ if (!isset($drawCheckbox)) {
 }
 ?>
 
-<tbody>
 <?php foreach ($tableData as $rowData): ?>
     <tr>
         <?php if ($drawCheckbox): ?>
@@ -23,8 +22,7 @@ if (!isset($drawCheckbox)) {
             </td>
         <?php endif; ?>
         <?php foreach ($rowKeyOrder as $key): ?>
-            <td><?= $this->escapeHtml(is_array($rowData) ? $rowData[$key] : $rowData->$key); ?></td>
+            <td><?= nl2br($this->escapeHtml(is_array($rowData) ? $rowData[$key] : $rowData->$key)); ?></td>
         <?php endforeach; ?>
     </tr>
 <?php endforeach; ?>
-</tbody>

@@ -14,12 +14,55 @@ use StarboundLog\Model\Database\Rows\Row_users_characters;
 use StarboundLog\Model\Database\Tables\Table_planets_visits;
 use StarboundLog\Model\Database\Tables\Table_users_characters;
 use StarboundLog\Model\Forms\AddPlanetVisitForm;
+use StarboundLog\Model\Forms\PlanetsFilterForm;
+use Zend\Db\Adapter\Driver\Pdo\Result;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Sql\Select;
 use Zend\Form\Element;
+use Zend\Paginator\Adapter\DbSelect;
+use Zend\Paginator\Paginator;
 
 class Planets extends MyAbstractController
 {
+    protected  function sanitizeVersions($versionGroup)
+    {
+        $versions = explode(",", $versionGroup);
+        $versionsSanitized = []; foreach ($versions as $version) $versionsSanitized[] = intval($version);
+        return implode(",", $versionsSanitized);
+    }
+
     public function allAction()
     {
+        $page         = $this->params()->fromRoute('id', 1);
+        $itemsPerPage = 5;
+
+        $form       = new PlanetsFilterForm();
+        $formResult = $this->useAnnotationForm($form, 'main', 'all', 'planets', 'main', array('id' => 1));
+
+        $select = new Select(Proxy_planets_visits::get()->getTableName());
+        $select->join('planets', 'planet_id = visit_planet_id');
+        $select->join('systems', 'system_id = planet_system_id');
+        if (!$form->versionGroupId) {
+            $form->versionGroupId = 6;
+        }
+        $select->where(sprintf('system_version_id IN (%s)', $this->sanitizeVersions($form->versionGroupId)));
+        if ($form->biomeId != 0) {
+            $select->where(['visit_biome_id' => $form->biomeId]);
+        }
+        if ($form->planetTier != 0) {
+            $select->where(['visit_tier' => $form->planetTier]);
+        }
+
+        $paginator = new Paginator(new DbSelect($select, Proxy_planets_visits::get()->getDbAdapter(), new ResultSet(ResultSet::TYPE_ARRAYOBJECT, new Row_planets_visits())));
+        $paginator->setCurrentPageNumber($page)
+            ->setItemCountPerPage($itemsPerPage)
+            ->setPageRange(7);
+
+        return array(
+            'planets'   => $paginator->getCurrentItems(),
+            'paginator' => $paginator,
+            'form'      => $formResult->form
+        );
     }
 
     public function myAction()

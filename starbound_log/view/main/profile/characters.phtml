@@ -85,7 +85,8 @@
     </div>
     <div class="mws-panel-body no-padding">
         <?= $this->messages()->render(); ?>
-        <table class="mws-table" id="table_characters">
+        <table class="mws-table hover_enabled" id="table_characters">
+            <tbody>
             <?=
             $this->render("_part/tbody", array(
                 'tableData'          => $characters,
@@ -93,6 +94,7 @@
                 'drawCheckbox'       => 'single',
                 'checkboxValueIndex' => 'character_id',
             )); ?>
+            </tbody>
         </table>
         <?php if (empty($characters)): ?>
             <p class="empty-table">No characters defined</p>

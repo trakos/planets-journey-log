@@ -10,9 +10,9 @@
     text-align: center;
 }
 
-.mws-table tbody tr:hover td,
-.mws-table tbody tr.even:hover td,
-.mws-table tbody tr.odd:hover td {
+.mws-table.hover_enabled tbody tr:hover td,
+.mws-table.hover_enabled tbody tr.even:hover td,
+.mws-table.hover_enabled tbody tr.odd:hover td {
     background-color: #c5d52b;
 }
 
@@ -20,4 +20,41 @@ p.empty-table {
     text-align: center;
     font-weight: bold;
     padding: 20px;
+}
+
+.dataTables_filter ul,
+.dataTables_filter ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dataTables_filter ul li {
+    margin-bottom: 4px;
+}
+
+.dataTables_filter ul li:last-child {
+    margin-bottom: 0;
+}
+
+.dataTables_filter ul.inline {
+    margin-top: 4px;
+}
+
+.dataTables_filter ul.inline li {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+
+.dataTables_filter ul li > input,
+.dataTables_filter ul li > label {
+    padding: 0;
+    margin: 0 1px 0 0;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
 }

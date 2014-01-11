@@ -10,7 +10,7 @@ class MoonSelect extends Select
 {
     public function __construct($name = null, $options = array())
     {
-        $options['value_options'] = $this->fetchValueOptions();
+        $options['value_options'] =$this->fetchValueOptions();
         parent::__construct($name, $options);
     }
 

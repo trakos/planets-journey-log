@@ -16,8 +16,8 @@ class AddPlanetVisitForm
     /* planet address definition */
 
     /**
-     * @Annotation\Type("StarboundLog\Model\Forms\Elements\SectorSelect")
-     * @Annotation\Attributes({"class":"large"})
+     * @Annotation\Type("StarboundLog\Model\Forms\Elements\SectorRadio")
+     * @Annotation\Attributes({"inline":1})
      * @Annotation\Options({"label":"Sector"})
      */
     public $planetSector;
@@ -35,12 +35,14 @@ class AddPlanetVisitForm
     public $planetY;
     /**
      * @Annotation\Type("StarboundLog\Model\Forms\Elements\PlanetSelect")
+     * @Annotation\Attributes({"inline":1})
      * @Annotation\Options({"label":"Planet number", "description":"Planet number (it's displayed just after planet name in navigation view)"})
      */
     public $planetNumber;
     /**
      * @Annotation\Type("StarboundLog\Model\Forms\Elements\MoonSelect")
-     * @Annotation\Options({"label":"Moon number", "description":"If it is a moon, select it's letter (it's displayed just after planet name and number); otherwise, leave ""main planet"" option."})
+     * @Annotation\Attributes({"inline":1})
+     * @Annotation\Options({"label":"Moon number", "description":"If it is a moon, select it's letter (it's displayed just after planet name and roman numeral; absence means that it's main planet); otherwise, leave ""main planet"" option."})
      */
     public $planetMoon;
     /**
@@ -62,13 +64,13 @@ class AddPlanetVisitForm
     /**
      * @Annotation\Type("Zend\Form\Element\Text")
      * @Annotation\Attributes({"class":"large"})
-     * @Annotation\Options({"label":"Planet name", "description":"Planet name, without Roman numeral and moon letter"})
+     * @Annotation\Options({"label":"Planet name", "description":"Planet name, without Roman numeral and moon letter (i. e. system name)"})
      * @Annotation\Validator({"name":"StringLength", "options":{"min":"3","max":"255"}})
      */
     public $planetName;
     /**
      * @Annotation\Type("StarboundLog\Model\Forms\Elements\RatingSelect")
-     * @Annotation\Options({"label":"Rating", "description":"How useful are resources found on this planet?"})
+     * @Annotation\Options({"label":"Worth visiting?"})
      */
     public $planetRating;
     /**
@@ -79,13 +81,14 @@ class AddPlanetVisitForm
     /**
      * @Annotation\Type("Zend\Form\Element\Checkbox")
      * @Annotation\Attributes({"class"="ibutton", "data-label-on"="public", "data-label-off"="private"})
-     * @Annotation\Options({"label":"Shared", "description":"Do you want to share it with the world, or would you rather keep your comment private?"})
+     * @Annotation\Options({"label":"Shared", "description":"Do you want to share it with the world, or would you rather keep your description private?"})
      */
     public $visitShared;
     /**
      * @Annotation\Type("Zend\Form\Element\Textarea")
      * @Annotation\Attributes({"class":"large"})
-     * @Annotation\Options({"label":"Planet description", "description":"Share what's so cool about this planet!"})
+     * @Annotation\Required(false)
+     * @Annotation\Options({"label":"Planet description", "description":"Share what's so cool about this planet and how to find points of interest."})
      * @Annotation\Validator({"name":"StringLength", "options":{"min":"0","max":"10000"}})
      */
     public $visitComment;
@@ -100,7 +103,7 @@ class AddPlanetVisitForm
      * @Annotation\Type("Zend\Form\Element\Textarea")
      * @Annotation\Required(false)
      * @Annotation\Attributes({"class":"large"})
-     * @Annotation\Options({"label":"Description for character", "description":"Applies only if you have chosen character above; it will be kept private regardless of shared option."})
+     * @Annotation\Options({"label":"Description for character", "description":"Applies only if you have chosen character above; it will be kept private."})
      * @Annotation\Validator({"name":"StringLength", "options":{"min":"0","max":"10000"}})
      */
     public $characterComment;

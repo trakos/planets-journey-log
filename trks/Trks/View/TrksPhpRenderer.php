@@ -22,6 +22,7 @@ use Zend\View\Renderer\PhpRenderer;
  * @method string|\Trks\Form\View\Helper\FormButtonRow formButtonRow(ElementInterface $element = null)
  *
  * @method string|\Trks\View\Helper\Messages messages(MessagesStruct $messages = null)
+ *
  */
 class TrksPhpRenderer extends PhpRenderer
 {

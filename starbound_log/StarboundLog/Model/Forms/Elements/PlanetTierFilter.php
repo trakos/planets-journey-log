@@ -4,10 +4,10 @@ namespace StarboundLog\Model\Forms\Elements;
 
 
 use Trks\Singletons\TrksDbAdapter;
-use Zend\Form\Element\Radio;
 use Zend\Form\Element\Select;
+use ZendService\ReCaptcha\Exception;
 
-class SectorSelect extends Select
+class PlanetTierFilter extends Select
 {
     public function __construct($name = null, $options = array())
     {
@@ -17,12 +17,11 @@ class SectorSelect extends Select
 
     protected function fetchValueOptions()
     {
-        return array(
-            '1' => 'Α',// (alpha)',
-            '2' => 'Β',// (beta)',
-            '3' => 'Γ',// (gamma)',
-            '4' => 'Δ',// (delta)',
-            '5' => 'Χ',// (chi / sector X)',
-        );
+        $data = [];
+        $data[0] = "all";
+        for ($i = 1; $i<=10; $i++) {
+            $data[$i] = $i;//'tier' . $i;
+        }
+        return $data;
     }
 } 

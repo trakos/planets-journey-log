@@ -1,0 +1,89 @@
+<?php
+/* @var \Trks\View\TrksPhpRenderer $this
+ * @var \StarboundLog\Model\Database\Rows\Row_planets_visits[] $planets (in fact it's a traversable, not an array)
+ * @var \Zend\Paginator\Paginator                              $paginator
+ * @var \Zend\Form\Form                                        $form
+ */
+?>
+
+<div class="mws-panel mask-able">
+    <div class="mws-panel-header">
+        <span>
+            All planets
+        </span>
+    </div>
+    <div class="mws-panel-body no-padding">
+        <?= $this->messages()->render(); ?>
+
+        <div class="dataTables_wrapper">
+            <div class="dataTables_filter">
+                <?= $this->form()->openTag($form); ?>
+                <ul class="inline">
+                    <li>
+                        <label><span>Biome:</span>
+                            <?= $this->formElement($form->get('biomeId')) ?>
+                        </label>
+                    </li>
+                    <li>
+                        <label><span>Version:</span>
+                            <?= $this->formElement($form->get('versionGroupId')) ?>
+                        </label>
+                    </li>
+                    <li>
+                        <label><span>Tier:</span>
+                            <?= $this->formElement($form->get('planetTier')) ?>
+                        </label>
+                    </li>
+                    <?php /*<li>
+                        <label>
+                            <input type="submit" value="filter" class="btn" />
+                        </label>
+                    </li>*/?>
+                </ul>
+                <?= $this->form()->closeTag($form); ?>
+            </div>
+            <table class="mws-table">
+                <thead>
+                <th>Name</th>
+                <th>Planet number</th>
+                <th>Moon?</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>Sector</th>
+                <th>Game version</th>
+                <th>Biome</th>
+                <th>Rating</th>
+                <th>Tier</th>
+                <th>Comment</th>
+                </thead>
+                <tbody>
+                <?php foreach ($planets as $planet): ?>
+                    <?=
+                    $this->render("_part/tbody", array(
+                        'tableData' => array(array(
+                            $planet->visit_name,
+                            $planet->getVisitPlanet()->planet_number,
+                            $planet->getVisitPlanet()->planet_moon,
+                            $planet->getVisitPlanet()->getPlanetSystem()->system_x,
+                            $planet->getVisitPlanet()->getPlanetSystem()->system_y,
+                            $planet->getVisitPlanet()->getPlanetSystem()->system_sector,
+                            $planet->getVisitPlanet()->getPlanetSystem()->getSystemVersion()->version_label,
+                            $planet->getVisitBiome()->biome_name,
+                            $planet->visit_rating,
+                            $planet->visit_tier,
+                            $planet->visit_comment
+                        ),),
+                    )); ?>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <?= $this->paginationControl($paginator) ?>
+
+
+        </div>
+        <?php if (!$paginator->getCurrentItemCount()): ?>
+            <p class="empty-table">No planets found</p>
+        <?php endif; ?>
+    </div>
+</div>

@@ -5,6 +5,7 @@ namespace StarboundLog\Model\Forms\Elements;
 
 use Trks\Singletons\TrksDbAdapter;
 use Zend\Form\Element\Select;
+use ZendService\ReCaptcha\Exception;
 
 class PlanetTierSelect extends Select
 {
@@ -16,17 +17,10 @@ class PlanetTierSelect extends Select
 
     protected function fetchValueOptions()
     {
-        return array(
-            1 => 'tier 1',
-            2 => 'tier 2',
-            3 => 'tier 3',
-            4 => 'tier 4',
-            5 => 'tier 5',
-            6 => 'tier 6',
-            7 => 'tier 7',
-            8 => 'tier 8',
-            9 => 'tier 9',
-            10 => 'tier 10',
-        );
+        $data = [];
+        for ($i = 1; $i<=10; $i++) {
+            $data[$i] = $i;//'tier' . $i;
+        }
+        return $data;
     }
 } 

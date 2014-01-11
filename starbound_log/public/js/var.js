@@ -16,10 +16,25 @@
     };
 
 
-    $(function() {
+    $(function () {
         $(window).resize(onResize);
         onResize();
-        $('.ibutton').iButton();
+        $('.ibutton').iButton({
+            /*duration: 200                          // the speed of the animation
+            , easing: "swing"                      // the easing animation to use
+            , labelOn: "ON"                        // the text to show when toggled on
+            , labelOff: "OFF"                      // the text to show when toggled off
+            , resizeHandle: "auto"                 // determines if handle should be resized
+            , resizeContainer: "auto"              // determines if container should be resized*/
+            enableDrag: false                    // determines if we allow dragging
+            , enableFx: true                       // determines if we show animation
+            , allowRadioUncheck: true             // determine if a radio button should be able to be unchecked
+            /*, clickOffset: 120                     // if millseconds between a mousedown & mouseup event this value, then considered a mouse click});*/
+        });
+
+        $('.dataTables_filter select').change(function(){
+            $(this).parents('form').submit();
+        });
 
         // Checkable Tables
         $('table tbody td.single-checkbox-column :checkbox').on('change', function () {
@@ -33,7 +48,7 @@
                 });
             });
         });
-        $('.mws-table tbody tr').click(function() {
+        $('.mws-table tbody tr').click(function () {
             if ($(this).find('td.single-checkbox-column')) {
                 var checkbox = $(this).find('td.single-checkbox-column :checkbox');
                 checkbox.prop("checked", !checkbox.prop("checked"));

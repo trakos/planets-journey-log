@@ -2,7 +2,6 @@
 
 namespace Trks\Form\View\Helper;
 
-
 use Zend\Form\ElementInterface;
 
 class FormRadio extends FormMultiCheckbox

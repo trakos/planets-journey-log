@@ -16,10 +16,10 @@ class RatingSelect extends Select
 
     protected function fetchValueOptions()
     {
-        $ratings = [];
-        for ($i = 1; $i <= 10; $i++) {
-            $ratings[$i] = $i;
-        }
-        return $ratings;
+        return array(
+            -1 => 'yes',
+            0 => 'meh',
+            1 => 'no'
+        );
     }
 } 

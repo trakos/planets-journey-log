@@ -13,6 +13,7 @@ class StarboundLog
         \Trks\Form\View\Helper\FormElementErrors::$defaultPartial   = self::$customConfig['view_helper_partials']['form_element_errors'];
         \Trks\Form\View\Helper\FormButtonRow::$partial              = self::$customConfig['view_helper_partials']['form_button_row'];
         \Trks\View\Helper\Messages::$partial                        = self::$customConfig['view_helper_partials']['messages'];
+        \Zend\View\Helper\PaginationControl::setDefaultViewPartial(self::$customConfig['view_helper_partials']['paginator']);
         // define recaptcha keys (so we can use it in form annotations)
         define('RECAPTCHA_PUBLIC_KEY', self::$customConfig['recaptcha']['public_key']);
         define('RECAPTCHA_PRIVATE_KEY', self::$customConfig['recaptcha']['private_key']);

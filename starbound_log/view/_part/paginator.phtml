@@ -1,0 +1,39 @@
+<?php
+/* @var \Trks\View\TrksPhpRendererWithPaginator $this */
+
+$urlParams = array('controller' => 'planets', 'action' => 'all');
+?>
+
+<?php if ($this->pageCount): ?>
+    <div class="dataTables_info">
+        Showing <?= $this->firstItemNumber ?> to <?= $this->lastItemNumber ?> of <?= $this->totalItemCount ?> entries
+    </div>
+    <div class="dataTables_paginate paging_full_numbers">
+        <?php if (isset($this->previous)): ?>
+            <a class="first paginate_button" href="<?= $this->url('main', $urlParams + array('id' => 1)) ?>" tabindex="0">First</a>
+            <a class="previous paginate_button" href="<?= $this->url('main', $urlParams + array('id' => $this->previous)) ?>" tabindex="0">Previous</a>
+        <?php else: ?>
+            <a class="first paginate_button paginate_button_disabled" tabindex="0">First</a>
+            <a class="previous paginate_button paginate_button_disabled" tabindex="0">Previous</a>
+        <?php endif; ?>
+        <?php foreach ($this->pagesInRange as $page): ?>
+            <?php if ($page == $this->current): ?>
+                <a class="paginate_active" tabindex="0">
+                    <?= $page ?>
+                </a>
+            <?php else: ?>
+                <a class="paginate_button" tabindex="0" href="<?= $this->url('main', $urlParams + array('id' => $page)) ?>">
+                    <?= $page ?>
+                </a>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+        <?php if (isset($this->next)): ?>
+            <a class="next paginate_button" href="<?= $this->url('main', $urlParams + array('id' => $this->next)) ?>" tabindex="0">Next</a>
+            <a class="last paginate_button" href="<?= $this->url('main', $urlParams + array('id' => $this->pageCount)) ?>" tabindex="0">Last</a>
+        <?php else: ?>
+            <a class="next paginate_button paginate_button_disabled" tabindex="0">Next</a>
+            <a class="last paginate_button paginate_button paginate_button_disabled" tabindex="0">Last</a>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
