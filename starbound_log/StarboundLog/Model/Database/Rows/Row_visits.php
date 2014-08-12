@@ -3,12 +3,12 @@
 namespace StarboundLog\Model\Database\Rows;
 
 /**
- * Row_planets_visits
+ * Row_visits
  * 
  * 
- * name="planets_visits"
+ * name="visits"
  */
-class Row_planets_visits extends \Trks\Model\TrksAbstractRow
+class Row_visits extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -50,11 +50,11 @@ class Row_planets_visits extends \Trks\Model\TrksAbstractRow
      */
     public $visit_updated;
 
-    public $visit_biome_id;
+    public $visit_user_id;
 
     public $visit_planet_id;
 
-    public $visit_user_id;
+    public $visit_biome_id;
 
 
     public function exchangeArray($data)
@@ -67,9 +67,9 @@ class Row_planets_visits extends \Trks\Model\TrksAbstractRow
         $this->visit_shared = (isset($data['visit_shared'])) ? $data['visit_shared'] : null;
         $this->visit_created = (isset($data['visit_created'])) ? $data['visit_created'] : null;
         $this->visit_updated = (isset($data['visit_updated'])) ? $data['visit_updated'] : null;
-        $this->visit_biome_id = (isset($data['visit_biome_id'])) ? $data['visit_biome_id'] : null;
-        $this->visit_planet_id = (isset($data['visit_planet_id'])) ? $data['visit_planet_id'] : null;
         $this->visit_user_id = (isset($data['visit_user_id'])) ? $data['visit_user_id'] : null;
+        $this->visit_planet_id = (isset($data['visit_planet_id'])) ? $data['visit_planet_id'] : null;
+        $this->visit_biome_id = (isset($data['visit_biome_id'])) ? $data['visit_biome_id'] : null;
     }
 
     public function toArray()
@@ -83,9 +83,9 @@ class Row_planets_visits extends \Trks\Model\TrksAbstractRow
             'visit_shared' => $this->visit_shared,
             'visit_created' => $this->visit_created,
             'visit_updated' => $this->visit_updated,
-            'visit_biome_id' => $this->visit_biome_id,
-            'visit_planet_id' => $this->visit_planet_id,
             'visit_user_id' => $this->visit_user_id,
+            'visit_planet_id' => $this->visit_planet_id,
+            'visit_biome_id' => $this->visit_biome_id,
         );
     }
 
@@ -95,41 +95,41 @@ class Row_planets_visits extends \Trks\Model\TrksAbstractRow
      */
     public function save()
     {
-        \StarboundLog\Model\Database\Tables\Table_planets_visits::get()->saveRow($this);
+        \StarboundLog\Model\Database\Tables\Table_visits::get()->saveRow($this);
     }
 
     /**
      * @param int $primaryId
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_planets_visits|null
+     * @return \StarboundLog\Model\Database\Rows\Row_visits|null
      */
     static public function get($primaryId)
     {
-        return \StarboundLog\Model\Database\Tables\Table_planets_visits::get()->getRow($primaryId);
+        return \StarboundLog\Model\Database\Tables\Table_visits::get()->getRow($primaryId);
     }
 
 
     /**
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_biomes|null
+     * @return \StarboundLog\Model\Database\Rows\Row_users|null
      */
-    public function getVisitBiome()
+    public function getVisitUser()
     {
-        if (!$this->visit_biome_id) return null;
-        return \StarboundLog\Model\Database\Tables\Table_biomes::get()->getRow($this->visit_biome_id);
+        if (!$this->visit_user_id) return null;
+        return \StarboundLog\Model\Database\Tables\Table_users::get()->getRow($this->visit_user_id);
     }
 
     /**
      *
-     * @param \StarboundLog\Model\Database\Rows\Row_biomes $entity
+     * @param \StarboundLog\Model\Database\Rows\Row_users $entity
      *
      * @throws \Exception
      * @return void
      */
-    public function setVisitBiome($entity)
+    public function setVisitUser($entity)
     {
-        if (!$entity->biome_id) throw new \Exception("Row has to be initialized!");
-        $this->visit_biome_id = $entity->biome_id;
+        if (!$entity->user_id) throw new \Exception("Row has to be initialized!");
+        $this->visit_user_id = $entity->user_id;
     }
 
 
@@ -159,25 +159,25 @@ class Row_planets_visits extends \Trks\Model\TrksAbstractRow
 
     /**
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_users|null
+     * @return \StarboundLog\Model\Database\Rows\Row_dictionary_biomes|null
      */
-    public function getVisitUser()
+    public function getVisitBiome()
     {
-        if (!$this->visit_user_id) return null;
-        return \StarboundLog\Model\Database\Tables\Table_users::get()->getRow($this->visit_user_id);
+        if (!$this->visit_biome_id) return null;
+        return \StarboundLog\Model\Database\Tables\Table_dictionary_biomes::get()->getRow($this->visit_biome_id);
     }
 
     /**
      *
-     * @param \StarboundLog\Model\Database\Rows\Row_users $entity
+     * @param \StarboundLog\Model\Database\Rows\Row_dictionary_biomes $entity
      *
      * @throws \Exception
      * @return void
      */
-    public function setVisitUser($entity)
+    public function setVisitBiome($entity)
     {
-        if (!$entity->user_id) throw new \Exception("Row has to be initialized!");
-        $this->visit_user_id = $entity->user_id;
+        if (!$entity->biome_id) throw new \Exception("Row has to be initialized!");
+        $this->visit_biome_id = $entity->biome_id;
     }
 
 }

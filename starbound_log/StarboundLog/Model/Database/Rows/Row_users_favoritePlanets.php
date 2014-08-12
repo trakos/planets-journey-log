@@ -3,12 +3,12 @@
 namespace StarboundLog\Model\Database\Rows;
 
 /**
- * Row_planets_favorites
+ * Row_users_favoritePlanets
  * 
  * 
- * name="planets_favorites"
+ * name="users_favoritePlanets"
  */
-class Row_planets_favorites extends \Trks\Model\TrksAbstractRow
+class Row_users_favoritePlanets extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -42,17 +42,17 @@ class Row_planets_favorites extends \Trks\Model\TrksAbstractRow
      */
     public function save()
     {
-        \StarboundLog\Model\Database\Tables\Table_planets_favorites::get()->saveRow($this);
+        \StarboundLog\Model\Database\Tables\Table_users_favoritePlanets::get()->saveRow($this);
     }
 
     /**
      * @param int $primaryId
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_planets_favorites|null
+     * @return \StarboundLog\Model\Database\Rows\Row_users_favoritePlanets|null
      */
     static public function get($primaryId)
     {
-        return \StarboundLog\Model\Database\Tables\Table_planets_favorites::get()->getRow($primaryId);
+        return \StarboundLog\Model\Database\Tables\Table_users_favoritePlanets::get()->getRow($primaryId);
     }
 
 

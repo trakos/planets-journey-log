@@ -3,12 +3,12 @@
 namespace StarboundLog\Model\Database\Rows;
 
 /**
- * Row_characters_planets
+ * Row_users_characters_planetVisits
  * 
  * 
- * name="characters_planets"
+ * name="users_characters_planetVisits"
  */
-class Row_characters_planets extends \Trks\Model\TrksAbstractRow
+class Row_users_characters_planetVisits extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -56,17 +56,17 @@ class Row_characters_planets extends \Trks\Model\TrksAbstractRow
      */
     public function save()
     {
-        \StarboundLog\Model\Database\Tables\Table_characters_planets::get()->saveRow($this);
+        \StarboundLog\Model\Database\Tables\Table_users_characters_planetVisits::get()->saveRow($this);
     }
 
     /**
      * @param int $primaryId
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_characters_planets|null
+     * @return \StarboundLog\Model\Database\Rows\Row_users_characters_planetVisits|null
      */
     static public function get($primaryId)
     {
-        return \StarboundLog\Model\Database\Tables\Table_characters_planets::get()->getRow($primaryId);
+        return \StarboundLog\Model\Database\Tables\Table_users_characters_planetVisits::get()->getRow($primaryId);
     }
 
 

@@ -3,12 +3,12 @@
 namespace StarboundLog\Model\Database\Rows;
 
 /**
- * Row_starbound_versiongroups
+ * Row_planets_starboundVersionGroups
  * 
  * 
- * name="starbound_versiongroups"
+ * name="planets_starboundVersionGroups"
  */
-class Row_starbound_versiongroups extends \Trks\Model\TrksAbstractRow
+class Row_planets_starboundVersionGroups extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -41,17 +41,17 @@ class Row_starbound_versiongroups extends \Trks\Model\TrksAbstractRow
      */
     public function save()
     {
-        \StarboundLog\Model\Database\Tables\Table_starbound_versiongroups::get()->saveRow($this);
+        \StarboundLog\Model\Database\Tables\Table_planets_starboundVersionGroups::get()->saveRow($this);
     }
 
     /**
      * @param int $primaryId
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_starbound_versiongroups|null
+     * @return \StarboundLog\Model\Database\Rows\Row_planets_starboundVersionGroups|null
      */
     static public function get($primaryId)
     {
-        return \StarboundLog\Model\Database\Tables\Table_starbound_versiongroups::get()->getRow($primaryId);
+        return \StarboundLog\Model\Database\Tables\Table_planets_starboundVersionGroups::get()->getRow($primaryId);
     }
 
 

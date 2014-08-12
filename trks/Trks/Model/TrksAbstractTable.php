@@ -9,6 +9,10 @@
 namespace Trks\Model;
 
 
+use Trks\Struct\ManyToManyJoinSpecification;
+use Zend\Db\Sql\Delete;
+use Zend\Db\Sql\Predicate\NotIn as NotInPredicate;
+use Zend\Db\Sql\Where;
 use Zend\Db\TableGateway\AbstractTableGateway;
 
 abstract class TrksAbstractTable
@@ -17,30 +21,45 @@ abstract class TrksAbstractTable
      * @var AbstractTableGateway
      */
     protected $tableGateway;
+    /**
+     * @var AbstractTableGateway[]
+     */
+    protected $manyToManyJoinTableGateways = [];
 
     public function __construct()
     {
         $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
         $resultSetPrototype->setArrayObjectPrototype($this->getPrototype());
         $this->tableGateway = new \Zend\Db\TableGateway\TableGateway($this->getTableName(), $this->getDbAdapter(), null, $resultSetPrototype);
+        foreach ($this->getManyToManyRelations() as $relation) {
+            $this->manyToManyJoinTableGateways[$relation->joinTableName] = new \Zend\Db\TableGateway\TableGateway($relation->joinTableName, $this->getDbAdapter());
+        }
     }
 
     /**
      * @return string
      */
     abstract protected function getTableName();
+
     /**
      * @return \Zend\Db\Adapter\Adapter
      */
     abstract protected function getDbAdapter();
+
     /**
      * @return object
      */
     abstract protected function getPrototype();
+
     /**
      * @return string
      */
     abstract protected function getPrimaryKeyName();
+
+    /**
+     * @return ManyToManyJoinSpecification[]
+     */
+    abstract protected function getManyToManyRelations();
 
     /**
      * @param $q
@@ -65,7 +84,6 @@ abstract class TrksAbstractTable
     }
 
     /**
-     *
      * @param array $filterArray
      *
      * @return object[]
@@ -73,9 +91,8 @@ abstract class TrksAbstractTable
     public function filterRows(array $filterArray)
     {
         $resultSet = $this->tableGateway->select($filterArray);
-        $data = array();
-        while ($row = $resultSet->current())
-        {
+        $data      = array();
+        while ($row = $resultSet->current()) {
             $data[] = $row;
             $resultSet->next();
         }
@@ -83,7 +100,6 @@ abstract class TrksAbstractTable
     }
 
     /**
-     *
      * @param array $filterArray
      *
      * @return object|null
@@ -91,7 +107,7 @@ abstract class TrksAbstractTable
     public function filterRowsGetFirst(array $filterArray)
     {
         $rowSet = $this->tableGateway->select($filterArray);
-        $row = $rowSet->current();
+        $row    = $rowSet->current();
         if (!$row) {
             return null;
         }
@@ -99,7 +115,6 @@ abstract class TrksAbstractTable
     }
 
     /**
-     *
      * @return object[]
      */
     public function getAllRows()
@@ -108,7 +123,6 @@ abstract class TrksAbstractTable
     }
 
     /**
-     *
      * @param $id
      *
      * @return object|null
@@ -135,15 +149,46 @@ abstract class TrksAbstractTable
         if ($id == 0) {
             $this->tableGateway->insert($data);
             $row->{$this->getPrimaryKeyName()} = (int)$this->tableGateway->lastInsertValue;
-            return (int)$this->tableGateway->lastInsertValue;
         } else {
             if ($this->getRow($id)) {
                 $this->tableGateway->update($data, array($this->getPrimaryKeyName() => $id));
-                return $id;
             } else {
                 throw new \Exception('Row id does not exist');
             }
         }
+        $id = (int)$row->{$this->getPrimaryKeyName()};
+
+
+        foreach ($this->getManyToManyRelations() as $relation) {
+
+            $joinTableGateway = $this->manyToManyJoinTableGateways[$relation->joinTableName];
+            /* @var int[] $foreignIdsArray */
+            $foreignIdsArray = $row->{$relation->joinTableColumnNameInEntityClass};
+            $joinTableGateway->delete(array(new NotInPredicate($relation->joinTableColumnOtherName, $foreignIdsArray)));
+
+            $existingForeignIds = $this->_getForeignIdsFor($joinTableGateway, $relation->joinTableColumnThisName, $relation->joinTableColumnOtherName, $id);
+            $foreignIdsArray    = array_diff($foreignIdsArray, $existingForeignIds);
+            foreach ($foreignIdsArray as $foreignId) {
+                $joinTableGateway->insert(array(
+                    $relation->joinTableColumnThisName  => $id,
+                    $relation->joinTableColumnOtherName => $foreignId,
+                ));
+            }
+
+        }
+
+        return $id;
+    }
+
+    protected function _getForeignIdsFor(AbstractTableGateway $joinTableGateway, $joinThisIdColumn, $joinForeignIdColumn, $rowPrimaryKeyValue)
+    {
+        $resultSet = $joinTableGateway->select(array($joinThisIdColumn => $rowPrimaryKeyValue));
+        $data      = array();
+        while ($row = $resultSet->current()) {
+            $data[] = $row->$joinForeignIdColumn;
+            $resultSet->next();
+        }
+        return $data;
     }
 
     /**

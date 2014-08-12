@@ -26,6 +26,12 @@ return array(
             array(
                 'module'     => 'main',
                 'controller' => 'home',
+                'action'     => 'csv',
+                'resource'   => Acl::RES_USER
+            ),
+            array(
+                'module'     => 'main',
+                'controller' => 'home',
                 'action'     => null,
                 'resource'   => Acl::RES_GUEST
             ),

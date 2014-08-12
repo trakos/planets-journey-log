@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping\ClassMetadataInfo,
     Doctrine\Common\Util\Inflector,
     Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Tools\EntityGenerator;
+use ZendService\ReCaptcha\Exception;
 
 /**
  * @property array metadatas
@@ -373,6 +374,16 @@ class TrksEntityGenerator extends EntityGenerator
             }
 
             if ($associationMapping['isOwningSide'] == 1) {
+
+                if (
+                    !isset($associationMapping['targetToSourceKeyColumns'])
+                    || count($associationMapping['targetToSourceKeyColumns']) > 1
+                    || $associationMapping['isOwningSide'] != 1
+                    || $associationMapping['type'] == ClassMetadataInfo::MANY_TO_MANY
+                ) {
+                    continue;
+                }
+
                 foreach ($associationMapping['targetToSourceKeyColumns'] as $columnName) {
                     $lines[] = $this->spaces . $this->fieldVisibility . ' $' . $columnName
                         . ($associationMapping['type'] == 'manyToMany' ? ' = array()' : null) . ";\n";
@@ -392,6 +403,15 @@ class TrksEntityGenerator extends EntityGenerator
         }
         foreach ($metadata->associationMappings as $associationMapping) {
             if ($this->hasProperty($associationMapping['fieldName'], $metadata)) {
+                continue;
+            }
+
+            if (
+                !isset($associationMapping['targetToSourceKeyColumns'])
+                || count($associationMapping['targetToSourceKeyColumns']) > 1
+                || $associationMapping['isOwningSide'] != 1
+                || $associationMapping['type'] == ClassMetadataInfo::MANY_TO_MANY
+            ) {
                 continue;
             }
 
@@ -418,8 +438,14 @@ class TrksEntityGenerator extends EntityGenerator
             }
 
             if ($associationMapping['isOwningSide'] == 1) {
-                foreach ($associationMapping['targetToSourceKeyColumns'] as $columnName) {
-                    $lines[] = $this->spaces . $this->spaces . $this->spaces . str_replace('<property>', $columnName, self::$toArrayFieldTemplate);
+                if ($associationMapping['type'] == ClassMetadataInfo::MANY_TO_MANY) {
+                    /*foreach ($associationMapping['relationToTargetKeyColumns'] as $columnName) {
+                        $lines[] = $this->spaces . $this->spaces . $this->spaces . str_replace('<property>', $columnName, self::$toArrayFieldTemplate);
+                    }*/
+                } else {
+                    foreach ($associationMapping['targetToSourceKeyColumns'] as $columnName) {
+                        $lines[] = $this->spaces . $this->spaces . $this->spaces . str_replace('<property>', $columnName, self::$toArrayFieldTemplate);
+                    }
                 }
             }
         }
@@ -433,7 +459,8 @@ class TrksEntityGenerator extends EntityGenerator
 
         foreach ($metadata->associationMappings as $associationMapping) {
             if (
-                count($associationMapping['targetToSourceKeyColumns']) > 1
+                !isset($associationMapping['targetToSourceKeyColumns'])
+                || count($associationMapping['targetToSourceKeyColumns']) > 1
                 || $associationMapping['isOwningSide'] != 1
                 || $associationMapping['type'] == ClassMetadataInfo::MANY_TO_MANY
             ) {

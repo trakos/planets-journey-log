@@ -3,12 +3,12 @@
 namespace StarboundLog\Model\Database\Rows;
 
 /**
- * Row_systems
+ * Row_planets_systems
  * 
  * 
- * name="systems"
+ * name="planets_systems"
  */
-class Row_systems extends \Trks\Model\TrksAbstractRow
+class Row_planets_systems extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -59,33 +59,33 @@ class Row_systems extends \Trks\Model\TrksAbstractRow
      */
     public function save()
     {
-        \StarboundLog\Model\Database\Tables\Table_systems::get()->saveRow($this);
+        \StarboundLog\Model\Database\Tables\Table_planets_systems::get()->saveRow($this);
     }
 
     /**
      * @param int $primaryId
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_systems|null
+     * @return \StarboundLog\Model\Database\Rows\Row_planets_systems|null
      */
     static public function get($primaryId)
     {
-        return \StarboundLog\Model\Database\Tables\Table_systems::get()->getRow($primaryId);
+        return \StarboundLog\Model\Database\Tables\Table_planets_systems::get()->getRow($primaryId);
     }
 
 
     /**
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_starbound_versions|null
+     * @return \StarboundLog\Model\Database\Rows\Row_planets_starboundVersions|null
      */
     public function getSystemVersion()
     {
         if (!$this->system_version_id) return null;
-        return \StarboundLog\Model\Database\Tables\Table_starbound_versions::get()->getRow($this->system_version_id);
+        return \StarboundLog\Model\Database\Tables\Table_planets_starboundVersions::get()->getRow($this->system_version_id);
     }
 
     /**
      *
-     * @param \StarboundLog\Model\Database\Rows\Row_starbound_versions $entity
+     * @param \StarboundLog\Model\Database\Rows\Row_planets_starboundVersions $entity
      *
      * @throws \Exception
      * @return void

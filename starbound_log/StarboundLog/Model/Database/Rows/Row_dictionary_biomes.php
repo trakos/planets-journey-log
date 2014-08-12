@@ -3,12 +3,12 @@
 namespace StarboundLog\Model\Database\Rows;
 
 /**
- * Row_biomes
+ * Row_dictionary_biomes
  * 
  * 
- * name="biomes"
+ * name="dictionary_biomes"
  */
-class Row_biomes extends \Trks\Model\TrksAbstractRow
+class Row_dictionary_biomes extends \Trks\Model\TrksAbstractRow
 {
     /**
      * @var integer
@@ -41,17 +41,17 @@ class Row_biomes extends \Trks\Model\TrksAbstractRow
      */
     public function save()
     {
-        \StarboundLog\Model\Database\Tables\Table_biomes::get()->saveRow($this);
+        \StarboundLog\Model\Database\Tables\Table_dictionary_biomes::get()->saveRow($this);
     }
 
     /**
      * @param int $primaryId
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_biomes|null
+     * @return \StarboundLog\Model\Database\Rows\Row_dictionary_biomes|null
      */
     static public function get($primaryId)
     {
-        return \StarboundLog\Model\Database\Tables\Table_biomes::get()->getRow($primaryId);
+        return \StarboundLog\Model\Database\Tables\Table_dictionary_biomes::get()->getRow($primaryId);
     }
 
 

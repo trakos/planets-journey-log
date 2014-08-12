@@ -68,17 +68,17 @@ class Row_planets extends \Trks\Model\TrksAbstractRow
 
     /**
      *
-     * @return \StarboundLog\Model\Database\Rows\Row_systems|null
+     * @return \StarboundLog\Model\Database\Rows\Row_planets_systems|null
      */
     public function getPlanetSystem()
     {
         if (!$this->planet_system_id) return null;
-        return \StarboundLog\Model\Database\Tables\Table_systems::get()->getRow($this->planet_system_id);
+        return \StarboundLog\Model\Database\Tables\Table_planets_systems::get()->getRow($this->planet_system_id);
     }
 
     /**
      *
-     * @param \StarboundLog\Model\Database\Rows\Row_systems $entity
+     * @param \StarboundLog\Model\Database\Rows\Row_planets_systems $entity
      *
      * @throws \Exception
      * @return void

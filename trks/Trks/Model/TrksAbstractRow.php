@@ -9,6 +9,8 @@
 namespace Trks\Model;
 
 
+use Trks\Struct\ManyToManyJoinSpecification;
+
 abstract class TrksAbstractRow
 {
     /**
@@ -22,4 +24,6 @@ abstract class TrksAbstractRow
      * @return array
      */
     abstract function toArray();
+
+
 } 
